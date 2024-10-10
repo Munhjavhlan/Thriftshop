@@ -1,128 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <a href="style.css"></a>
-    <title>Thrift shop</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Thrift Shop</title>
 </head>
+
 <body>
     <header>
         <h3>Гишүүд 50% хүртэл хямдралтай</h3>
         <nav>
-            <img src="images/logo.png" alt="logo">
-            <li>
-                <a href="index.html">Нүүр хуудас</a>
-            </li>
-            <li>
-                <a href="products.html">Барааны мэдээлэл</a>
-            </li>
-            <li>
-                <a href="login.html">Нэвтрэх</a>
-            </li>
-            <li><input type="text" placeholder="Search.."></li>
-            <li>
-                <a href="search.html">
-                    <img src="images/search.png" alt="search">
-                </a>
-            </li>
-            
-            <li>
-                <a href="product_info.html">
-                    <img src="images/heart.png" alt="Product info">
-                </a>
-            </li>
-            <li>
-                <a href="cart.html">
-                    <img src="images/shopping-cart.png" alt="cart">
-                </a>
-            </li>
-            <li>
-                <a href="profile.html">
-                    <img src="images/user.png" alt="profile">
-                </a>
-            </li>
-            
-            <li>
-                <form>
-                    <input type="text" placeholder="Барааны хайлт">
-                    <button type="submit">Хайх</button>
-                </form>
-            </li>
+            <img src="images/logo.jpg" alt="Thrift shop logo" />
+            <ul>
+                <li><a href="index.html" aria-label="Go to home page">Нүүр хуудас</a></li>
+                <li><a href="products.html" aria-label="View products">Барааны мэдээлэл</a></li>
+                <li><a href="login.html" aria-label="Login to your account">Нэвтрэх</a></li>
+                <li>
+                    <form>
+                        <input type="text" placeholder="Search.." aria-label="Search products" />
+                        <button type="submit" aria-label="Submit search">Хайх</button>
+                    </form>
+                </li>
+                <li>
+                    <a href="search.html" aria-label="Go to search page">
+                        <img src="images/search.png" alt="Search icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="product_info.html" aria-label="View product info">
+                        <img src="images/heart.png" alt="Heart icon for product info">
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" aria-label="View shopping cart">
+                        <img src="images/shopping-cart.png" alt="Shopping cart icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" aria-label="View your profile">
+                        <img src="images/user.png" alt="Profile icon">
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 
     <section>
-        <img src="banner-image.jpg" alt="Main Banner">
+        <img src="images/home.png" alt="Main banner for the shop" />
         <h1>Back to School</h1>
         <p>Up to 40% Off</p>
     </section>
 
     <section>
         <article>
-            <img src="images/shipping.jpg" alt="Image of free shipping services">
+            <img src="images/shipping.jpg" alt="Image of free shipping services" />
             <p>Захиалга</p>
         </article>
         <article>
-            <img src="images/delivery.jpg" alt="Delivery">
+            <img src="images/delivery.jpg" alt="Delivery services" />
             <p>Хүргэлт</p>
         </article>
         <article>
-            <img src="images/packing.jpg" alt="Packing">
+            <img src="images/packing.jpg" alt="Packing services" />
             <p>Баглаа боодол</p>
         </article>
     </section>
 
     <section>
         <figure>
-            <img src="images/image.jpg" alt="Product 1">
-            <figcaption>Пальто - $50</figcaption>
+            <img src="images/image.jpg" alt="Product 1" />
+            <figcaption>Пальто - 50,000 ₮</figcaption>
         </figure>
         <figure>
-            <img src="images/image.jpg" alt="Product 2">
-            <figcaption>Өмд - $60</figcaption>
+            <img src="images/image.jpg" alt="Product 2" />
+            <figcaption>Өмд - 60,000 ₮</figcaption>
         </figure>
         <figure>
-            <img src="images/image.jpg" alt="Product 3">
-            <figcaption>Цамц - $55</figcaption>
+            <img src="images/image.jpg" alt="Product 3" />
+            <figcaption>Цамц - 55,000 ₮</figcaption>
         </figure>
     </section>
 
     <section>
         <h2>Шинэ жилийн 40% хүртэлх хямдрал!!!</h2>
         <ul>
-            <li><button>Эрчүүдийн хямдралтай хувцаснууд</button></li>
-            <li><button>Эмэгтэйчүүдийн хямдралтай хувцаснууд</button></li>
-            <li><button>Хүүхдийн хямдралтай хувцаснууд</button></li>
+            <li><button type="button" aria-label="Men's sale items">Эрчүүдийн хямдралтай хувцаснууд</button></li>
+            <li><button type="button" aria-label="Women's sale items">Эмэгтэйчүүдийн хямдралтай хувцаснууд</button></li>
+            <li><button type="button" aria-label="Kids' sale items">Хүүхдийн хямдралтай хувцаснууд</button></li>
         </ul>
     </section>
 
     <section>
         <ul>
-            <li><img src="images/carhatt.jpg" alt="Brand 1"></li>
-            <li><img src="images/nike.jpg" alt="Brand 2"></li>
-            <li><img src="images/adidas.jpg" alt="Brand 3"></li>
-            <li><img src="images/levi's.jpg" alt="Brand 4"></li>
-            <li><img src="images/northface.jpg" alt="Brand 5"></li>
+            <li><img src="images/carhatt.jpg" alt="Brand Carhatt"></li>
+            <li><img src="images/nike.jpg" alt="Brand Nike"></li>
+            <li><img src="images/adidas.jpg" alt="Brand Adidas"></li>
+            <li><img src="images/levi's.jpg" alt="Brand Levi's"></li>
+            <li><img src="images/northface.jpg" alt="Brand North Face"></li>
         </ul>
     </section>
 
     <footer>
         <ul>
-            <li><a href="about_us.html">Бидний тухай</a></li>
-            <li><a href="privacy_policy.html">Үйлчилгээний нөхцөл</a></li>
-            <li><a href="contact_us.html">Бидэнтэй холбогдох</a></li>
+            <li><a href="about_us.html" aria-label="About us">Бидний тухай</a></li>
+            <li><a href="privacy_policy.html" aria-label="View privacy policy">Үйлчилгээний нөхцөл</a></li>
+            <li><a href="contact_us.html" aria-label="Contact us">Бидэнтэй холбогдох</a></li>
         </ul>
         <ul>
-            <li><a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a></li>
-            <li><a href="https://www.instagram.com"><img src="images/instagram.png" alt="Instagram"></a></li>
+            <li>
+                <a href="https://www.facebook.com" aria-label="Go to Facebook">
+                    <img src="images/facebook.png" alt="Facebook">
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com" aria-label="Go to Instagram">
+                    <img src="images/instagram.png" alt="Instagram">
+                </a>
+            </li>
         </ul>
         <figure>
-            <img src="qr-code.png" alt="QR Code">
+            <img src="images/nike.jpg" alt="QR Code for downloading the app" />
             <figcaption>Бидний аппликейшн татах</figcaption>
         </figure>
     </footer>
-
-    
 </body>
+
 </html>

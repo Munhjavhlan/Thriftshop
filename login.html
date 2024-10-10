@@ -1,89 +1,59 @@
 <!DOCTYPE html>
 <html lang="mn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <a href="style.css"></a>
-    <title>Thrift shop</title>
-</head>
-<body>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
+    <link rel="stylesheet" href="style.css"/>
+    <title>Thrift Shop</title>
+</head>
+
+<body>
     <header>
+        <h3>Гишүүд 50% хүртэл хямдралтай</h3>
         <nav>
-            <img src="images/logo.png" alt="logo">
+            <img src="images/logo.jpg" alt="Thrift shop logo" />
             <ul>
-                <li>
-                    <a href="index.html">Нүүр хуудас</a>
-                </li>
-                <li>
-                    <a href="products.html">Барааны мэдээлэл</a>
-                </li>
-                <li>
-                    <a href="login.html">Нэвтрэх</a>
-                </li>
-                <li><input type="text" placeholder="Search.."></li>
-                <li>
-                    <a href="search.html">
-                        <img src="images/search.png" alt="search">
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="product_info.html">
-                        <img src="images/heart.png" alt="Product info">
-                    </a>
-                </li>
-                <li>
-                    <a href="cart.html">
-                        <img src="images/shopping-cart.png" alt="cart">
-                    </a>
-                </li>
-                <li>
-                    <a href="profile.html">
-                        <img src="images/user.png" alt="profile">
-                    </a>
-                </li>
-                
+                <li><a href="index.html" aria-label="Go to home page">Нүүр хуудас</a></li>
+                <li><a href="products.html" aria-label="View products">Барааны мэдээлэл</a></li>
+                <li><a href="login.html" aria-label="Login to your account">Нэвтрэх</a></li>
                 <li>
                     <form>
-                        <input type="text" placeholder="Барааны хайлт">
-                        <button type="submit">Хайх</button>
+                        <input type="text" placeholder="Search.." aria-label="Search products" />
+                        <button type="submit" aria-label="Submit search">Хайх</button>
                     </form>
+                </li>
+                <li>
+                    <a href="search.html" aria-label="Go to search page">
+                        <img src="images/search.png" alt="Search icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="product_info.html" aria-label="View product info">
+                        <img src="images/heart.png" alt="Heart icon for product info">
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" aria-label="View shopping cart">
+                        <img src="images/shopping-cart.png" alt="Shopping cart icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" aria-label="View your profile">
+                        <img src="images/user.png" alt="Profile icon">
+                    </a>
                 </li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h1>Нэвтрэх</h1>
-            <form>
-                <label for="email">Мэйл хаяг эсвэл утасны дугаар</label>
-                <input type="text" id="email" name="email">
-                
-                <label for="password">Нууц үг</label>
-                <input type="password" id="password" name="password">
-                
-                <button type="submit">Нэвтрэх</button>
-            </form>
-            
-            <p><a href="#">Нууц үгээ мартсан?</a></p>
-            
-            <section>
-                <p>Эсвэл</p>
-                <button>Google-ээр нэвтрэх</button>
-                <button>Facebook-ээр нэвтрэх</button>
-            </section>
-            
-            <footer>
-                <p>Бүртгэл байхгүй юу? <a href="#">Бүртгүүлэх</a></p>
-            </footer>
-        </section>
-    </main>
-
-    <footer>
-        <p>Үйлчилгээний нөхцөл болон нууцлалын бодлого</p>
-    </footer>
+    <section>
+        <img src="images/nike.jpg" alt="Main banner for the shop" />
+        <h1>Back to School</h1>
+        <p>Up to 40% Off</p>
+    </section>
 
 </body>
+
 </html>

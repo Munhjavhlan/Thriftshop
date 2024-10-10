@@ -4,52 +4,52 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <a href="style.css"></a>
-    <title>Thrift shop</title>
+    <meta name="description" content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
+    <link rel="stylesheet" href="style.css"/>
+
+    <title>Thrift Shop</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <img src="images/logo.png" alt="logo" />
+            <img src="images/logo.jpg" alt="Thrift shop logo" />
             <ul>
                 <li>
-                    <a href="index.html">Нүүр хуудас</a>
+                    <a style="font-size: 20px; margin-left: 10px" href="index.html" aria-label="Go to home page">Нүүр хуудас</a>
                 </li>
                 <li>
-                    <a href="products.html">Барааны мэдээлэл</a>
+                    <a style="font-size: 20px; margin-left: 10px" href="products.html" aria-label="View products">Барааны мэдээлэл</a>
                 </li>
                 <li>
-                    <a href="login.html">Нэвтрэх</a>
+                    <a style="font-size: 20px; margin-left: 10px" href="login.html" aria-label="Login to your account">Нэвтрэх</a>
                 </li>
-                <li><input type="text" placeholder="Search.."></li>
-                <li>
-                    <a href="search.html">
-                        <img src="images/search.png" alt="search">
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="product_info.html">
-                        <img src="images/heart.png" alt="Product info">
-                    </a>
-                </li>
-                <li>
-                    <a href="cart.html">
-                        <img src="images/shopping-cart.png" alt="cart">
-                    </a>
-                </li>
-                <li>
-                    <a href="profile.html">
-                        <img src="images/user.png" alt="profile">
-                    </a>
-                </li>
-                
                 <li>
                     <form>
-                        <input type="text" placeholder="Барааны хайлт">
-                        <button type="submit">Хайх</button>
+                        <label for="search-input">Барааны хайлт</label>
+                        <input type="text" id="search-input" placeholder="Search..">
+                        <button type="submit" aria-label="Submit search">Хайх</button>
                     </form>
+                </li>
+                <li>
+                    <a href="search.html" aria-label="Search page">
+                        <img src="images/search.png" alt="Search icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="product_info.html" aria-label="View product info">
+                        <img src="images/heart.png" alt="Product info icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" aria-label="View shopping cart">
+                        <img src="images/shopping-cart.png" alt="Shopping cart icon">
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" aria-label="View your profile">
+                        <img src="images/user.png" alt="Profile icon">
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -60,7 +60,7 @@
             <h1>Таны сагсанд</h1>
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Product image" />
+                    <img src="images/image.jpg" alt="Сүртгэнэсэн савхин жакет" />
                     <figcaption>
                         <h2>Сүртгэнэсэн савхин жакет</h2>
                         <p>Үнэ: 50,000 ₮</p>
@@ -68,7 +68,7 @@
                         <p>Өнгө: Хар</p>
                         <form>
                             <label for="quantity-1">Тоо:</label>
-                            <input type="number" id="quantity-1" value="1" min="1" />
+                            <input type="number" id="quantity-1" value="1" min="1" aria-label="Quantity of leather jacket" />
                         </form>
                     </figcaption>
                 </figure>
@@ -76,7 +76,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Product image" />
+                    <img src="images/image.jpg" alt="Модел өмд" />
                     <figcaption>
                         <h2>Модел өмд</h2>
                         <p>Үнэ: 28,000 ₮</p>
@@ -84,7 +84,7 @@
                         <p>Өнгө: Хар</p>
                         <form>
                             <label for="quantity-2">Тоо:</label>
-                            <input type="number" id="quantity-2" value="1" min="1" />
+                            <input type="number" id="quantity-2" value="1" min="1" aria-label="Quantity of pants" />
                         </form>
                     </figcaption>
                 </figure>
@@ -92,7 +92,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Product image" />
+                    <img src="images/image.jpg" alt="Нимгэн цамц" />
                     <figcaption>
                         <h2>Нимгэн цамц</h2>
                         <p>Үнэ: 16,000 ₮</p>
@@ -100,29 +100,30 @@
                         <p>Өнгө: Саарал</p>
                         <form>
                             <label for="quantity-3">Тоо:</label>
-                            <input type="number" id="quantity-3" value="1" min="1" />
+                            <input type="number" id="quantity-3" value="1" min="1" aria-label="Quantity of thin shirt" />
                         </form>
                     </figcaption>
                 </figure>
             </article>
         </section>
+        
         <h2>Захиалгын мэдээлэл</h2>
         <p>Захиалгын дүн: 104,000 ₮</p>
         <p>Хямдрал: 12,000 ₮</p>
         <p>Хүргэлтийн төлбөр: 5,000 ₮</p>
         <p>Нийт: 92,000 ₮</p>
-        <button>Үргэлжлүүлэн захиалах</button>
+        <button aria-label="Proceed with order">Үргэлжлүүлэн захиалах</button>
 
         <section>
             <h3>Захиалга хийх боломжууд</h3>
             <ul>
-                <li><a href="#">Төлбөрийн нөхцөлүүд</a></li>
+                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Payment terms">Төлбөрийн нөхцөлүүд</a></li>
             </ul>
             <p>Та дараах аргуудаар төлбөрөө төлж болно:</p>
             <ul>
-                <li><a href="#">Visa</a></li>
-                <li><a href="#">MasterCard</a></li>
-                <li><a href="#">Paypal</a></li>
+                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Pay with Visa">Visa</a></li>
+                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Pay with MasterCard">MasterCard</a></li>
+                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Pay with PayPal">Paypal</a></li>
             </ul>
         </section>
 
@@ -130,7 +131,7 @@
             <h2>Танд таалагдаж магадгүй</h2>
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product" />
+                    <img src="images/image.jpg" alt="Recommended product 1" />
                     <figcaption>
                         <p>14,000 ₮</p>
                     </figcaption>
@@ -139,7 +140,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product" />
+                    <img src="images/image.jpg" alt="Recommended product 2" />
                     <figcaption>
                         <p>30,000 ₮</p>
                     </figcaption>
@@ -148,7 +149,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product" />
+                    <img src="images/image.jpg" alt="Recommended product 3" />
                     <figcaption>
                         <p>68,000 ₮</p>
                     </figcaption>
@@ -157,7 +158,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product" />
+                    <img src="images/image.jpg" alt="Recommended product 4" />
                     <figcaption>
                         <p>19,000 ₮</p>
                     </figcaption>
@@ -170,16 +171,17 @@
         <section>
             <p>Мэдээлэл авах</p>
             <form>
-                <input type="email" placeholder="Та мейлээ оруулна уу" />
-                <button type="submit">Илгээх</button>
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" placeholder="Та мейлээ оруулна уу" aria-label="Email input" />
+                <button type="submit" aria-label="Submit email">Илгээх</button>
             </form>
         </section>
 
         <section>
             <ul>
-                <li><a href="about_us.html">Бидний тухай</a></li>
-                <li><a href="privacy_policy.html">Үйлчилгээний нөхцөл</a></li>
-                <li><a href="contact_us.html">Бидэнтэй холбогдох</a></li>
+                <li><a style="font-size: 15px; margin-left: 10px" href="about_us.html" aria-label="Learn about us">Бидний тухай</a></li>
+                <li><a style="font-size: 15px; margin-left: 10px" href="privacy_policy.html" aria-label="View privacy policy">Үйлчилгээний нөхцөл</a></li>
+                <li><a style="font-size: 15px; margin-left: 10px" href="contact_us.html" aria-label="Contact us">Бидэнтэй холбогдох</a></li>
             </ul>
         </section>
 
