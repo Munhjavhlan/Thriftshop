@@ -5,16 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="static/style.css" />
     <title>Thrift Shop</title>
 </head>
 
 <body>
     <header>
-        <h3>Гишүүд 50% хүртэл хямдралтай</h3>
+        <h3 class="back">Гишүүд 50% хүртэл хямдралтай</h3>
         <nav>
-            <img src="images/logo.jpg" alt="Thrift shop logo" />
-            <ul>
+            <div class="nav-toggle">
+                <button aria-label="Toggle navigation menu" id="navToggle">☰</button>
+            </div>
+            <img  class="logo" src="images/logo.png" alt="Thrift shop logo" />
+            <ul id="navMenu">
                 <li><a href="index.html" aria-label="Go to home page">Нүүр хуудас</a></li>
                 <li><a href="products.html" aria-label="View products">Барааны мэдээлэл</a></li>
                 <li><a href="login.html" aria-label="Login to your account">Нэвтрэх</a></li>
@@ -44,6 +47,7 @@
                         <img src="images/user.png" alt="Profile icon">
                     </a>
                 </li>
+                <button id="toggleButton">Toggle Dark/Light Mode</button>
             </ul>
         </nav>
     </header>
