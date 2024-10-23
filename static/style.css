@@ -16,6 +16,65 @@
     --text-color-light: #000000;
     --main-bg-color-dark: #1a1a1a;
     --main-bg-color-light: #f4f4f4;
+    --white: #fff;
+    --black: #000;
+    --paleslate: #d3d2d3;
+    --codgray: #1b1b1b;
+    --gray: #828282;
+    --wildsand: #f4f4f4;
+    --mercury: #e5e5e5;
+    --alabaster: #fafafa;
+    --dustygray: #9b9b9b;
+    --boulder: #757575;
+    --tundora: #4a4a4a;
+    --mineshaft: #353535;
+    --robinseggblue: #00c3d7;
+    --bondiblue: #00a1b3;
+    --punch: #d62929;
+    --chablis: #fff2f2;
+    --lima: #7ed321;
+    --buttercup: #f5a623;
+    --lavenderpink: #fcbcc3;
+    --brilliantrose: #fc4ab5;
+    --violetred: #f63789;
+    --amaranth: #f0245d;
+    --amaranth2: #ef2841;
+    --flamingo: #f35a34;
+    --flamingo2: #f06430;
+    --seabuckthorn: #f99825;
+    --blue: #0032f6;
+    --ceruleanblue: #3837d3;
+    --royalpurple: #633bb1;
+    --vividviolet: #88368c;
+    --maroonflush: #ae2358;
+    --monza: #e00a15;
+    --silver: #cacaca;
+    --alto: #ddd;
+    --gallery: #eaeaea;
+    --gallery2: #eee;
+    --chambray: #3b5998;
+    --sanmarino: #4267b2;
+    --cornflowerblue: #4385f5;
+    --turquoiseblue: #74dbe6;
+    --mediumredviolet: #c62a81;
+    --cerulean: #009cde;
+    --cararra: #e6e5dd;
+    --silverchalice: #b2b2b2;
+    --milanored: #bf0f07;
+    --mintgreen: #a3ff94;
+    --anakiwablue: #81f3ff;
+    --bilbao: #138410;
+    --riceflower: #e9ffda;
+    --matisse: #1d729f;
+    --tranquil: #e5ffff;
+    --color-gray: #828282;
+    --color-neutral-grey-1: #f4f4f4;
+    --color-neutral-grey-2: #e5e5e5;
+    --color-neutral-grey-3: #9b9b9b;
+    --color-neutral-grey-4: #757575;
+    --color-neutral-grey-5: #4a4a4a;
+    --color-neutral-grey-6: #353535;
+    --color-neutral-grey-7: #979797;
 }
 
 /* General Reset */
@@ -33,6 +92,10 @@ body {
     color: var(--text-color-light);
     background-color: var(--main-bg-color-light);
     transition: background-color var(--transition-time), color var(--transition-time)s;
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
 }
 
 /* Dark Mode */
@@ -255,10 +318,68 @@ ul li {
 footer {
     background-color: var(--primary-color);
     color: var(--text-color-dark);
-    padding: 2.5rem 1.25rem;
+    padding: 1.5rem 1.25rem;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+}
+
+.classics-collection {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.hero-section { /* Class name changed here */
+    margin-bottom: 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.shop-button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.images-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.image-item {
+    width: 30%;
+    position: relative;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.image-item p {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 3px;
 }
 
 .footer {
@@ -266,10 +387,13 @@ footer {
     justify-content: space-between;
     width: 100%;
     padding-bottom: 1.25rem;
+    margin: 1.25rem
 }
 
+
 .footer-column {
-    width: 30%;
+    display: inline-block;
+    width: 20%;
 }
 
 .footer-column h3 {
@@ -312,7 +436,8 @@ footer {
 }
 
 figure {
-    text-align: center;
+    justify-content: start;
+    display: blox;
     color: var(--text-color-dark);
 }
 
@@ -321,22 +446,25 @@ figure img {
     margin-bottom: 0.625rem;
 }
 
-figure figcaption {
-    font-size: 0.875rem;
-}
+
 
 .app-icons img {
-    width: 7.5rem;
+    width: 7rem;
     margin-right: 0.625rem;
+    display: blox;
 }
 
-.social-icons img {
-    width: 1.875rem;
+.social-icons svg {
+    width: 3rem;
     margin-right: 0.625rem;
+}
+hr{
+    color: var(--boulder) ;
 }
 
 .bottom-text {
     text-align: center;
+    align-items: flex-start;
     padding-top: 1.25rem;
     color: #888;
     font-size: 0.75rem;
