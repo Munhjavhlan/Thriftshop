@@ -15,7 +15,10 @@
             behavior: 'smooth'
         });
     });
-
+    document.getElementById("navToggle").addEventListener("click", function() {
+        document.getElementById("navMenu").classList.toggle("show");
+    });
+    
 
 
     const toggleButton = document.getElementById("toggleButton");
