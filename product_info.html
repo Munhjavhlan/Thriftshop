@@ -52,7 +52,7 @@
         </header>
        
     <main>
-        <section>
+        <section class="info">
             <a href="products.html" aria-label="Буцах">--</a>
             <article>
                 <figure>
@@ -63,21 +63,25 @@
                         <p>Үнэлгээ: ★★★★★</p>
                         <p>Барааны код: 780001</p>
                         <form>
-                            <label for="size">Хэмжээ:</label>
+                            <div>
+                            <label for="size">Хэмжээ: </label>
                             <select id="size" name="size">
                                 <option value="m">M</option>
                                 <option value="xl">XL</option>
                                 <option value="2xl" selected>2XL</option>
                             </select>
-                            <br>
-                            <label for="color">Өнгө:</label>
+                        </div>
+                        <div>
+                            <label for="color">Өнгө: </label>
                             <input type="radio" id="green" name="color" value="green" checked>
                             <label for="green">Ногоон</label>
                             <input type="radio" id="black" name="color" value="black">
                             <label for="black">Хар</label>
-                            <br>
-                            <label for="quantity">Тоо:</label>
+                        </div>
+                        <div>
+                            <label for="quantity">Тоо: </label>
                             <input type="number" id="quantity" name="quantity" value="1" min="1">
+                        </div>
                         </form>
                         <button>Захиалга хийх</button>
                     </figcaption>
@@ -89,9 +93,8 @@
                 <p>UN3T738: Сайн - Урт урд хаалгатай жижгэвтэр товчтой.</p>
                 <p>Даавуу: нейлон</p>
             </section>
-
-            <section>
-                <h2>Танд таалагдаж магадгүй</h2>
+            <h2>Танд таалагдаж магадгүй</h2>
+            <section  class="product-gallery">
                 <article>
                     <figure>
                         <img src="images/clothe.jpg" alt="Related product 1">
