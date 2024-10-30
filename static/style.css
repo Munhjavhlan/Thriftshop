@@ -313,11 +313,155 @@ ul li {
     font-size: 1.5rem;
     position: absolute;
 }
+.about-thrift {
+    padding: 5rem 15rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    text-align: center;
+    position: relative; 
+}
+.about-thrift::after {
+    content: '';
+    display: block;
+    width: 40%; /* Width of the line */
+    height: 2px; /* Height of the line */
+    background-color: #ccc; /* Color of the line */
+    position: absolute; /* Absolute positioning */
+    right: 0; /* Align to the right */
+    margin-top: 1rem; /* Space above the line */
+}
+.sale {
+    position: relative; /* Ensure relative positioning for absolute children if needed */
+    overflow: hidden; /* Hide overflow if necessary */
+    text-align: center;
+}
+.sale h2{
+    position: absolute;/* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    top: 50%; /* Position from the top of the banner */
+    left: 50%; /* Position horizontally in the center */
+    transform: translate(-50%, 0%);
+    font-size: 2.5rem;
+    white-space: nowrap; 
+}
+.sale ul {
+    position: absolute; /* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    bottom: 10%; 
+    left: 50%; /* Position horizontally in the center */
+    transform: translateX(-50%);
+    white-space: nowrap; 
+    justify-content: space-evenly;
+}
+.sale ul button {
+    padding: 10px 20px;
+    border: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    background-color: transparent;
+    color: var(--color-neutral-grey-5);
+    text-decoration: underline;
+}
+.sale ul button:hover {
+    color: white;
+}
+.sale img {
+    width: 100%; /* Set the width to 100% of the parent */
+    height: auto; /* Maintain the aspect ratio */
+    
+}
 .brand {
- 
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+.shop-button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+.classics-collection {
+    display: flex; /* Use flexbox for the section */
+    flex-direction: column; /* Arrange children in a column */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+.flex-container {
+    display: flex; /* Use flexbox for the first two columns */
+}
+.image-item {
+    flex: 0 0 45%;
+    width: 100%; /* Fill the width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    position: relative;
+}
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+.hero-section {
+    flex: 2; /* Allow the hero section to take more space */
+    display: flex; /* Flexbox for centering text */
+    flex-direction: column; /* Stack text elements */
+    justify-content: center; /* Center text vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center;
+    padding-top: 2rem;
+    margin-bottom: 20px;
+}
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 1rem;
+    margin: 0.8rem 0;
+}
+.images-container {
+    display: flex; /* Use flexbox for the two images below */
+    justify-content: space-between; /* Space between the two images */
+    margin-top: 30px;
+}
+
+.image-item1 {
+    flex: 1; /* Each image takes equal space */
+    padding-top: 2rem;
+    position: relative;
+}
+.image-item p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.image-item1 p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.images-container img {
+    width: 100%; /* Set image to fill its container */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .scroll-left {
@@ -366,66 +510,6 @@ footer {
     display: flex;
     justify-content: space-between;
 }
-
-.classics-collection {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.hero-section { /* Class name changed here */
-    margin-bottom: 20px;
-}
-
-.hero-section h1 {
-    font-size: 36px;
-    font-weight: bold;
-}
-
-.hero-section p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.shop-button {
-    display: inline-block;
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.images-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-
-.image-item {
-    width: 30%;
-    position: relative;
-}
-
-.image-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.image-item p {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
-}
-
 .footer {
     display: flex;
     justify-content: space-between;
@@ -433,8 +517,6 @@ footer {
     padding-bottom: 1.25rem;
     margin: 1.25rem
 }
-
-
 .footer-column {
     display: inline-block;
     width: 20%;
@@ -489,9 +571,6 @@ figure img {
     width: 9.375rem;
     margin-bottom: 0.625rem;
 }
-
-
-
 .app-icons img {
     width: 7rem;
     margin-right: 0.625rem;
