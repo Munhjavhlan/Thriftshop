@@ -29,7 +29,6 @@
 /* General Reset */
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -69,7 +68,6 @@ body.light-mode {
 /* Typography */
 h1, h2, h3, p {
     line-height: 1.5;
-    margin: 0;
     letter-spacing: 0.05em;
 }
 
@@ -390,7 +388,6 @@ ul li {
 .classics-collection {
     display: flex; /* Use flexbox for the section */
     flex-direction: column; /* Arrange children in a column */
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -399,10 +396,10 @@ ul li {
     display: flex; /* Use flexbox for the first two columns */
 }
 .image-item {
-    flex: 0 0 45%;
+    flex: 0 0 50%;
     width: 100%; /* Fill the width of the container */
-    height: auto; /* Maintain the aspect ratio */
     position: relative;
+    flex-basis: 50%;
 }
 .image-item img {
     width: 100%;
@@ -416,17 +413,19 @@ ul li {
     justify-content: center; /* Center text vertically */
     align-items: center; /* Center children horizontally */
     text-align: center;
-    padding-top: 2rem;
     margin-bottom: 20px;
+    flex-basis: 50%;
 }
 .hero-section h1 {
     font-size: 36px;
     font-weight: bold;
+    justify-content: center; 
 }
 
 .hero-section p {
     font-size: 1rem;
-    margin: 0.8rem 0;
+    margin: 1rem 0;
+    justify-content: center; 
 }
 .images-container {
     display: flex; /* Use flexbox for the two images below */
@@ -436,13 +435,14 @@ ul li {
 
 .image-item1 {
     flex: 1; /* Each image takes equal space */
-    padding-top: 2rem;
+    padding-top: 6rem;
     position: relative;
 }
+
 .image-item p {
     padding: 0; /* Remove default padding */
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     left: 10px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
@@ -490,6 +490,9 @@ ul li {
     .scroll-left, .scroll-right {
         display: none;
     }
+    .flex-container {
+        flex-direction: column; 
+    }
 }
 
 @media (max-width: 480px) {
@@ -499,6 +502,9 @@ ul li {
 
     .product-item h3 {
         font-size: 1rem;
+    }
+    .flex-container {
+        flex-direction: column; 
     }
 }
 
@@ -593,3 +599,62 @@ hr{
     font-size: 0.75rem;
     width: 100%;
 }
+/* 5r huudas*/
+.info{
+    justify-content: center;
+    align-items: center;
+}
+.info figure {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; 
+}
+.info figure img {
+    width: 40%; 
+    height: auto; 
+    padding: 2rem;
+}
+.product-gallery figure {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 10px; 
+}
+.product-gallery figure img {
+    width: 100%; 
+    height: auto; 
+}
+.info figcaption {
+    flex: 1;
+    color: #000000;
+    gap: 10px;
+    justify-content: center;
+}
+.info figcaption h1{
+    font-size: x-large;
+    text-align: center;
+    padding-top: 5rem;
+}
+.info figcaption p{
+    text-align: center;
+}
+
+.info button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.info form {
+    display: flex;
+    flex-direction: column;
+}
+
+.info form div {
+    display: flex; /* Aligns children in a row */
+    align-items: center; /* Vertically centers radio buttons with labels */
+}
+
+
