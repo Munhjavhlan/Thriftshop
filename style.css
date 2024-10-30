@@ -1,0 +1,595 @@
+/* Custom Properties */
+:root {
+    --primary-color: #353943;
+    --secondary-color: #ffffff;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f4f4f4;
+    --font-color-dark: #ffffff;
+    --font-color-light: #000000;
+    --spacing: 0.5rem;
+    --spacing-unit: 0.5rem;
+    --transition-time: 0.3s;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --gradient-bg: linear-gradient(45deg, #272525, #7b7a78);
+    --text-color-dark: #ffffff;
+    --text-color-light: #000000;
+    --main-bg-color-dark: #1a1a1a;
+    --main-bg-color-light: #f4f4f4;
+    --color-gray: #828282;
+    --color-neutral-grey-1: #f4f4f4;
+    --color-neutral-grey-2: #e5e5e5;
+    --color-neutral-grey-3: #9b9b9b;
+    --color-neutral-grey-4: #757575;
+    --color-neutral-grey-5: #4a4a4a;
+    --color-neutral-grey-6: #353535;
+    --color-neutral-grey-7: #979797;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body section */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--main-bg-color-light);
+    transition: background-color var(--transition-time), color var(--transition-time)s;
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--font-color-dark);
+}
+body.dark-mode header {
+    background-color: var(--primary-color);
+}
+body.dark-mode header h3 {
+    background-color: var(--light-bg);
+    color: var(--text-color-light);
+}
+
+
+/* Light Mode */
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--font-color-light);
+}
+/* Typography */
+h1, h2, h3, p {
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+h2.gradient {
+    font-size: 2rem;
+    background: linear-gradient(to right, #332f2e, #ded6d0);
+    text-align: center;
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+    color: transparent;
+    background-clip: text;
+}
+ul li {
+	list-style: none;
+    display: inline-block;
+	
+}
+
+/* Header section */
+
+header {
+    background-color: #333; /* Dark background for the top banner */
+    color: #f1f1f1;
+    text-align: center;
+}
+
+.back {
+    font-size: 1em;
+    color: #f1f1f1;
+}
+
+
+
+/* Logo */
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Navigation Links */
+nav ul {
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Search Bar */
+form {
+    display: flex;
+    align-items: center;
+    padding: 2px 50px;
+    background-color: #f8f8f8;
+}
+
+form input[type="text"] {
+    border: none;
+    text-align: center;
+    background-color: #F5F5F5;
+    padding: 5px;
+    width: 100%;
+    outline: none;
+}
+
+form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    right: 100px;
+}
+
+
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+
+    #navToggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    /* Display the menu when toggled */
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* Flex and Grid Layout */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0 1.25rem;
+}
+#navMenu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items within the nav menu */
+    gap: 20px;
+    flex-grow: 1; /* Makes the ul take up remaining space to center it */
+}
+
+/* Style for Individual Links */
+#navMenu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+}
+#iconMenu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #333;
+    flex-grow: 0.2; /* Makes the ul take up remaining space to center it */
+}
+
+/* Style for Individual Links */
+#iconMenu li a {
+    color: #333;
+}
+
+
+nav img.logo {
+    width: 6.25rem;
+    height: auto;
+    transition: filter 0.3s;
+    filter: brightness(1);
+}
+
+nav img.logo.dark-mode {
+    filter: brightness(0.2);
+}
+
+ul li {
+    margin: 0 0.85rem;
+}
+.banner {
+    position: relative; /* Ensure relative positioning for absolute children if needed */
+    overflow: hidden; /* Hide overflow if necessary */
+}
+
+.banner img {
+    width: 100%; /* Set the width to 100% of the parent */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Remove bottom space caused by inline images */
+}
+
+.banner h1, 
+.banner p {
+    position: absolute; /* Positioning text over the image */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust position */
+    color: var(--font-color-dark); /* Adjust color as needed */
+    text-align: center; /* Center the text */
+    z-index: 1; /* Ensure text is above the image */
+}
+
+.banner h1 {
+    top: 20%; /* Position from the top of the banner */
+    font-size: 2.5rem; /* Adjust as needed */
+}
+
+.banner p {
+    top: 40%; /* Position below the heading */
+    font-size: 1.5rem; /* Adjust as needed */
+}
+
+.services {
+    margin-top: 2rem ;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+/* Toggle button for mobile */
+.nav-toggle {
+    display: none;
+}
+
+/* Featured Products */
+.featured-products .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing);
+}
+
+/* Product gallery section */
+.product-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: var(--spacing-unit) 0;
+    overflow-x: scroll;
+}
+
+.product-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    max-width: 80%;
+}
+
+.product-container figure {
+    min-width: 12.5rem;
+    margin: 0 0.625rem;
+    text-align: center;
+}
+
+.product-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Arrows */
+.scroll-left, .scroll-right {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+    border: none;
+    padding: 0.625rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+}
+.about-thrift {
+    padding: 5rem 15rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    text-align: center;
+    position: relative; 
+}
+.about-thrift::after {
+    content: '';
+    display: block;
+    width: 40%; /* Width of the line */
+    height: 2px; /* Height of the line */
+    background-color: #ccc; /* Color of the line */
+    position: absolute; /* Absolute positioning */
+    right: 0; /* Align to the right */
+    margin-top: 1rem; /* Space above the line */
+}
+.sale {
+    position: relative; /* Ensure relative positioning for absolute children if needed */
+    overflow: hidden; /* Hide overflow if necessary */
+    text-align: center;
+}
+.sale h2{
+    position: absolute;/* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    top: 50%; /* Position from the top of the banner */
+    left: 50%; /* Position horizontally in the center */
+    transform: translate(-50%, 0%);
+    font-size: 2.5rem;
+    white-space: nowrap; 
+}
+.sale ul {
+    position: absolute; /* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    bottom: 10%; 
+    left: 50%; /* Position horizontally in the center */
+    transform: translateX(-50%);
+    white-space: nowrap; 
+    justify-content: space-evenly;
+}
+.sale ul button {
+    padding: 10px 20px;
+    border: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    background-color: transparent;
+    color: var(--color-neutral-grey-5);
+    text-decoration: underline;
+}
+.sale ul button:hover {
+    color: white;
+}
+.sale img {
+    width: 100%; /* Set the width to 100% of the parent */
+    height: auto; /* Maintain the aspect ratio */
+    
+}
+.brand {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.shop-button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+.classics-collection {
+    display: flex; /* Use flexbox for the section */
+    flex-direction: column; /* Arrange children in a column */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+.flex-container {
+    display: flex; /* Use flexbox for the first two columns */
+}
+.image-item {
+    flex: 0 0 45%;
+    width: 100%; /* Fill the width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    position: relative;
+}
+.image-item img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
+.hero-section {
+    flex: 2; /* Allow the hero section to take more space */
+    display: flex; /* Flexbox for centering text */
+    flex-direction: column; /* Stack text elements */
+    justify-content: center; /* Center text vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center;
+    padding-top: 2rem;
+    margin-bottom: 20px;
+}
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 1rem;
+    margin: 0.8rem 0;
+}
+.images-container {
+    display: flex; /* Use flexbox for the two images below */
+    justify-content: space-between; /* Space between the two images */
+    margin-top: 30px;
+}
+
+.image-item1 {
+    flex: 1; /* Each image takes equal space */
+    padding-top: 2rem;
+    position: relative;
+}
+.image-item p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.image-item1 p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.images-container img {
+    width: 100%; /* Set image to fill its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.scroll-left {
+    left: 0.625rem;
+}
+
+.scroll-right {
+    right: 0.625rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .featured-products .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-gallery {
+        flex-direction: column;
+    }
+
+    .scroll-left, .scroll-right {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    header h3 {
+        font-size: 1.2rem;
+    }
+
+    .product-item h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Footer section */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 1.25rem;
+    margin: 1.25rem
+}
+.footer-column {
+    display: inline-block;
+    width: 20%;
+}
+
+.footer-column h3 {
+    margin-bottom: 1.25rem;
+    font-size: 1.125rem;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.625rem;
+}
+
+.footer-column ul li a {
+    color: var(--text-color-dark);
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.subscribe input[type="email"] {
+    padding: 0.625rem;
+    border: none;
+    border-radius: 0.3125rem;
+    margin-right: 0.625rem;
+}
+
+.subscribe button {
+    padding: 0.625rem 1.25rem;
+    border: none;
+    background-color: var(--text-color-dark);
+    color: var(--text-color-light);
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+
+figure {
+    justify-content: start;
+    display: blox;
+    color: var(--text-color-dark);
+}
+
+figure img {
+    width: 9.375rem;
+    margin-bottom: 0.625rem;
+}
+.app-icons img {
+    width: 7rem;
+    margin-right: 0.625rem;
+    display: blox;
+}
+
+.social-icons svg {
+    width: 3rem;
+    margin-right: 0.625rem;
+}
+hr{
+    color: var(--boulder) ;
+}
+
+.bottom-text {
+    text-align: center;
+    align-items: flex-start;
+    padding-top: 1.25rem;
+    color: #888;
+    font-size: 0.75rem;
+    width: 100%;
+}
