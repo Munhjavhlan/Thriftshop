@@ -223,37 +223,69 @@ nav img.logo.dark-mode {
 ul li {
     margin: 0 0.85rem;
 }
-.banner {
-    position: relative; /* Ensure relative positioning for absolute children if needed */
-    overflow: hidden; /* Hide overflow if necessary */
+/*Home page slider*/
+.gallery-container{
+    display: flex;
+    padding: 1%;
+}
+.gallery-slider-wrapper{
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.gallery-slider{
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+}
+.gallery-slider img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+.gallery-slider-nav{
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.gallery-slider-nav a{
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+.gallery-nav a:hover{
+    opacity: 100;
+    color: black;
+}
+.home-sale{
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: var(--font-color-dark); 
+    text-align: center; 
+    z-index: 1; 
+    font-size: 2.5vw;
+
+}
+.home-sale h1 {
+    top: 20%; 
 }
 
-.banner img {
-    width: 100%; /* Set the width to 100% of the parent */
-    height: auto; /* Maintain the aspect ratio */
-    display: block; /* Remove bottom space caused by inline images */
+.home-sale p {
+    top: 40%;
+    font-size: 1.5vw; 
 }
-
-.banner h1, 
-.banner p {
-    position: absolute; /* Positioning text over the image */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust position */
-    color: var(--font-color-dark); /* Adjust color as needed */
-    text-align: center; /* Center the text */
-    z-index: 1; /* Ensure text is above the image */
-}
-
-.banner h1 {
-    top: 20%; /* Position from the top of the banner */
-    font-size: 2.5rem; /* Adjust as needed */
-}
-
-.banner p {
-    top: 40%; /* Position below the heading */
-    font-size: 1.5rem; /* Adjust as needed */
-}
-
 .services {
     margin-top: 2rem ;
     justify-content: center;
