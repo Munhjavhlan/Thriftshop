@@ -24,17 +24,20 @@
                 <li><a href="products.html" aria-label="View products">Барааны мэдээлэл</a></li>
                 <li><a href="login.html" aria-label="Login to your account">Хуудас 3</a></li>
                 <li>
-                    <form>
+                    <form class="search-form">
                         <input type="text" placeholder="бүтээгдэхүүн хайх.." aria-label="Search products" />
-                        <button type="submit" aria-label="Submit search"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <button type="submit" aria-label="Submit search">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-search" viewBox="0 0 16 16">
                                 <path
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                            </svg></button>
+                            </svg>
+                        </button>
                     </form>
+
                 </li>
-                </ul>
-                <ul id="iconMenu">
+            </ul>
+            <ul id="iconMenu">
                 <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor"
                             class="bi bi-heart" viewBox="0 0 17 17">
                             <path
@@ -61,7 +64,7 @@
                         </svg>
                     </button>
                 </li>
-                </ul>
+            </ul>
         </nav>
     </header>
 
@@ -173,19 +176,22 @@
     </main>
 
     <footer>
-        <div class="footer">
-            <!-- Subscribe Section -->
-            <div class="footer-column subscribe">
+        <div class="footer-container">
+            <div class="footer-section subscribe">
                 <h3>Exclusive</h3>
+                <p>Subscribe</p>
                 <p>Get 10% off your first order</p>
-                <form>
-                    <input type="email" placeholder="Enter your email">
-                    <button type="submit">→</button>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none">
+                            <path stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m6 12-3 9 18-9L3 3l3 9zm0 0h6" />
+                        </svg></button>
                 </form>
             </div>
 
-            <!-- Quick Links Section -->
-            <div class="footer-column">
+            <div class="footer-section quick-links">
                 <h3>Quick Link</h3>
                 <ul>
                     <li><a href="#">Privacy Policy</a></li>
@@ -195,49 +201,47 @@
                 </ul>
             </div>
 
-            <!-- Download App and Social Media -->
-            <div class="footer-column app-icons">
+            <div class="footer-section download-app">
+
                 <h3>Download App</h3>
-                <!-- QR Code and App Download -->
-                <figure>
-                    <img src="images/qr.png" alt="QR Code for downloading the app" />
-                </figure>
-                <img src="images/googleplay.png" alt="Google Play">
-                <img src="images/appstore.png" alt="App Store">
-                <div class="social-icons">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-                        viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                            style="mix-blend-mode: normal">
-                            <g transform="scale(8.53333,8.53333)">
-                                <path
-                                    d="M24,4h-18c-1.105,0 -2,0.895 -2,2v18c0,1.105 0.895,2 2,2h10v-9h-3v-3h3v-1.611c0,-3.05 1.486,-4.389 4.021,-4.389c1.214,0 1.856,0.09 2.16,0.131v2.869h-1.729c-1.076,0 -1.452,0.568 -1.452,1.718v1.282h3.154l-0.428,3h-2.726v9h5c1.105,0 2,-0.895 2,-2v-18c0,-1.105 -0.896,-2 -2,-2z">
-                                </path>
-                            </g>
-                        </g>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-                        viewBox="0,0,256,256">
-                        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                            style="mix-blend-mode: normal">
-                            <g transform="scale(5.33333,5.33333)">
-                                <path
-                                    d="M16.5,5c-6.33361,0 -11.5,5.16639 -11.5,11.5v15c0,6.33276 5.16621,11.5 11.5,11.5h15c6.33294,0 11.5,-5.16706 11.5,-11.5v-15c0,-6.33379 -5.16724,-11.5 -11.5,-11.5zM16.5,8h15c4.71124,0 8.5,3.78779 8.5,8.5v15c0,4.71106 -3.78894,8.5 -8.5,8.5h-15c-4.71221,0 -8.5,-3.78876 -8.5,-8.5v-15c0,-4.71239 3.78761,-8.5 8.5,-8.5zM34,12c-1.105,0 -2,0.895 -2,2c0,1.105 0.895,2 2,2c1.105,0 2,-0.895 2,-2c0,-1.105 -0.895,-2 -2,-2zM24,14c-5.50482,0 -10,4.49518 -10,10c0,5.50482 4.49518,10 10,10c5.50482,0 10,-4.49518 10,-10c0,-5.50482 -4.49518,-10 -10,-10zM24,17c3.88318,0 7,3.11682 7,7c0,3.88318 -3.11682,7 -7,7c-3.88318,0 -7,-3.11682 -7,-7c0,-3.88318 3.11682,-7 7,-7z">
-                                </path>
-                            </g>
-                        </g>
-                    </svg>
+                <div class="icons">
+                    <div class="qr-codes">
+                        <img src="images/qr.png" alt="QR Code">
+                    </div>
+                    <div class="app-icons">
+                        <img src="images/googleplay.png" alt="Google Play Store">
+                        <img src="images/appstore.png" alt="App Store">
+                    </div>
                 </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i><svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
+                            width="40" height="40" viewBox="0 0 32 32">
+                            <path
+                                d="M21.95 5.005l-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z" />
+                        </svg></a>
+                    <a href="#"><i class="fab fa-instagram"></i><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                            width="40" height="40" viewBox="0,0,256,256">
+                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                style="mix-blend-mode: normal">
+                                <g transform="scale(5.33333,5.33333)">
+                                    <path
+                                        d="M16.5,5c-6.33361,0 -11.5,5.16639 -11.5,11.5v15c0,6.33276 5.16621,11.5 11.5,11.5h15c6.33294,0 11.5,-5.16706 11.5,-11.5v-15c0,-6.33379 -5.16724,-11.5 -11.5,-11.5zM16.5,8h15c4.71124,0 8.5,3.78779 8.5,8.5v15c0,4.71106 -3.78894,8.5 -8.5,8.5h-15c-4.71221,0 -8.5,-3.78876 -8.5,-8.5v-15c0,-4.71239 3.78761,-8.5 8.5,-8.5zM34,12c-1.105,0 -2,0.895 -2,2c0,1.105 0.895,2 2,2c1.105,0 2,-0.895 2,-2c0,-1.105 -0.895,-2 -2,-2zM24,14c-5.50482,0 -10,4.49518 -10,10c0,5.50482 4.49518,10 10,10c5.50482,0 10,-4.49518 10,-10c0,-5.50482 -4.49518,-10 -10,-10zM24,17c3.88318,0 7,3.11682 7,7c0,3.88318 -3.11682,7 -7,7c-3.88318,0 -7,-3.11682 -7,-7c0,-3.88318 3.11682,-7 7,-7z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg></a>
+                </div>
+
             </div>
         </div>
-        <div class="bottom-text">
-            Ⓒ Үйлчилгээний журам болон нөхцөл | Нууцлалын бодлого
+
+        <div class="footer-bottom">
+            <p>© Үйлчилгээний журам болон нөхцөл | Нууцлалын бодлого</p>
         </div>
     </footer>
+
 
 
     <!-- JavaScript -->

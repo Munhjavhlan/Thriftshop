@@ -40,11 +40,12 @@ body {
     line-height: 1.6;
     color: var(--text-color-light);
     background-color: var(--main-bg-color-light);
-    transition: background-color var(--transition-time), color var(--transition-time)s;
+    transition: background-color var(--transition-time), color var(--transition-time);
 }
+
 a {
     background-color: transparent;
-    -webkit-text-decoration-skip: objects
+    -webkit-text-decoration-skip: objects;
 }
 
 /* Dark Mode */
@@ -52,20 +53,22 @@ body.dark-mode {
     background-color: var(--dark-bg);
     color: var(--font-color-dark);
 }
+
 body.dark-mode header {
     background-color: var(--primary-color);
 }
+
 body.dark-mode header h3 {
     background-color: var(--light-bg);
     color: var(--text-color-light);
 }
-
 
 /* Light Mode */
 body.light-mode {
     background-color: var(--light-bg);
     color: var(--font-color-light);
 }
+
 /* Typography */
 h1, h2, h3, p {
     line-height: 1.5;
@@ -73,6 +76,7 @@ h1, h2, h3, p {
     letter-spacing: 0.05em;
 }
 
+/* Gradient title */
 h2.gradient {
     font-size: 2rem;
     background: linear-gradient(to right, #332f2e, #ded6d0);
@@ -81,6 +85,39 @@ h2.gradient {
     color: transparent;
     background-clip: text;
 }
+
+/* Form styling */
+.search-form {
+    display: flex;
+    align-items: center;
+    padding: 2px 50px;
+    background-color: var(--color-neutral-grey-1);
+}
+
+.search-form input[type="text"] {
+    border: none;
+    text-align: center;
+    background-color: var(--color-neutral-grey-1);
+    padding: 5px;
+    width: 100%;
+    outline: none;
+    color: var(--text-color-light);
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: color var(--transition-time);
+}
+
+.search-form button:hover {
+    color: var(--secondary-color);
+}
+
+/* Rest of the CSS remains unchanged... */
+
 ul li {
 	list-style: none;
     display: inline-block;
@@ -90,14 +127,14 @@ ul li {
 /* Header section */
 
 header {
-    background-color: #333; /* Dark background for the top banner */
-    color: #f1f1f1;
+    background-color: --primary-color;
+    color: var(--secondary-color);
     text-align: center;
 }
 
 .back {
     font-size: 1em;
-    color: #f1f1f1;
+    color: var(--secondary-color);
 }
 
 
@@ -126,52 +163,6 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Search Bar */
-form {
-    display: flex;
-    align-items: center;
-    padding: 2px 50px;
-    background-color: #f8f8f8;
-}
-
-form input[type="text"] {
-    border: none;
-    text-align: center;
-    background-color: #F5F5F5;
-    padding: 5px;
-    width: 100%;
-    outline: none;
-}
-
-form button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    right: 100px;
-}
-
-
-
-/* Media Query for Mobile */
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-    }
-
-    #navToggle {
-        display: block;
-        cursor: pointer;
-        font-size: 1.5em;
-        color: #333;
-    }
-
-    /* Display the menu when toggled */
-    nav ul.show {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-}
 /* Flex and Grid Layout */
 nav {
     display: flex;
@@ -226,34 +217,34 @@ ul li {
     margin: 0 0.85rem;
 }
 .banner {
-    position: relative; /* Ensure relative positioning for absolute children if needed */
-    overflow: hidden; /* Hide overflow if necessary */
+    position: relative; 
+    overflow: hidden; 
 }
 
 .banner img {
-    width: 100%; /* Set the width to 100% of the parent */
-    height: auto; /* Maintain the aspect ratio */
-    display: block; /* Remove bottom space caused by inline images */
+    width: 100%; 
+    height: auto; 
+    display: block; 
 }
 
 .banner h1, 
 .banner p {
-    position: absolute; /* Positioning text over the image */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust position */
-    color: var(--font-color-dark); /* Adjust color as needed */
-    text-align: center; /* Center the text */
-    z-index: 1; /* Ensure text is above the image */
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: var(--font-color-dark); 
+    text-align: center; 
+    z-index: 1; 
 }
 
 .banner h1 {
-    top: 20%; /* Position from the top of the banner */
-    font-size: 2.5rem; /* Adjust as needed */
+    top: 20%; 
+    font-size: 2.5rem; 
 }
 
 .banner p {
-    top: 40%; /* Position below the heading */
-    font-size: 1.5rem; /* Adjust as needed */
+    top: 40%; 
+    font-size: 1.5rem; 
 }
 
 .services {
@@ -329,43 +320,110 @@ ul li {
 }
 
 /* Media Queries */
+
+/* For tablet and mobile devices */
 @media (max-width: 768px) {
-    nav ul {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        padding: 20px;
+    }
+
+    .subscribe-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quick-links ul {
+        grid-template-columns: 1fr;
+    }
+
+    .download-app .qr-codes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* For mobile devices only */
+@media (max-width: 480px) {
+    .footer-section {
+        padding: 10px;
+    }
+
+    .subscribe-form input[type="email"] {
+        width: 100%;
+    }
+
+    .quick-links ul li {
+        margin-bottom: 5px;
+    }
+
+    .download-app .qr-codes img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icons a {
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    nav {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .featured-products .products-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .product-gallery {
+    #navMenu {
         flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
     }
 
-    .scroll-left, .scroll-right {
-        display: none;
+    #navMenu li {
+        margin: 10px 0;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search-form input[type="text"] {
+        width: 100%;
+    }
+
+    #iconMenu {
+        margin-top: 10px;
+        justify-content: flex-start;
     }
 }
 
+/* For mobile devices only */
 @media (max-width: 480px) {
-    header h3 {
-        font-size: 1.2rem;
+    .back {
+        font-size: 14px;
     }
 
-    .product-item h3 {
-        font-size: 1rem;
+    .logo {
+        height: 40px;
+    }
+
+    #navMenu a {
+        font-size: 12px;
+    }
+
+    #iconMenu li {
+        margin-left: 10px;
     }
 }
 
-/* Footer section */
-footer {
-    background-color: var(--primary-color);
-    color: var(--text-color-dark);
-    padding: 1.5rem 1.25rem;
-    display: flex;
-    justify-content: space-between;
-}
 
 .classics-collection {
     max-width: 1200px;
@@ -426,91 +484,120 @@ footer {
     border-radius: 3px;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 1.25rem;
-    margin: 1.25rem
-}
-
-
-.footer-column {
-    display: inline-block;
-    width: 20%;
-}
-
-.footer-column h3 {
-    margin-bottom: 1.25rem;
-    font-size: 1.125rem;
-}
-
-.footer-column ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.footer-column ul li {
-    margin-bottom: 0.625rem;
-}
-
-.footer-column ul li a {
+footer {
+    background-color: var(--primary-color);
     color: var(--text-color-dark);
+    padding: 1.5rem 1.25rem;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content:center;
+    max-width: 100%;
+
+}
+
+.footer-section {
+    flex: 1;
+    padding: 0 100px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #B0B0B0;
+}
+
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between input and button */
+}
+
+.subscribe-form input[type="email"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+}
+
+.subscribe-form button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.quick-links ul {
+    list-style: none;
+    display: grid;
+    
+}
+
+.quick-links ul li {
+    margin-bottom: 8px;
+}
+
+.quick-links ul li a {
+    text-decoration: none;
+    color: #B0B0B0;
+    font-size: 14px;
+}
+
+.quick-links ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.icons{
+    display: flex; 
+    gap: 10px;
+}
+.download-app .qr-codes {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.download-app .qr-codes img {
+    width: 80px;
+    height: 80px;
+}
+.download-app .app-icons img {
+    display: block;
+    
+}
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #B0B0B0;
+    font-size: 20px;
     text-decoration: none;
 }
 
-.footer-column ul li a:hover {
-    text-decoration: underline;
+.social-icons a:hover {
+    color: var(--secondary-color);
 }
 
-.subscribe input[type="email"] {
-    padding: 0.625rem;
-    border: none;
-    border-radius: 0.3125rem;
-    margin-right: 0.625rem;
-}
-
-.subscribe button {
-    padding: 0.625rem 1.25rem;
-    border: none;
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
-    border-radius: 0.3125rem;
-    cursor: pointer;
-}
-
-figure {
-    justify-content: start;
-    display: blox;
-    color: var(--text-color-dark);
-}
-
-figure img {
-    width: 9.375rem;
-    margin-bottom: 0.625rem;
-}
-
-
-
-.app-icons img {
-    width: 7rem;
-    margin-right: 0.625rem;
-    display: blox;
-}
-
-.social-icons svg {
-    width: 3rem;
-    margin-right: 0.625rem;
-}
-hr{
-    color: var(--boulder) ;
-}
-
-.bottom-text {
+.footer-bottom {
     text-align: center;
-    align-items: flex-start;
-    padding-top: 1.25rem;
-    color: #888;
-    font-size: 0.75rem;
-    width: 100%;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #B0B0B0;
 }
