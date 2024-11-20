@@ -129,7 +129,6 @@ form {
     display: flex;
     align-items: center;
     padding: 2px 50px;
-    background-color: #f8f8f8;
 }
 
 form input[type="text"] {
@@ -651,6 +650,7 @@ hr{
     flex-direction: column; 
     align-items: center; 
     margin: 0 10px; 
+    color: #000000;
 }
 .product-gallery figure img {
     width: 100%; 
@@ -670,10 +670,7 @@ hr{
 .info figcaption p{
     text-align: center;
 }
-
 .info button {
-    background-color: #f0f0f0;
-    border: none;
     padding: 10px 20px;
     cursor: pointer;
     align-items: center;
@@ -688,5 +685,54 @@ hr{
     display: flex; /* Aligns children in a row */
     align-items: center; /* Vertically centers radio buttons with labels */
 }
+
+.cart-container {
+    display: flex;
+    margin: 20px;
+    justify-items: center;
+}
+.cart-items figure {
+    display: flex;
+    gap: 3rem; 
+    margin: 3rem;
+    color: #000000;
+}
+.cart-items figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+.cart-items img{
+    width: 50%;
+}
+.order-info {
+    flex: 2; 
+
+    padding: 5rem;
+    border-radius: 8px;
+}
+.order-info a {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 2rem;
+    text-decoration: none;
+    color: #333; 
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.order-info a:hover {
+    background-color: #333; 
+    color: #fff; 
+}
+.order-summary {
+    width: 100%;
+    overflow: hidden; 
+    margin-top: 1rem;
+}
+
+
+
 
 
