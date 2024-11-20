@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
+    <meta name="description"
+        content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
     <title>Thrift Shop</title>
 </head>
@@ -16,7 +17,7 @@
             <div class="nav-toggle">
                 <button aria-label="Toggle navigation menu" id="navToggle">☰</button>
             </div>
-            <img  class="logo" src="images/logo.png" alt="Thrift shop logo" />
+            <img class="logo" src="images/logo.png" alt="Thrift shop logo" />
             <ul id="navMenu">
                 <li><a href="index.html" aria-label="Go to home page">Нүүр хуудас</a></li>
                 <li><a href="products.html" aria-label="View products">Барааны мэдээлэл</a></li>
@@ -53,8 +54,11 @@
     </header>
 
     <main>
-        <section>
+        <div class="cart-container">
+        <section class="cart-items">
             <h1>Таны сагсанд</h1>
+            <section id="recommended-products"></section>
+            <!--
             <article>
                 <figure>
                     <img src="images/image.jpg" alt="Сүртгэнэсэн савхин жакет" />
@@ -65,7 +69,8 @@
                         <p>Өнгө: Хар</p>
                         <form>
                             <label for="quantity-1">Тоо:</label>
-                            <input type="number" id="quantity-1" value="1" min="1" aria-label="Quantity of leather jacket" />
+                            <input type="number" id="quantity-1" value="1" min="1"
+                                aria-label="Quantity of leather jacket" />
                         </form>
                     </figcaption>
                 </figure>
@@ -97,24 +102,40 @@
                         <p>Өнгө: Саарал</p>
                         <form>
                             <label for="quantity-3">Тоо:</label>
-                            <input type="number" id="quantity-3" value="1" min="1" aria-label="Quantity of thin shirt" />
+                            <input type="number" id="quantity-3" value="1" min="1"
+                                aria-label="Quantity of thin shirt" />
                         </form>
                     </figcaption>
                 </figure>
-            </article>
+            </article> -->
         </section>
-        
-        <h2>Захиалгын мэдээлэл</h2>
-        <p>Захиалгын дүн: 104,000 ₮</p>
-        <p>Хямдрал: 12,000 ₮</p>
-        <p>Хүргэлтийн төлбөр: 5,000 ₮</p>
-        <p>Нийт: 92,000 ₮</p>
-        <button aria-label="Proceed with order">Үргэлжлүүлэн захиалах</button>
+        <section class="order-info">
+            <h2>Захиалгын мэдээлэл</h2>
+            <table class="order-summary">
+                <tr>
+                    <td>Захиалгын дүн:</td>
+                    <td>104,000 ₮</td>
+                </tr>
+                <tr>
+                    <td>Хямдрал:</td>
+                    <td>12,000 ₮</td>
+                </tr>
+                <tr>
+                    <td>Хүргэлтийн төлбөр:</td>
+                    <td>5,000 ₮</td>
+                </tr>
+                <tr>
+                    <td>Нийт:</td>
+                    <td>92,000 ₮</td>
+                </tr>
+            </table>
+            
+            <button aria-label="Proceed with order" class="shop-button">Үргэлжлүүлэн захиалах</button>
 
-        <section>
             <h3>Захиалга хийх боломжууд</h3>
             <ul>
-                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Payment terms">Төлбөрийн нөхцөлүүд</a></li>
+                <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Payment terms">Төлбөрийн
+                        нөхцөлүүд</a></li>
             </ul>
             <p>Та дараах аргуудаар төлбөрөө төлж болно:</p>
             <ul>
@@ -123,12 +144,12 @@
                 <li><a style="font-size: 10px; margin-left: 10px" href="a.com" aria-label="Pay with PayPal">Paypal</a></li>
             </ul>
         </section>
-
-        <section>
-            <h2>Танд таалагдаж магадгүй</h2>
+    </div>
+        <h2>Танд таалагдаж магадгүй</h2>
+        <section class="product-gallery">
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product 1" />
+                    <img src="images/clothe.jpg" alt="Related product 1">
                     <figcaption>
                         <p>14,000 ₮</p>
                     </figcaption>
@@ -137,7 +158,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product 2" />
+                    <img src="images/clothe.jpg" alt="Related product 2">
                     <figcaption>
                         <p>30,000 ₮</p>
                     </figcaption>
@@ -146,7 +167,7 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product 3" />
+                    <img src="images/clothe.jpg" alt="Related product 3">
                     <figcaption>
                         <p>68,000 ₮</p>
                     </figcaption>
@@ -155,13 +176,14 @@
 
             <article>
                 <figure>
-                    <img src="images/image.jpg" alt="Recommended product 4" />
+                    <img src="images/clothe.jpg" alt="Related product 4">
                     <figcaption>
                         <p>19,000 ₮</p>
                     </figcaption>
                 </figure>
             </article>
         </section>
+   
     </main>
 
     <footer>
@@ -190,10 +212,13 @@
             <!-- Download App and Social Media -->
             <div class="footer-column app-icons">
                 <h3>Download App</h3>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png" alt="Google Play">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Download_on_the_App_Store_Badge.svg/1024px-Download_on_the_App_Store_Badge.svg.png" alt="App Store">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Google_Play_Store_badge_EN.svg/512px-Google_Play_Store_badge_EN.svg.png"
+                    alt="Google Play">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Download_on_the_App_Store_Badge.svg/1024px-Download_on_the_App_Store_Badge.svg.png"
+                    alt="App Store">
                 <div class="social-icons">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_(2019).png" alt="Facebook">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Facebook_Logo_(2019).png"
+                        alt="Facebook">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
                 </div>
             </div>
@@ -221,11 +246,56 @@
             <img src="images/qr.png" alt="QR Code for downloading the app" />
             <figcaption>Бидний аппликейшн татах</figcaption>
         </figure>
-        
+
         <div class="bottom-text">
             Ⓒ Үйлчилгээний журам болон нөхцөл | Нууцлалын бодлого
         </div>
     </footer>
+    <script>
+        const productData = [
+            {
+                "id": 1,
+                "name": "Сүртгэнэсэн савхин жакет",
+                "price": 50000,
+                "size": "L",
+                "color": "Хар",
+                "image": "images/image.jpg"
+            },
+            {
+                "id": 2,
+                "name": "Модел өмд",
+                "price": 28000,
+                "size": "M",
+                "color": "Хар",
+                "image": "images/image.jpg"
+            },
+            {
+                "id": 3,
+                "name": "Нимгэн цамц",
+                "price": 16000,
+                "size": "M",
+                "color": "Саарал",
+                "image": "images/image.jpg"
+            }        
+    ];
+    const filteredProducts = productData.filter(product => product.price < 50000 && product.size === "M");
+    
+    const productsHTMLArray = filteredProducts.map(product =>
+        `<article>
+            <figure>
+                <img src="${product.image}" alt="${product.name}" />
+                <figcaption>
+                    <h2>${product.name}</h2>
+                    <p>Үнэ: ${product.price.toLocaleString()} ₮</p>
+                    <p>Хэмжээ: ${product.size}</p>
+                    <p>Өнгө: ${product.color}</p>
+                </figcaption>
+            </figure>
+        </article>`
+    );
+    document.getElementById("recommended-products").innerHTML = productsHTMLArray.join("");
+
+    </script>
 </body>
 
 </html>
