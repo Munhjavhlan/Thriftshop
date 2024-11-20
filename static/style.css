@@ -41,6 +41,7 @@ body {
     color: var(--text-color-light);
     background-color: var(--main-bg-color-light);
     transition: background-color var(--transition-time), color var(--transition-time);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -127,16 +128,16 @@ ul li {
 /* Header section */
 
 header {
-    background-color: --primary-color;
+    background-color: var(--primary-color);
     color: var(--secondary-color);
     text-align: center;
 }
 
 .back {
+    background-color: var(--primary-color);
     font-size: 1em;
-    color: var(--secondary-color);
+    color: var(--font-color-dark);
 }
-
 
 
 /* Logo */
@@ -216,272 +217,12 @@ nav img.logo.dark-mode {
 ul li {
     margin: 0 0.85rem;
 }
-.banner {
-    position: relative; 
-    overflow: hidden; 
-}
 
-.banner img {
-    width: 100%; 
-    height: auto; 
-    display: block; 
-}
-
-.banner h1, 
-.banner p {
-    position: absolute; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    color: var(--font-color-dark); 
-    text-align: center; 
-    z-index: 1; 
-}
-
-.banner h1 {
-    top: 20%; 
-    font-size: 2.5rem; 
-}
-
-.banner p {
-    top: 40%; 
-    font-size: 1.5rem; 
-}
-
-.services {
-    margin-top: 2rem ;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-}
-
-/* Toggle button for mobile */
-.nav-toggle {
-    display: none;
-}
-
-/* Featured Products */
-.featured-products .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing);
-}
-
-/* Product gallery section */
-.product-gallery {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin: var(--spacing-unit) 0;
-    overflow-x: scroll;
-}
-
-.product-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    max-width: 80%;
-}
-
-.product-container figure {
-    min-width: 12.5rem;
-    margin: 0 0.625rem;
-    text-align: center;
-}
-
-.product-container img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Arrows */
-.scroll-left, .scroll-right {
-    background-color: var(--primary-color);
-    color: var(--text-color-dark);
+button {
+    background: none;
     border: none;
-    padding: 0.625rem;
     cursor: pointer;
-    font-size: 1.5rem;
-    position: absolute;
-}
-.brand {
- 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.scroll-left {
-    left: 0.625rem;
-}
-
-.scroll-right {
-    right: 0.625rem;
-}
-
-/* Media Queries */
-
-/* For tablet and mobile devices */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-section {
-        padding: 20px;
-    }
-
-    .subscribe-form {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .quick-links ul {
-        grid-template-columns: 1fr;
-    }
-
-    .download-app .qr-codes {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .social-icons {
-        justify-content: center;
-    }
-}
-
-/* For mobile devices only */
-@media (max-width: 480px) {
-    .footer-section {
-        padding: 10px;
-    }
-
-    .subscribe-form input[type="email"] {
-        width: 100%;
-    }
-
-    .quick-links ul li {
-        margin-bottom: 5px;
-    }
-
-    .download-app .qr-codes img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .social-icons a {
-        font-size: 16px;
-    }
-}
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #navMenu {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
-
-    #navMenu li {
-        margin: 10px 0;
-    }
-
-    .search-form {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .search-form input[type="text"] {
-        width: 100%;
-    }
-
-    #iconMenu {
-        margin-top: 10px;
-        justify-content: flex-start;
-    }
-}
-
-/* For mobile devices only */
-@media (max-width: 480px) {
-    .back {
-        font-size: 14px;
-    }
-
-    .logo {
-        height: 40px;
-    }
-
-    #navMenu a {
-        font-size: 12px;
-    }
-
-    #iconMenu li {
-        margin-left: 10px;
-    }
-}
-
-
-.classics-collection {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-.hero-section { /* Class name changed here */
-    margin-bottom: 20px;
-}
-
-.hero-section h1 {
-    font-size: 36px;
-    font-weight: bold;
-}
-
-.hero-section p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.shop-button {
-    display: inline-block;
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.images-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-
-.image-item {
-    width: 30%;
-    position: relative;
-}
-
-.image-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.image-item p {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    font-size: 12px;
-    border-radius: 3px;
+    background-color: #fff;
 }
 
 footer {
@@ -494,10 +235,11 @@ footer {
 
 .footer-container {
     display: flex;
-    justify-content:center;
-    max-width: 100%;
-
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+
 
 .footer-section {
     flex: 1;
@@ -582,7 +324,7 @@ footer {
 }
 .social-icons {
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 
 .social-icons a {
@@ -597,7 +339,81 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 80px;
     font-size: 12px;
     color: #B0B0B0;
+    opacity: 0.3;
+}/* Эхний үед sticky-links хэсгийг hide хийж, footer харагдаж байх */
+.sticky-links {
+    display: none;
+}
+
+
+/* Footer-ийг утасны дэлгэц дээр далдлах */
+@media (max-width: 768px) {
+    footer {
+        display: none; /* Footer-ийг hide хийж байна */
+    }
+    
+    /* Sticky Links хэсгийг дэлгэцийн доод хэсэгт байрлуулах */
+    .sticky-links {
+        position: fixed;
+        bottom: 0;
+        background-color: #ffffff;
+        border-top: 1px solid #ddd;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+        z-index: 1000; /* Дээд давхрагад харагдах байдлаар */
+    }
+
+    /* Sticky Links доторх холбоосуудын загвар */
+    .sticky-links ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .sticky-links ul li {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .sticky-links ul li a {
+        color: #353943;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Top Links хэсгийг утасны дэлгэц дээр далдлах */
+    .top-links {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+   
+    /* Show the toggle button */
+    #toggleButton {
+        display: none;
+        
+        margin-top: 10px;
+    }
+
+    /* When the toggle button is clicked */
+    #toggleButton.active + #navMenu {
+        display: flex; /* Show the menu when the button is clicked */
+    }
+}
+
+/* To toggle menu visibility */
+#toggleButton.active + #navMenu {
+    display: flex;
 }
