@@ -417,3 +417,14 @@ footer {
 #toggleButton.active + #navMenu {
     display: flex;
 }
+
+.top-links {
+    display: flex;
+    align-items: center; 
+}
+
+/* Style for the SVG icon */
+.top-links svg {
+    margin-right: 8px; 
+
+}

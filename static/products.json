@@ -1,0 +1,46 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "T-Shirt",
+            "price": 20,
+            "rating": 4.5,
+            "keywords": ["clothing", "casual"]
+        },
+        {
+            "id": 2,
+            "name": "Jeans",
+            "price": 50,
+            "rating": 4.2,
+            "keywords": ["clothing", "denim"]
+        },
+        {
+            "id": 3,
+            "name": "Jacket",
+            "price": 100,
+            "rating": 4.7,
+            "keywords": ["clothing", "outerwear"]
+        },
+        {
+            "id": 4,
+            "name": "Sneakers",
+            "price": 80,
+            "rating": 4.4,
+            "keywords": ["footwear", "sports"]
+        },
+        {
+            "id": 5,
+            "name": "Dress",
+            "price": 70,
+            "rating": 4.3,
+            "keywords": ["clothing", "formal"]
+        },
+        {
+            "id": 6,
+            "name": "Hat",
+            "price": 15,
+            "rating": 4.6,
+            "keywords": ["accessories", "headwear"]
+        }
+    ]
+}
