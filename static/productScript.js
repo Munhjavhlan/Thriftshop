@@ -189,16 +189,81 @@ document.addEventListener('DOMContentLoaded', () => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
                     productCard.innerHTML = `
-                        <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
-                        <h3>${product.name}</h3>
-                        <p>Үнэ: ${product.price}₮</p>
+                        <a href="productInfo.html?id=${product.id}&name=${encodeURIComponent(product.name)}&price=${product.price}&thumbnail=${encodeURIComponent(product.thumbnail)}" class="product-link">
+                            <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
+                            <h3>${product.name}</h3>
+                            <p>Үнэ: ${product.price}₮</p>
+                        </a>
+                        <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
                     `;
+            
+                    // Add product card to the grid
                     productGrid.appendChild(productCard);
                 });
+            
+                //todo Attach event listeners to the "Add to Cart" buttons
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const productId = event.target.dataset.id;
+                        const productName = event.target.dataset.name;
+                        const productPrice = parseFloat(event.target.dataset.price);
+            
+                        addToCart(productId, productName, productPrice);
+                    });
+                });
+            }
+            const cartItemsContainer = document.getElementById("cart-items");
+            const totalPriceElement = document.getElementById("total-price");
+            
+            let cart = [];
+            let total = 0;
+            
+            function addToCart(id, name, price) {
+                // Check if the product is already in the cart
+                const existingProduct = cart.find(item => item.id === id);
+                if (existingProduct) {
+                    existingProduct.quantity++;
+                } else {
+                    cart.push({ id, name, price, quantity: 1 });
+                }
+                updateCart();
             }
             
+            function removeFromCart(id) {
+                cart = cart.filter(item => item.id !== id);
+                updateCart();
+            }
             
-
+            function updateCart() {
+                // Clear the cart UI
+                cartItemsContainer.innerHTML = '';
+            
+                total = 0;
+            
+                // Update cart UI and calculate total price
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+            
+                    cartItem.innerHTML = `
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>${(item.price * item.quantity).toFixed(2)}₮</span>
+                        <button onclick="removeFromCart('${item.id}')">Remove</button>
+                    `;
+            
+                    cartItemsContainer.appendChild(cartItem);
+            
+                    total += item.price * item.quantity;
+                });
+            
+                // Update total price
+                totalPriceElement.textContent = total.toFixed(2);
+            }
+            
+            // Expose removeFromCart to the global scope
+            window.removeFromCart = removeFromCart;
+            
+        
             function filterProducts() {
                 const minPrice = parseInt(rangeMin.value);
                 const maxPrice = parseInt(rangeMax.value);
