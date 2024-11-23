@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     product.name.toLowerCase().includes(searchTerm) ||
                     
                     // Түлхүүр үгээр хайх
-                    product.keywords.some(keyword => 
+                    product.tag.some(keyword => 
                         keyword.toLowerCase().includes(searchTerm)
                     ) ||
                     
@@ -162,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Check if keyword already exists
             function isKeywordExists(newKeyword) {
                 const existingKeywords = Array.from(
                     keywordDisplay.querySelectorAll('.keyword-tag')
@@ -171,10 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return existingKeywords.includes(newKeyword);
             }
 
-            // Add keyword on button click
             addKeywordButton.addEventListener('click', addKeyword);
 
-            // Add keyword on Enter key press
+
             keywordInput.addEventListener('keypress', (event) => {
                 if (event.key === 'Enter') {
                     addKeyword();
@@ -186,19 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const sortButtons = document.querySelectorAll('.sort-button');
 
             function renderProducts(filteredProducts) {
-                productGrid.innerHTML = '';
+                productGrid.innerHTML = ''; // Grid-г хоослох
                 filteredProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
                     productCard.innerHTML = `
+                        <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
                         <h3>${product.name}</h3>
-                        <p>Үнэ: $${product.price}</p>
-                        <p>Үнэлгээ: ${product.rating}★</p>
-                        <p>Барааны төрөл: ${product.keywords}</p>
+                        <p>Үнэ: ${product.price}₮</p>
                     `;
                     productGrid.appendChild(productCard);
                 });
             }
+            
+            
 
             function filterProducts() {
                 const minPrice = parseInt(rangeMin.value);
@@ -208,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 minLabel.textContent = `$${minPrice}`;
                 maxLabel.textContent = `$${maxPrice}`;
 
-                // Filter keywords from added tags
+                // Filter tag from added tags
                 const filterKeywords = Array.from(
                     keywordDisplay.querySelectorAll('.keyword-tag')
                 ).map(tag => tag.textContent.trim().replace('×', '').trim());
@@ -217,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const priceInRange = product.price >= minPrice && product.price <= maxPrice;
                     const matchesKeywords = filterKeywords.length === 0 || 
                         filterKeywords.some(keyword => 
-                            product.keywords.some(prodKeyword => 
+                            product.tag.some(prodKeyword => 
                                 prodKeyword.toLowerCase().includes(keyword.toLowerCase())
                             )
                         );
@@ -274,30 +273,5 @@ document.addEventListener('DOMContentLoaded', () => {
             // Initial render
             renderProducts(products);
         })
-        .catch(error => {
-            console.error('Алдаа:', error);
-            // Хүсэлт амжилтгүй бол анхдагч өгөгдөл ашиглах
-            const products = [
-                { id: 1, name: 'Laptop', price: 500, rating: 4.5, keywords: ['electronics', 'computer'] },
-                { id: 2, name: 'Smartphone', price: 300, rating: 4.2, keywords: ['electronics', 'mobile'] },
-                { id: 3, name: 'Headphones', price: 10, rating: 4.7, keywords: ['electronics', 'audio'] },
-                { id: 4, name: 'Tablet', price: 250, rating: 4.0, keywords: ['electronics', 'computer'] },
-                { id: 5, name: 'Smartwatch', price: 150, rating: 4.3, keywords: ['electronics', 'wearable'] },
-                { id: 6, name: 'Camera', price: 600, rating: 4.6, keywords: ['electronics', 'photography'] }
-            ];
-
-            // Анхдагч өгөгдлөөр рендер хийх
-            const productGrid = document.getElementById('product-grid');
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.classList.add('product-card');
-                productCard.innerHTML = `
-                    <h3>${product.name}</h3>
-                    <p>Үнэ: $${product.price}</p>
-                    <p>Үнэлгээ: ${product.rating}★</p>
-                    <p>Түлхүүр үг: ${product.keywords}</p>
-                `;
-                productGrid.appendChild(productCard);
-            });
-        });
+        
 });

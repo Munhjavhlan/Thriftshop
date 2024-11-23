@@ -3,44 +3,202 @@
         {
             "id": 1,
             "name": "T-Shirt",
+            "description": "Simple and stylish casual T-shirt.",
             "price": 20,
+            "category": "Clothing",
             "rating": 4.5,
-            "keywords": ["clothing", "casual"]
+            "tag": ["clothing", "casual"],
+            "brand": "Essence",
+            "weight": 2,
+            "dimensions": {
+                "width": 23.17,
+                "height": 14.43,
+                "depth": 28.01
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/tshirt/thumbnail.png"
         },
         {
             "id": 2,
             "name": "Jeans",
-            "price": 50,
-            "rating": 4.2,
-            "keywords": ["clothing", "denim"]
+            "description": "Classic blue denim jeans for casual wear.",
+            "price": 40,
+            "category": "Clothing",
+            "rating": 4.7,
+            "tag": ["clothing", "denim"],
+            "brand": "DenimPro",
+            "weight": 1.5,
+            "dimensions": {
+                "width": 35,
+                "height": 100,
+                "depth": 5
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/jeans/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/jeans/thumbnail.png"
         },
         {
             "id": 3,
-            "name": "Jacket",
-            "price": 100,
-            "rating": 4.7,
-            "keywords": ["clothing", "outerwear"]
+            "name": "Hoodie",
+            "description": "Warm and comfortable hoodie for chilly days.",
+            "price": 35,
+            "category": "Clothing",
+            "rating": 4.6,
+            "tag": ["clothing", "winter"],
+            "brand": "ComfortWear",
+            "weight": 1.2,
+            "dimensions": {
+                "width": 40,
+                "height": 60,
+                "depth": 10
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/hoodie/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/hoodie/thumbnail.png"
         },
         {
             "id": 4,
-            "name": "Sneakers",
-            "price": 80,
-            "rating": 4.4,
-            "keywords": ["footwear", "sports"]
+            "name": "Leather Jacket",
+            "description": "Stylish leather jacket for formal and casual events.",
+            "price": 120,
+            "category": "Clothing",
+            "rating": 4.9,
+            "tag": ["clothing", "leather"],
+            "brand": "UrbanStyle",
+            "weight": 2.8,
+            "dimensions": {
+                "width": 50,
+                "height": 70,
+                "depth": 10
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/leather_jacket/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/leather_jacket/thumbnail.png"
         },
         {
             "id": 5,
-            "name": "Dress",
-            "price": 70,
-            "rating": 4.3,
-            "keywords": ["clothing", "formal"]
+            "name": "Sneakers",
+            "description": "Lightweight sneakers perfect for everyday wear.",
+            "price": 60,
+            "category": "Clothing",
+            "rating": 4.8,
+            "tag": ["clothing", "footwear"],
+            "brand": "StepAhead",
+            "weight": 1.1,
+            "dimensions": {
+                "width": 30,
+                "height": 12,
+                "depth": 15
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/sneakers/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/sneakers/thumbnail.png"
         },
         {
             "id": 6,
-            "name": "Hat",
+            "name": "Blazer",
+            "description": "Formal blazer for office and events.",
+            "price": 80,
+            "category": "Clothing",
+            "rating": 4.7,
+            "tag": ["clothing", "formal"],
+            "brand": "ClassicLine",
+            "weight": 1.9,
+            "dimensions": {
+                "width": 45,
+                "height": 75,
+                "depth": 8
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/blazer/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/blazer/thumbnail.png"
+        },
+        {
+            "id": 7,
+            "name": "Summer Dress",
+            "description": "Light and airy dress for summer days.",
+            "price": 50,
+            "category": "Clothing",
+            "rating": 4.8,
+            "tag": ["clothing", "summer"],
+            "brand": "Bloom",
+            "weight": 0.8,
+            "dimensions": {
+                "width": 35,
+                "height": 90,
+                "depth": 3
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/summer_dress/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/summer_dress/thumbnail.png"
+        },
+        {
+            "id": 8,
+            "name": "Winter Coat",
+            "description": "Thick and warm coat for cold seasons.",
+            "price": 150,
+            "category": "Clothing",
+            "rating": 4.9,
+            "tag": ["clothing", "winter"],
+            "brand": "FrostGuard",
+            "weight": 3.5,
+            "dimensions": {
+                "width": 60,
+                "height": 100,
+                "depth": 15
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/winter_coat/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/winter_coat/thumbnail.png"
+        },
+        {
+            "id": 9,
+            "name": "Shorts",
+            "description": "Comfortable shorts for casual and sporty activities.",
+            "price": 25,
+            "category": "Clothing",
+            "rating": 4.4,
+            "tag": ["clothing", "summer"],
+            "brand": "ActiveWear",
+            "weight": 0.6,
+            "dimensions": {
+                "width": 30,
+                "height": 40,
+                "depth": 2
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/shorts/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/shorts/thumbnail.png"
+        },
+        {
+            "id": 10,
+            "name": "Scarf",
+            "description": "Elegant scarf for adding a touch of style.",
             "price": 15,
-            "rating": 4.6,
-            "keywords": ["accessories", "headwear"]
+            "category": "Clothing",
+            "rating": 4.3,
+            "tag": ["clothing", "accessory"],
+            "brand": "StyleX",
+            "weight": 0.3,
+            "dimensions": {
+                "width": 20,
+                "height": 180,
+                "depth": 1
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/scarf/1.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/scarf/thumbnail.png"
         }
     ]
 }
