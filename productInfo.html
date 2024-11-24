@@ -8,7 +8,6 @@
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
     <link rel="stylesheet" href="./static/productInfo.css">
-
     <title>Thrift Shop</title>
 </head>
 
@@ -98,9 +97,32 @@
                     <div class="product-rating">
                         <!-- Dynamic star rating will be here -->
                     </div>
-                    <div class="product-options" id="product-options">
-                        <!-- Size options or other product variations will be added dynamically -->
+
+                   <div class="product-options">
+
+                    <!-- Хэмжээ сонгох -->
+                    <label>Хэмжээ:</label>
+                    <div class="size-options">
+                        <button class="size-btn">жижиг</button>
+                        <button class="size-btn">дунд</button>
+                        <button class="size-btn">том</button>
                     </div>
+                
+                    <!-- Өнгө сонгох -->
+                    <label>Өнгө:</label>
+                    <div class="color-options">
+
+                    </div>
+                
+                    <!-- Тоо ширхэг сонгох -->
+                    <label>Тоо ширхэг:</label>
+                    <div class="quantity-container">
+                        <button class="quantity-btn" data-action="decrement">−</button>
+                        <input type="number" class="quantity-input" value="1" min="1" />
+                        <button class="quantity-btn" data-action="increment">+</button>
+                    </div>
+                    
+                </div>
                     <div style="gap: 16px;">
                         <!-- Add to Cart Button -->
                         <button class="button primary">
@@ -130,79 +152,8 @@
             </div>
         </div>
 
-        <script>
-            // Get the product id from URL
-            const params = new URLSearchParams(window.location.search);
-            const productId = params.get('id');
 
-            // Fetch product data from products.json
-            fetch('./static/products.json')
-                .then(response => response.json())
-                .then(data => {
-                    const products = data.products;
 
-                    // Find the product by ID
-                    const product = products.find(p => p.id === parseInt(productId));
-
-                    if (product) {
-                        // Populate product details
-                        document.getElementById('product-name').textContent = product.name;
-                        document.getElementById('product-description').textContent = "Description: " + product.description;
-                        document.getElementById('product-price').textContent = `Price: $${product.price}`;
-                        document.getElementById('product-category').textContent = "Category: " + product.category;
-                        document.getElementById('product-brand').textContent = "Brand: " + product.brand;
-                        document.getElementById('product-weight').textContent = `Weight: ${product.weight}kg`;
-
-                        // Rating: Display dynamic stars
-                        const rating = product.rating;
-                        const fullStars = Math.floor(rating); // Бүхэл однууд
-                        const halfStar = (rating % 1) >= 0.5 ? 1 : 0; // Хагас од
-                        const emptyStars = 5 - fullStars - halfStar; // Хоосон однууд
-
-                        // ★ - Бүхэл од, ☆ - Хоосон од, 🌓 - Хагас од
-                        const ratingStars = '★'.repeat(fullStars) + '🌓'.repeat(halfStar) + '☆'.repeat(emptyStars);
-
-                        document.getElementById('product-rating').textContent = `Rating: ${ratingStars} (${rating})`;
-
-                        // Display images and thumbnails
-                        document.getElementById('main-image').src = product.images[0]; // Display main image
-                        // const thumbnailContainer = document.getElementById('thumbnail-container');
-                        // product.images.forEach((image, index) => {
-                        //     const img = document.createElement('img');
-                        //     img.src = image;
-                        //     img.alt = `${product.name} thumbnail ${index + 1}`;
-                        //     img.classList.add('thumbnail');
-                        //     img.addEventListener('click', () => {
-                        //         document.getElementById('main-image').src = image;
-                        //     });
-                        //     thumbnailContainer.appendChild(img);
-                        // });
-                        
-
-                        // Related Products Section: Show other products
-                        const relatedProductsContainer = document.getElementById('related-products');
-                        products.filter(p => p.id !== product.id).slice(0, 4).forEach(relatedProduct => {
-                            const relatedCard = document.createElement('div');
-                            relatedCard.classList.add('product-card');
-                            relatedCard.innerHTML = `
-                                <img src="${relatedProduct.thumbnail}" alt="${relatedProduct.name}">
-                                <p>${relatedProduct.name}</p>
-                                <p>$${relatedProduct.price}</p>
-                                <button onclick="location.href='productInfo.html?id=${relatedProduct.id}'">View</button>
-                            `;
-                            relatedProductsContainer.appendChild(relatedCard);
-                        });
-
-                        // Add to cart functionality
-                        document.getElementById('add-to-cart').addEventListener('click', () => {
-                            alert(`${product.name} has been added to your cart.`);
-                        });
-                    } else {
-                        alert('Product not found');
-                    }
-                })
-                ;
-        </script>
     </main>
 
     <footer>
@@ -307,5 +258,5 @@
 
 </body>
 <script src="static/script.js"></script>
-
+<script src="static/productInfo.js"></script>
 </html>`
