@@ -36,7 +36,7 @@ fetch('./static/products.json')
             product.subImages.forEach((image, index) => { // subImages массивыг ашиглана
                 const img = document.createElement('img');
                 img.src = image;
-                img.alt = `${product.name} thumbnail ${index + 1}`;ч
+                img.alt = `${product.name} thumbnail ${index + 1}`;
                 img.classList.add('thumbnail');
 
                 // Зургийг дарахад гол зургаар солих функц
