@@ -9,8 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             const products = data.products;
-
-            // Find the maximum price dynamically
+            //pagination хэсэг
+            let currentPage = 1;
+            const productsPerPage = 9; // нэг хуудсанд 9 бараа харуулна
+            let currentProducts = [...products]; // одоогийн харагдаж буй бүтээгдэхүүнүүд
+            // хамгийн үнэтэй барааны үнийг авах
             const maxPrice = Math.max(...products.map(product => product.price));
 
             const rangeMin = document.getElementById('min-price');
@@ -184,8 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const sortButtons = document.querySelectorAll('.sort-button');
 
             function renderProducts(filteredProducts) {
-                productGrid.innerHTML = ''; // Grid-г хоослох
-                filteredProducts.forEach(product => {
+                currentProducts = filteredProducts; // Update current products
+                
+                // Calculate pagination
+                const startIndex = (currentPage - 1) * productsPerPage;
+                const endIndex = startIndex + productsPerPage;
+                const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+                
+                productGrid.innerHTML = '';
+                
+                paginatedProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
                     productCard.innerHTML = `
@@ -197,11 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
                     `;
             
-                    // Add product card to the grid
                     productGrid.appendChild(productCard);
                 });
             
-                //todo Attach event listeners to the "Add to Cart" buttons
+                // Add to cart event listeners
                 document.querySelectorAll('.add-to-cart').forEach(button => {
                     button.addEventListener('click', (event) => {
                         const productId = event.target.dataset.id;
@@ -211,6 +221,51 @@ document.addEventListener('DOMContentLoaded', () => {
                         addToCart(productId, productName, productPrice);
                     });
                 });
+            
+                updatePagination(filteredProducts.length);
+            }
+            function updatePagination(totalProducts) {
+                const totalPages = Math.ceil(totalProducts / productsPerPage);
+                const paginationButtons = document.getElementById('pagination-buttons');
+                const prevButton = document.getElementById('prev-button');
+                const nextButton = document.getElementById('next-button');
+            
+                // Clear existing buttons
+                paginationButtons.innerHTML = '';
+            
+                // Add page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.classList.add('pagination-number');
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    pageButton.textContent = i;
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        renderProducts(currentProducts);
+                    });
+                    paginationButtons.appendChild(pageButton);
+                }
+            
+                // Update prev/next buttons
+                prevButton.disabled = currentPage === 1;
+                nextButton.disabled = currentPage === totalPages;
+            
+                // Add prev/next button listeners
+                prevButton.onclick = () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderProducts(currentProducts);
+                    }
+                };
+            
+                nextButton.onclick = () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderProducts(currentProducts);
+                    }
+                };
             }
             const cartItemsContainer = document.getElementById("cart-items");
             const totalPriceElement = document.getElementById("total-price");
@@ -338,5 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Initial render
             renderProducts(products);
         })
+        
         
 });

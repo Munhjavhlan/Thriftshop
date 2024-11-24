@@ -8,6 +8,7 @@
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
     <link rel="stylesheet" href="static/productCss.css">
+    <link rel="stylesheet" href="static/pagination.css">
     <title>Thrift Shop</title>
 </head>
 
@@ -156,20 +157,31 @@
 
           <div id="product-grid" class="product-grid">
             <!-- Products will be dynamically inserted here -->
-        
         </div>
-        <!-- Cart Section -->
-<div id="cart-section">
+    
+        <!-- Pagination Section -->
+        <div class="pagination">
+            <button id="prev-button" class="pagination-button">← Өмнөх</button>
+            <div id="pagination-buttons" class="pagination-numbers"></div>
+            <button id="next-button" class="pagination-button">Дараах →</button>
+        </div>
+        
+    </main>
+
+        <!-- Cart Section 
+/!--<div id="cart-section">
     <h3>Your Cart</h3>
     <div id="cart-items">
-        <!-- Cart items will be dynamically added here -->
+         Cart items will be dynamically added here 
     </div>
     <div id="cart-total">
         <strong>Total: <span id="total-price">0</span>₮</strong>
     </div>
-</div>
+</div>-->
 
-    </main>
+
+
+
 
 </body>
 <footer>
