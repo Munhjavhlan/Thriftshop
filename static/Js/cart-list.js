@@ -36,9 +36,9 @@ class CartList extends HTMLElement {
         let total = 0;
 
         if (cart.length === 0) {
-            emptyCartMessage.style.display = 'block'; // Show empty cart message
+            emptyCartMessage.style.display = 'block'; // Хоосон сагс харуулах
         } else {
-            emptyCartMessage.style.display = 'none'; // Hide empty cart message
+            emptyCartMessage.style.display = 'none'; 
         }
 
         cart.forEach(item => {
