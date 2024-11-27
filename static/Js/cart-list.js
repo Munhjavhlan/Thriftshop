@@ -1,6 +1,8 @@
 class CartList extends HTMLElement {
     constructor() {
         super();
+        // Attach shadow DOM
+        this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
@@ -11,14 +13,98 @@ class CartList extends HTMLElement {
         const cart = this.getCartItems();
         const isEmpty = cart.length === 0;
 
-        this.innerHTML = `
+        // Update the content in shadow DOM
+        this.shadowRoot.innerHTML = `
+        <style>
+        main {
+  display: grid;
+  grid-template-areas:
+  "topbar topbar topbar"
+  "baraa content sambar"
+  "footer footer footer";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px auto 70px; 
+  justify-items: center;
+  
+}
+cart-list{
+  grid-area: baraa;
+}
+cart-total{
+  grid-area: sambar;
+}
+
+.order-summary {
+  width: 350px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.discount {
+  color: red;
+}
+
+.service-fee {
+  color: #333;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 10px 0;
+}
+
+.continue-btn {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #353943;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.continue-btn:hover {
+  background-color: #555;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+        </style>
             <article class="sags">
                 <h2>Таны сагс</h2>
                 <section>
                     ${isEmpty ? '<p>Сагс хоосон байна.</p>' : this.renderProducts(cart)}
                 </section>
             </article>
+            <slot name="footer">Footer content goes here</slot>
         `;
+
+        // Update attribute based on cart state
+        if (isEmpty) {
+            this.setAttribute('empty', '');
+        } else {
+            this.removeAttribute('empty');
+        }
 
         this.addRemoveListeners();
         this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
@@ -42,7 +128,7 @@ class CartList extends HTMLElement {
     }
 
     addRemoveListeners() {
-        const removeButtons = this.querySelectorAll('.remove-button');
+        const removeButtons = this.shadowRoot.querySelectorAll('.remove-button');
         removeButtons.forEach(button => {
             button.addEventListener('click', (event) => {
                 const index = event.target.getAttribute('data-index');
@@ -66,6 +152,17 @@ class CartList extends HTMLElement {
             composed: true,
         });
         this.dispatchEvent(event);
+    }
+
+    // Add state management for dynamic styles
+    static get observedAttributes() {
+        return ['empty'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'empty') {
+            this.loadCart();
+        }
     }
 }
 

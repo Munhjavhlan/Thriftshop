@@ -26,6 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const keywordDisplay = document.getElementById('keyword-display');
             const productGrid = document.getElementById('product-grid');
             const sortButtons = document.querySelectorAll('.sort-button');
+              // Сүүлд хэрэглэсэн шүүлтүүрийг сэргээх
+              const savedMinPrice = localStorage.getItem('minPrice');
+              const savedMaxPrice = localStorage.getItem('maxPrice');
+              const savedKeywords = JSON.parse(localStorage.getItem('keywords')) || [];
+              const savedSearchTerm = localStorage.getItem('searchTerm') || '';
+              const savedSortOrder = localStorage.getItem('sortOrder') || '';
+  
+              if (savedMinPrice) rangeMin.value = savedMinPrice;
+              if (savedMaxPrice) rangeMax.value = savedMaxPrice;
+              if (savedKeywords.length > 0) {
+                  savedKeywords.forEach(keyword => {
+                      const keywordTag = document.createElement('div');
+                      keywordTag.classList.add('keyword-tag');
+                      keywordTag.innerHTML = `${keyword} <button class="remove-keyword">&times;</button>`;
+                      keywordDisplay.appendChild(keywordTag);
+                  });
+              }
+              if (savedSearchTerm) searchInput.value = savedSearchTerm;
+              if (savedSortOrder) {
+                  sortButtons.forEach(button => {
+                      if (button.getAttribute('data-sort') === savedSortOrder) {
+                          button.classList.add('active');
+                      }
+                  });
+              }
+            
 
             rangeMax.setAttribute('max', maxPrice);
             rangeMax.value = maxPrice;
@@ -99,18 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             function isKeywordExists(newKeyword) {
-                const existingKeywords = Array.from(
-                    keywordDisplay.querySelectorAll('.keyword-tag')
-                ).map(tag => tag.textContent.trim().replace('×', '').trim());
+                const existingKeywords = Array.from(keywordDisplay.querySelectorAll('.keyword-tag'))
+                    .map(tag => tag.textContent.trim().replace('×', '').trim());
                 return existingKeywords.includes(newKeyword);
             }
 
-            addKeywordButton.addEventListener('click', addKeyword);
-            keywordInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    addKeyword();
-                }
-            });
+           
 
             function renderProducts(filteredProducts) {
                 currentProducts = filteredProducts;
@@ -187,34 +207,62 @@ document.addEventListener('DOMContentLoaded', () => {
             function filterProducts() {
                 const minPrice = parseInt(rangeMin.value);
                 const maxPrice = parseInt(rangeMax.value);
+                const searchTerm = searchInput.value.trim().toLowerCase();
 
                 minLabel.textContent = `$${minPrice}`;
                 maxLabel.textContent = `$${maxPrice}`;
 
-                const filterKeywords = Array.from(
-                    keywordDisplay.querySelectorAll('.keyword-tag')
-                ).map(tag => tag.textContent.trim().replace('×', '').trim());
+                const filterKeywords = Array.from(keywordDisplay.querySelectorAll('.keyword-tag'))
+                    .map(tag => tag.textContent.trim().replace('×', '').trim());
 
                 const filteredProducts = products.filter(product => {
                     const priceInRange = product.price >= minPrice && product.price <= maxPrice;
-                    const matchesKeywords = filterKeywords.length === 0 ||
-                        filterKeywords.some(keyword =>
-                            product.tag.some(prodKeyword =>
-                                prodKeyword.toLowerCase().includes(keyword.toLowerCase())
-                            )
-                        );
+                    const matchesKeywords = filterKeywords.length === 0 || filterKeywords.some(keyword =>
+                        product.tag.some(prodKeyword => prodKeyword.toLowerCase().includes(keyword.toLowerCase()))
+                    );
+                    const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm);
 
-                    return priceInRange && matchesKeywords;
+                    return priceInRange && matchesKeywords && matchesSearchTerm;
                 });
 
                 renderProducts(filteredProducts);
+                saveFilterState(minPrice, maxPrice, filterKeywords, searchTerm);
             }
+            function saveFilterState(minPrice, maxPrice, keywords, searchTerm) {
+                localStorage.setItem('minPrice', minPrice);
+                localStorage.setItem('maxPrice', maxPrice);
+                localStorage.setItem('keywords', JSON.stringify(keywords));
+                localStorage.setItem('searchTerm', searchTerm);
+            }
+            searchButton.addEventListener('click', () => {
+                const searchTerm = searchInput.value.trim();
+                localStorage.setItem('searchTerm', searchTerm);
+                filterProducts();
+            });
+            searchInput.addEventListener('input', () => {
+                localStorage.setItem('searchTerm', searchInput.value.trim());
+            });
 
             rangeMin.addEventListener('input', filterProducts);
             rangeMax.addEventListener('input', filterProducts);
             addKeywordButton.addEventListener('click', filterProducts);
             keywordInput.addEventListener('keypress', (event) => {
                 if (event.key === 'Enter') {
+                    filterProducts();
+                }
+            });
+            addKeywordButton.addEventListener('click', () => {
+                const keyword = keywordInput.value.trim();
+                if (keyword && !isKeywordExists(keyword)) {
+                    const keywordTag = document.createElement('div');
+                    keywordTag.classList.add('keyword-tag');
+                    keywordTag.innerHTML = `${keyword} <button class="remove-keyword">&times;</button>`;
+                    const removeButton = keywordTag.querySelector('.remove-keyword');
+                    removeButton.addEventListener('click', () => {
+                        keywordDisplay.removeChild(keywordTag);
+                        filterProducts();
+                    });
+                    keywordDisplay.appendChild(keywordTag);
                     filterProducts();
                 }
             });
