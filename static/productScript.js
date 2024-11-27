@@ -240,21 +240,46 @@ document.addEventListener('DOMContentLoaded', () => {
             renderProducts(products);
         });
 });
-document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('add-to-cart-button')) {
-        const id = event.target.getAttribute('data-id');
-        const name = event.target.getAttribute('data-name');
-        const price = event.target.getAttribute('data-price');
-        const thumbnail = event.target.getAttribute('data-thumbnail');
-
-        // LocalStorage-д хадгалах
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ id, name, price, thumbnail });
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        alert('Бараа амжилттай сагслагдлаа!');
+document.addEventListener('DOMContentLoaded', () => {
+    function showCartNotification(item) {
+        const notification = document.getElementById('cart-notification');
+        notification.innerHTML = `
+            <div style="display: flex; align-items: center;">
+                <img src="${item.thumbnail}" alt="${item.name}" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 4px;">
+                <div>
+                    <p style="margin: 0; font-size: 14px; font-weight: bold;">${item.name}</p>
+                    <p style="margin: 0; font-size: 12px; color: #888;">Сагсанд нэмэгдлээ!</p>
+                </div>
+            </div>
+        `;
+    
+        // Мэдэгдлийг харуулах
+        notification.classList.add('show');
+    
+        // 2 секундийн дараа автоматаар алга болгох
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 4000);
     }
+
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('add-to-cart-button')) {
+            const id = event.target.getAttribute('data-id');
+            const name = event.target.getAttribute('data-name');
+            const price = event.target.getAttribute('data-price');
+            const thumbnail = event.target.getAttribute('data-thumbnail');
+
+            // LocalStorage-д хадгалах
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ id, name, price, thumbnail });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Мэдэгдэл харуулах
+            showCartNotification({ id, name, price, thumbnail });
+        }
+    });
 });
+
 
 // Cart.html-д сагсыг харуулах
 if (window.location.pathname.endsWith('Cart.html')) {

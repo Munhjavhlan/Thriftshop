@@ -1,78 +1,72 @@
 class CartList extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
-
-        this.shadowRoot.innerHTML = `
-
-            <div class="cart-container">
-                <div class="cart-header">Таны сагс</div>
-                
-                <div class="cart-items" id="cart-items">
-                    <!-- Cart items will be dynamically inserted here -->
-                </div>
-
-                <div class="cart-total">
-                    <p>Нийт үнэ: <span id="total-price">0₮</span></p>
-                </div>
-
-                <button class="checkout-button">Төлбөр хийх</button>
-                <div class="empty-cart-message" id="empty-cart-message" style="display: none;">Таны сагс хоосон байна.</div>
-            </div>
-        `;
     }
 
     connectedCallback() {
         this.loadCart();
-        this.addEventListeners();
     }
 
     loadCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItemsContainer = this.shadowRoot.querySelector('#cart-items');
-        const emptyCartMessage = this.shadowRoot.querySelector('#empty-cart-message');
-        cartItemsContainer.innerHTML = '';
+        const cart = this.getCartItems();
+        const isEmpty = cart.length === 0;
 
-        let total = 0;
+        this.innerHTML = `
+            <article class="sags">
+                <h2>Таны сагс</h2>
+                <section>
+                    ${isEmpty ? '<p>Сагс хоосон байна.</p>' : this.renderProducts(cart)}
+                </section>
+            </article>
+        `;
 
-        if (cart.length === 0) {
-            emptyCartMessage.style.display = 'block'; // Хоосон сагс харуулах
-        } else {
-            emptyCartMessage.style.display = 'none'; 
-        }
+        this.addRemoveListeners();
+        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
+    }
 
-        cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
+    getCartItems() {
+        return JSON.parse(localStorage.getItem('cart')) || [];
+    }
 
-            cartItem.innerHTML = `
+    renderProducts(cart) {
+        return cart.map((item, index) => `
+            <article class="baraa">
                 <img src="${item.thumbnail}" alt="${item.name}">
-                <div class="info">
-                    <p>${item.name}</p>
+                <div>
+                    <h4>${item.name}</h4>
                     <p>Үнэ: ${item.price}₮</p>
+                    <button class="remove-button" data-index="${index}">Хасах</button>
                 </div>
-                <button class="remove" data-id="${item.id}">&times;</button>
-            `;
+            </article>
+        `).join('');
+    }
 
-            cartItemsContainer.appendChild(cartItem);
-            total += parseFloat(item.price);
-
-            cartItem.querySelector('.remove').addEventListener('click', () => {
-                this.removeItem(item.id);
+    addRemoveListeners() {
+        const removeButtons = this.querySelectorAll('.remove-button');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const index = event.target.getAttribute('data-index');
+                this.removeItem(index);
             });
         });
-
-        this.shadowRoot.querySelector('#total-price').textContent = `${total}₮`;
     }
 
-    removeItem(id) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart = cart.filter(item => item.id !== id);
+    removeItem(index) {
+        let cart = this.getCartItems();
+        cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        this.loadCart();
+        this.loadCart(); // Reload the cart after removing an item
     }
 
-
+    dispatchCartUpdateEvent(cart) {
+        const totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price), 0).toFixed(2);
+        const event = new CustomEvent('cart-updated', {
+            detail: { totalPrice },
+            bubbles: true,
+            composed: true,
+        });
+        this.dispatchEvent(event);
+    }
 }
 
 customElements.define('cart-list', CartList);

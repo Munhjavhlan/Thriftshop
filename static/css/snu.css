@@ -1,0 +1,22 @@
+#cart-notification {
+    display: none; /* Эхэндээ харуулахгүй */
+    position: fixed;
+    top: 40px; /* Сагсны доорх зайг тохируулна */
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    z-index: 1000;
+    width: 200px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#cart-notification.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(50px);
+}
