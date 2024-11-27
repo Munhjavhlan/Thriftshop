@@ -1,0 +1,233 @@
+
+  /* Бүтээгдэхүүний үндсэн контейнер */
+  .product-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* Бүтээгдэхүүний зураг */
+  .product-main {
+    display: flex;
+    gap: 40px;
+  }
+  
+  /* Зургийн хэсэг */
+  .product-image {
+    position: relative;
+    flex-basis: 50%;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Thumbnail зургийн контейнер */
+  .thumbnail-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .thumbnail-container img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .thumbnail-container img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Бүтээгдэхүүний дэлгэрэнгүй */
+  .product-details {
+    flex-basis: 50%;
+    margin-left: 50px;
+  }
+  
+  .product-details h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .product-details p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  /* Үнэлгээний хэсэг */
+  .product-rating {
+    display: flex;
+    gap: 8px;
+  }
+  
+
+  /* Бүтээгдэхүүний сонголт */
+  .product-options {
+    font-family: Arial, sans-serif;
+
+}
+
+.size-options, .color-options, .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.size-btn, .quantity-btn {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 3px 6px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.size-btn:hover, .quantity-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.color-box {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.color-box:hover {
+    border-color: #000;
+}
+
+.quantity-input {
+    width: 10%;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    cursor: not-allowed;
+    
+}
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input[type=number] {
+    -moz-appearance: textfield; /* Firefox дээр тохируулна */
+}
+.thumbnail-container{
+  justify-content: center;
+}
+
+  .size-btn{
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 8px;
+    gap: 20px;
+  }
+  #product-options select,
+  #product-options option {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .button-group {
+    margin-top: 10px;
+    display: flex; /* Flexbox layout */
+    gap: 16px; /* Товчлууруудын хоорондын зай */
+    align-items: center; /* Товчлууруудыг босоо төвд байршуулах */
+}
+  
+  /* Бүтээгдэхүүн нэмэх болон хадгалах товчлуурууд */
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+  .button.primary {
+    background-color: #2d2f36; /* Хар өнгө */
+    color: #ffffff; /* Цагаан өнгө */
+    display: flex;
+    align-items: center; /* Icon болон текстийг босоо төвд байршуулах */
+    gap: 8px; /* Icon болон текстийн хоорондын зай */
+}
+  
+  .button.primary:hover {
+    background-color: #76787d;
+  }
+  
+  .button.secondary {
+    background-color: #ffffff; /* Цагаан өнгө */
+    color: #2d2f36; /* Хар өнгө */
+    border: 1px solid #2d2f36; /* Хүрээтэй */
+}
+  
+  .button.secondary:hover {
+    background-color: #76787d;
+    color: white;
+  }
+  
+
+  
+  /* Related products хэсэг */
+  .related-products {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .related-products h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Related products carousel */
+  .product-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+  }
+  
+  .product-carousel .product-card {
+    flex-shrink: 0;
+    width: 220px;
+    height: 320px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-carousel .product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .product-carousel .product-card .product-name {
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  

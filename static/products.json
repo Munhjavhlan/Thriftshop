@@ -1,0 +1,246 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "T-Shirt",
+            "description": "Simple and stylish casual T-shirt.",
+            "price": 20,
+            "category": "Clothing",
+            "rating": 4.5,
+            "tag": ["clothing", "casual"],
+            "brand": "Essence",
+            "weight": 0.2,
+            "dimensions": {
+                "width": 23.17,
+                "height": 14.43,
+                "depth": 28.01
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/2.png",
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/3.png",
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/4.png",
+                "https://cdn.dummyjson.com/products/images/clothing/tshirt/5.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/tshirt/thumbnail.png"
+        },
+        {
+            "id": 2,
+            "name": "Jeans",
+            "description": "Classic blue denim jeans for casual wear.",
+            "price": 40,
+            "category": "Clothing",
+            "rating": 4.7,
+            "tag": ["clothing", "denim"],
+            "brand": "DenimPro",
+            "weight": 1.5,
+            "dimensions": {
+                "width": 35,
+                "height": 100,
+                "depth": 5
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/clothing/jeans/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/clothing/jeans/2.png",
+                "https://cdn.dummyjson.com/products/images/clothing/jeans/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/jeans/thumbnail.png"
+        },
+        {
+            "id": 3,
+            "name": "Sneakers",
+            "description": "Comfortable and durable sneakers for daily wear.",
+            "price": 60,
+            "category": "Footwear",
+            "rating": 4.3,
+            "tag": ["footwear", "sports"],
+            "brand": "RunnerPro",
+            "weight": 1.2,
+            "dimensions": {
+                "width": 28,
+                "height": 12,
+                "depth": 10
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/footwear/sneakers/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/footwear/sneakers/2.png",
+                "https://cdn.dummyjson.com/products/images/footwear/sneakers/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/footwear/sneakers/thumbnail.png"
+        },
+        {
+            "id": 4,
+            "name": "Smartwatch",
+            "description": "Track your fitness and stay connected with this smartwatch.",
+            "price": 120,
+            "category": "Electronics",
+            "rating": 4.8,
+            "tag": ["electronics", "wearable"],
+            "brand": "TechTime",
+            "weight": 0.3,
+            "dimensions": {
+                "width": 4,
+                "height": 4,
+                "depth": 1
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/2.png",
+                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/smartwatch/thumbnail.png"
+        },
+        {
+            "id": 5,
+            "name": "Backpack",
+            "description": "Spacious and lightweight backpack for travel and work.",
+            "price": 50,
+            "category": "Accessories",
+            "rating": 4.4,
+            "tag": ["accessories", "travel"],
+            "brand": "CarryMore",
+            "weight": 0.8,
+            "dimensions": {
+                "width": 40,
+                "height": 50,
+                "depth": 20
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/accessories/backpack/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/accessories/backpack/2.png",
+                "https://cdn.dummyjson.com/products/images/accessories/backpack/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/accessories/backpack/thumbnail.png"
+        },
+        {
+            "id": 6,
+            "name": "Laptop",
+            "description": "High-performance laptop for work and gaming.",
+            "price": 900,
+            "category": "Electronics",
+            "rating": 4.9,
+            "tag": ["electronics", "computing"],
+            "brand": "ComputeX",
+            "weight": 2.5,
+            "dimensions": {
+                "width": 35,
+                "height": 24,
+                "depth": 2
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/electronics/laptop/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/electronics/laptop/2.png",
+                "https://cdn.dummyjson.com/products/images/electronics/laptop/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/laptop/thumbnail.png"
+        },
+        {
+            "id": 7,
+            "name": "Headphones",
+            "description": "Noise-cancelling over-ear headphones.",
+            "price": 200,
+            "category": "Electronics",
+            "rating": 4.6,
+            "tag": ["electronics", "audio"],
+            "brand": "AudioMax",
+            "weight": 0.5,
+            "dimensions": {
+                "width": 18,
+                "height": 22,
+                "depth": 10
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/electronics/headphones/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/electronics/headphones/2.png",
+                "https://cdn.dummyjson.com/products/images/electronics/headphones/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/headphones/thumbnail.png"
+        },
+        {
+            "id": 8,
+            "name": "Watch",
+            "description": "Classic analog watch with leather strap.",
+            "price": 80,
+            "category": "Accessories",
+            "rating": 4.3,
+            "tag": ["accessories", "fashion"],
+            "brand": "TimeClass",
+            "weight": 0.25,
+            "dimensions": {
+                "width": 3,
+                "height": 3,
+                "depth": 1
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/accessories/watch/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/accessories/watch/2.png",
+                "https://cdn.dummyjson.com/products/images/accessories/watch/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/accessories/watch/thumbnail.png"
+        },
+        {
+            "id": 9,
+            "name": "Gaming Chair",
+            "description": "Ergonomic chair designed for gamers.",
+            "price": 300,
+            "category": "Furniture",
+            "rating": 4.8,
+            "tag": ["furniture", "gaming"],
+            "brand": "GamerSeat",
+            "weight": 15,
+            "dimensions": {
+                "width": 60,
+                "height": 120,
+                "depth": 60
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/2.png",
+                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/thumbnail.png"
+        },
+        {
+            "id": 10,
+            "name": "Electric Scooter",
+            "description": "Eco-friendly electric scooter with long battery life.",
+            "price": 500,
+            "category": "Vehicles",
+            "rating": 4.7,
+            "tag": ["vehicles", "eco-friendly"],
+            "brand": "RideEasy",
+            "weight": 18,
+            "dimensions": {
+                "width": 100,
+                "height": 110,
+                "depth": 40
+            },
+            "images": [
+                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/1.png"
+            ],
+            "subImages": [
+                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/2.png",
+                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/3.png"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/thumbnail.png"
+        }
+    ]
+}
