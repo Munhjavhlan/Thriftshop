@@ -278,6 +278,7 @@ input[type="range"]::-moz-range-track {
 
 
 .product-card {
+    position: relative;
     background-color: white;
     border: 1px solid var(--border-color);
     padding: 15px;
@@ -285,15 +286,32 @@ input[type="range"]::-moz-range-track {
     border-radius: 10px;
     transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
+.product-image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.heart-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
 
-
+.heart-button:hover {
+    transform: scale(1.1);
+}
 .product-card h3 {
-    margin-top: 0;
+    margin-top: 10px;
     color: var(--primary-color);
     font-size: 1.2rem;
     transition: color 0.3s;
 }
-
 .search-container {
     padding-left: 5%;
     display: flex;

@@ -1,6 +1,6 @@
 #cart-notification {
     display: none; /* Эхэндээ харуулахгүй */
-    position: fixed;
+    position: absolute;
     top: 40px; /* Сагсны доорх зайг тохируулна */
     background: #f8f9fa;
     border: 1px solid #ddd;
