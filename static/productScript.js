@@ -36,13 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
               if (savedMinPrice) rangeMin.value = savedMinPrice;
               if (savedMaxPrice) rangeMax.value = savedMaxPrice;
               if (savedKeywords.length > 0) {
-                  savedKeywords.forEach(keyword => {
-                      const keywordTag = document.createElement('div');
-                      keywordTag.classList.add('keyword-tag');
-                      keywordTag.innerHTML = `${keyword} <button class="remove-keyword">&times;</button>`;
-                      keywordDisplay.appendChild(keywordTag);
-                  });
-              }
+                savedKeywords.forEach(keyword => {
+                    const keywordTag = document.createElement('div');
+                    keywordTag.classList.add('keyword-tag');
+            keywordTag.innerHTML = `${keyword} <button class="remove-keyword">&times;</button>`;
+            const removeButton = keywordTag.querySelector('.remove-keyword');
+            removeButton.addEventListener('click', () => {
+                keywordDisplay.removeChild(keywordTag);
+                filterProducts();
+            });
+            keywordDisplay.appendChild(keywordTag);
+            keywordInput.value = '';
+                });
+            }
               if (savedSearchTerm) searchInput.value = savedSearchTerm;
               if (savedSortOrder) {
                   sortButtons.forEach(button => {
