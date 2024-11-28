@@ -30,7 +30,7 @@ class CartTotal extends HTMLElement {
 
     calculateDiscount(cart) {
         // Example discount calculation (e.g., 13000₮)
-        return 5; // Replace this with your own discount logic
+        return 4; // Replace this with your own discount logic
     }
 
     render(totalPrice, discount, serviceFee, finalPrice) {

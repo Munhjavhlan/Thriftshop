@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const keywordDisplay = document.getElementById('keyword-display');
             const productGrid = document.getElementById('product-grid');
             const sortButtons = document.querySelectorAll('.sort-button');
-              // Сүүлд хэрэглэсэн шүүлтүүрийг сэргээх
+
               const savedMinPrice = localStorage.getItem('minPrice');
               const savedMaxPrice = localStorage.getItem('maxPrice');
               const savedKeywords = JSON.parse(localStorage.getItem('keywords')) || [];
@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
             keywordInput.value = '';
                 });
             }
-              if (savedSearchTerm) searchInput.value = savedSearchTerm;
               if (savedSortOrder) {
                   sortButtons.forEach(button => {
                       if (button.getAttribute('data-sort') === savedSortOrder) {
@@ -57,6 +56,43 @@ document.addEventListener('DOMContentLoaded', () => {
                       }
                   });
               }
+              function updateUrl() {
+                const searchTerm = searchInput.value.trim();
+                const minPrice = rangeMin.value;
+                const maxPrice = rangeMax.value;
+                const keywords = Array.from(keywordDisplay.querySelectorAll('.keyword-tag'))
+                    .map(tag => tag.textContent.trim().replace('×', '').trim());
+
+                const urlParams = new URLSearchParams();
+                if (searchTerm) urlParams.set('q', searchTerm);
+                if (minPrice) urlParams.set('minPrice', minPrice);
+                if (maxPrice) urlParams.set('maxPrice', maxPrice);
+                keywords.forEach((keyword, index) => {
+                    urlParams.append('keywords[]', keyword);
+                });
+
+                const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+                window.history.pushState({ path: newUrl }, '', newUrl);
+            }   
+            document.getElementById("search-button").addEventListener("click", function() {
+                // Хайлтын оролтын утгыг авна
+                const searchInput = document.getElementById("search-input").value.trim();
+            
+                // URL-ийг шинэчлэх
+                if (searchInput) {
+                    // Өмнөх URL-ийг авах
+                    const currentUrl = new URL(window.location);
+            
+                    // Шинэ хайлтын утга нэмэх буюу устгах
+                    currentUrl.searchParams.set('q', searchInput);
+            
+                    // Шинэ URL үүсгэж түүнийг pushState-р хуулах
+                    window.history.pushState({ path: currentUrl.href }, '', currentUrl.href);
+            
+                    // Жишээ болгож консольд харуулах (эсвэл эндээс хайлтын үр дүнг харуулах функц дуудах боломжтой)
+                    console.log("Шинэ URL:", currentUrl.href);
+                }
+            });
             
 
             rangeMax.setAttribute('max', maxPrice);
@@ -214,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const minPrice = parseInt(rangeMin.value);
                 const maxPrice = parseInt(rangeMax.value);
                 const searchTerm = searchInput.value.trim().toLowerCase();
-
                 minLabel.textContent = `$${minPrice}`;
                 maxLabel.textContent = `$${maxPrice}`;
 
@@ -232,8 +267,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 renderProducts(filteredProducts);
+                updateUrl();
                 saveFilterState(minPrice, maxPrice, filterKeywords, searchTerm);
             }
+
+
             function saveFilterState(minPrice, maxPrice, keywords, searchTerm) {
                 localStorage.setItem('minPrice', minPrice);
                 localStorage.setItem('maxPrice', maxPrice);
@@ -272,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     filterProducts();
                 }
             });
-
             keywordDisplay.addEventListener('click', (event) => {
                 if (event.target.classList.contains('remove-keyword')) {
                     filterProducts();
@@ -304,6 +341,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             renderProducts(products);
+
+
+
+            function sortProducts(products, order) {
+                switch (order) {
+                    case 'price-asc':
+                        return products.sort((a, b) => a.price - b.price);
+                    case 'price-desc':
+                        return products.sort((a, b) => b.price - a.price);
+                    case 'newest':
+                        return products.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    case 'popular':
+                        return products.sort((a, b) => b.popularity - a.popularity);
+                    default:
+                        return products;
+                }
+            }
         });
 });
 document.addEventListener('DOMContentLoaded', () => {
