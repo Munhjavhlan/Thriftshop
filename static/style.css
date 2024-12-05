@@ -87,34 +87,67 @@ h2.gradient {
     background-clip: text;
 }
 
-/* Form styling */
+/* Хайлт хийх формын ерөнхий тохиргоо */
 .search-form {
-    display: flex;
-    align-items: center;
-    padding: 2px 50px;
-    background-color: var(--color-neutral-grey-1);
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    background-color: var(--color-neutral-grey-1); 
+    border-radius: 8px; 
 }
 
+/* Хайлт хийх оролт талбар */
 .search-form input[type="text"] {
-    border: none;
-    text-align: center;
-    background-color: var(--color-neutral-grey-1);
-    padding: 5px;
-    width: 100%;
-    outline: none;
-    color: var(--text-color-light);
+    border: none; 
+    text-align: center; /* Текстийг голлуулж байрлуулах */
+    background-color: var(--color-neutral-grey-1); /* Арын өнгийг тохируулах */
+    padding: 12px; /* Дотор талын хоосон зайг нэмэх */
+    width: 100%; 
+    outline: none; 
+    font-size: 16px; 
+    color: var(--text-color-light); 
+    border-radius: 5px; 
 }
 
+/* Текстийн талбарын фокусын үед */
+.search-form input[type="text"]:focus {
+    border: 2px solid var(--secondary-color); 
+    background-color: #fff;
+    color: var(--text-color-dark); 
+}
+
+/* Хайх товч */
 .search-form button {
-    background: none;
-    border: none;
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    width: 48px; 
+    height: 48px; 
+    background: none; 
+    border: none; 
     cursor: pointer;
-    color: var(--primary-color);
-    transition: color var(--transition-time);
+    color: var(--primary-color); /* Товчны үндсэн өнгө */
+    transition: color var(--transition-time), transform 0.2s; /* Хариу үйлдлийн шилжилт */
+    border-radius: 50%; /* Товчийг дугуй болгох */
 }
 
+/* Товчин дээр хулганаар заах үед */
 .search-form button:hover {
-    color: var(--secondary-color);
+    color: var(--secondary-color); 
+    transform: scale(1.1);
+}
+
+/* SVG дүрс (хайх дүрс) */
+.search-form svg {
+    width: 24px; 
+    height: 24px; 
+    fill: currentColor; 
+}
+
+/* Тусламжийн текстийн өнгө */
+.search-form input[type="text"]::placeholder {
+    color: var(--text-color-light); /* Оролтын туслах текстийн өнгө */
+    opacity: 0.7; /* Туслах текстийн тодролтыг багасгах */
 }
 
 /* Rest of the CSS remains unchanged... */

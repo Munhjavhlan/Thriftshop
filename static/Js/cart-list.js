@@ -116,6 +116,60 @@ hr {
 
     renderProducts(cart) {
         return cart.map((item, index) => `
+        <style>
+        .baraa {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.baraa img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.details {
+    flex: 1;
+}
+
+.details h4 {
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+.details .price {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.details .price span {
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.remove-button {
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-button:hover {
+    background-color: #b71c1c;
+}
+
+        </style>
             <article class="baraa">
                 <img src="${item.thumbnail}" alt="${item.name}">
                 <div>

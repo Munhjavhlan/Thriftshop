@@ -71,3 +71,7 @@ hr {
   color: #666;
   text-align: center;
 }
+.related-products{
+  grid-area: footer;
+  align-items: start;
+}

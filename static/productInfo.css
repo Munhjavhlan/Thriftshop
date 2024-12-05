@@ -178,7 +178,10 @@
   .button.secondary {
     background-color: #ffffff; /* Цагаан өнгө */
     color: #2d2f36; /* Хар өнгө */
+    display: flex;
     border: 1px solid #2d2f36; /* Хүрээтэй */
+    align-items: center; /* Icon болон текстийг босоо төвд байршуулах */
+    gap: 8px; /* Icon болон текстийн хоорондын зай */
 }
   
   .button.secondary:hover {

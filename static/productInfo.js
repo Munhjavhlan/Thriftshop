@@ -32,7 +32,7 @@ if (!productId) {
                                             // ★ - Бүхэл од, ☆ - Хоосон од, 🌓 - Хагас од
                                         const ratingStars = '<i class="fas fa-star"></i>'.repeat(fullStars) +
                     (halfStar ? '<i class="fas fa-star-half-alt"></i>' : '') +
-                    '<i class="far fa-star"></i>'.repeat(emptyStars);
+                    '<i class="far fa-stasr"></i>'.repeat(emptyStars);
 
                     document.getElementById('product-rating').innerHTML = `Rating: ${ratingStars} (${rating})`;
 
@@ -59,7 +59,7 @@ if (!productId) {
             // Color options
             const colorOptionsContainer = document.querySelector('.color-options');
             if (colorOptionsContainer) {
-                product.subImages.forEach(image => {
+                product.baraaniiUngu.forEach(image => {
                     const colorBox = document.createElement('div');
                     colorBox.classList.add('color-box');
                     colorBox.style.backgroundImage = `url(${image})`;
@@ -94,14 +94,46 @@ if (!productId) {
                         relatedProductsContainer.appendChild(relatedCard);
                     });
             }
-
-            // Add to cart
-            const addToCartButton = document.getElementById('add-to-cart');
-            if (addToCartButton) {
-                addToCartButton.addEventListener('click', () => {
-                    alert(`${product.name} has been added to your cart.`);
+            //картлах
+            document.addEventListener('DOMContentLoaded', () => {
+                function showCartNotification(item) {
+                    const notification = document.getElementById('cart-notification');
+                    notification.innerHTML = `
+                        <div style="display: flex; align-items: center;">
+                            <img src="${item.thumbnail}" alt="${item.name}" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 4px;">
+                            <div>
+                                <p style="margin: 0; font-size: 14px; font-weight: bold;">${item.name}</p>
+                                <p style="margin: 0; font-size: 12px; color: #888;">Сагсанд нэмэгдлээ!</p>
+                            </div>
+                        </div>
+                    `;
+                
+                    // Мэдэгдлийг харуулах
+                    notification.classList.add('show');
+                
+                    // 2 секундийн дараа автоматаар алга болгох
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 4000);
+                }
+            
+                document.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('add-to-cart-button')) {
+                        const id = event.target.getAttribute('data-id');
+                        const name = event.target.getAttribute('data-name');
+                        const price = event.target.getAttribute('data-price');
+                        const thumbnail = event.target.getAttribute('data-thumbnail');
+            
+                        // LocalStorage-д хадгалах
+                        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        cart.push({ id, name, price, thumbnail });
+                        localStorage.setItem('cart', JSON.stringify(cart));
+            
+                        // Мэдэгдэл харуулах
+                        showCartNotification({ id, name, price, thumbnail });
+                    }
                 });
-            }
+            });
 
             // Quantity buttons
             document.querySelectorAll('.quantity-btn').forEach(btn => {

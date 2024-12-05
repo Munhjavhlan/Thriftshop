@@ -292,9 +292,14 @@ input[type="range"]::-moz-range-track {
     overflow: hidden;
     border-radius: 10px;
 }
+.product-thumbnail{
+    width: 280px;
+    height: 280px;
+}
 .heart-button {
     position: absolute;
     top: 10px;
+    
     right: 10px;
     display: flex;
     background: none;

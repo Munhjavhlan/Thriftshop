@@ -16,15 +16,22 @@
                 "depth": 28.01
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/clothing/tshirt/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/clothing/tshirt/2.png",
-                "https://cdn.dummyjson.com/products/images/clothing/tshirt/3.png",
-                "https://cdn.dummyjson.com/products/images/clothing/tshirt/4.png",
-                "https://cdn.dummyjson.com/products/images/clothing/tshirt/5.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/tshirt/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 2,
@@ -42,13 +49,23 @@
                 "depth": 5
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/clothing/jeans/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/clothing/jeans/2.png",
-                "https://cdn.dummyjson.com/products/images/clothing/jeans/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/clothing/jeans/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 3,
@@ -66,13 +83,22 @@
                 "depth": 10
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/footwear/sneakers/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/footwear/sneakers/2.png",
-                "https://cdn.dummyjson.com/products/images/footwear/sneakers/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/footwear/sneakers/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 4,
@@ -90,13 +116,22 @@
                 "depth": 1
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/2.png",
-                "https://cdn.dummyjson.com/products/images/electronics/smartwatch/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/smartwatch/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 5,
@@ -114,13 +149,22 @@
                 "depth": 20
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/accessories/backpack/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/accessories/backpack/2.png",
-                "https://cdn.dummyjson.com/products/images/accessories/backpack/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/accessories/backpack/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 6,
@@ -138,13 +182,22 @@
                 "depth": 2
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/electronics/laptop/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/electronics/laptop/2.png",
-                "https://cdn.dummyjson.com/products/images/electronics/laptop/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/laptop/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 7,
@@ -162,13 +215,22 @@
                 "depth": 10
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/electronics/headphones/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/electronics/headphones/2.png",
-                "https://cdn.dummyjson.com/products/images/electronics/headphones/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/electronics/headphones/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 8,
@@ -186,13 +248,22 @@
                 "depth": 1
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/accessories/watch/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/accessories/watch/2.png",
-                "https://cdn.dummyjson.com/products/images/accessories/watch/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/accessories/watch/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 9,
@@ -210,13 +281,22 @@
                 "depth": 60
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/2.png",
-                "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/furniture/gaming-chair/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         },
         {
             "id": 10,
@@ -234,13 +314,22 @@
                 "depth": 40
             },
             "images": [
-                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/1.png"
+                "./../images/1.webp"
             ],
             "subImages": [
-                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/2.png",
-                "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/3.png"
+                "./../images/2.jpg",
+                "./../images/3.jpg",
+                "./../images/4.jpg",
+                "./../images/5.jpg",
+                "./../images/6.jpg",
+                "./../images/7.jpg",
+                "./../images/8.jpg"
             ],
-            "thumbnail": "https://cdn.dummyjson.com/products/images/vehicles/electric-scooter/thumbnail.png"
+            "baraaniiUngu": [
+                "./../images/1.webp",
+                "./../images/2.webp"
+            ],
+            "thumbnail": "./../images/1.webp"
         }
     ]
 }
