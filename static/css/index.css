@@ -1,0 +1,334 @@
+.gallery-container{
+    display: flex;
+    padding: 1%;
+}
+.gallery-slider-wrapper{
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.gallery-slider{
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+}
+.gallery-slider img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+.gallery-slider-nav{
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+.gallery-slider-nav a{
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+.gallery-nav a:hover{
+    opacity: 100;
+    color: black;
+}
+.home-sale{
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    color: var(--font-color-dark); 
+    text-align: center; 
+    z-index: 1; 
+    font-size: 2.5vw;
+
+}
+.home-sale h1 {
+    top: 20%; 
+}
+
+.home-sale p {
+    top: 40%;
+    font-size: 1.5vw; 
+}
+.services {
+    margin-top: 2rem ;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
+
+.gallery-container {
+    grid-area: gallery;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services {
+    grid-area: services;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    text-align: center;
+}
+.featured-products {
+    text-align: center;
+}
+
+.featured-products h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    
+}
+
+.product-item {
+    background: #f9f9f9;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+.product-thumbnail {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.product-item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.product-item button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.product-item button:hover {
+    background: #0056b3;
+}
+
+
+.about-thrift {
+    grid-area: about;
+    text-align: center;
+}
+
+.sale {
+    grid-area: sale;
+    text-align: center;
+}
+
+.brand {
+    grid-area: brand;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    justify-items: center;
+}
+
+.classics-collection {
+    grid-area: classics;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.scroll-left, .scroll-right {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+    border: none;
+    padding: 0.625rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+}
+.about-thrift {
+    padding: 5rem 15rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: x-large;
+    text-align: center;
+    position: relative; 
+}
+.about-thrift::after {
+    content: '';
+    display: block;
+    width: 40%; /* Width of the line */
+    height: 2px; /* Height of the line */
+    background-color: #ccc; /* Color of the line */
+    position: absolute; /* Absolute positioning */
+    right: 0; /* Align to the right */
+    margin-top: 1rem; /* Space above the line */
+}
+.sale {
+    position: relative; /* Ensure relative positioning for absolute children if needed */
+    overflow: hidden; /* Hide overflow if necessary */
+    text-align: center;
+}
+.sale h2{
+    position: absolute;/* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    top: 50%; /* Position from the top of the banner */
+    left: 50%; /* Position horizontally in the center */
+    transform: translate(-50%, 0%);
+    font-size: 2.5rem;
+    white-space: nowrap; 
+    text-wrap: wrap;
+}
+.sale ul {
+    position: absolute; /* Positioning text over the image */
+    text-align: center; /* Center the text */
+    z-index: 1; 
+    bottom: 10%; 
+    left: 50%; /* Position horizontally in the center */
+    transform: translateX(-50%);
+    white-space: nowrap; 
+    display: flex;
+    justify-content: space-evenly;
+    text-wrap: wrap;
+}
+.sale ul button {
+    border: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    background-color: transparent;
+    color: var(--color-neutral-grey-5);
+    text-decoration: underline;
+    
+}
+.sale ul button:hover {
+    color: white;
+}
+.sale img {
+    width: 100%; /* Set the width to 100% of the parent */
+    height: auto; /* Maintain the aspect ratio */
+    
+}
+.brand {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.shop-button {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+.classics-collection {
+    display: flex; /* Use flexbox for the section */
+    flex-direction: column; /* Arrange children in a column */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+.flex-container {
+    display: flex; /* Use flexbox for the first two columns */
+}
+.image-item {
+    flex: 0 0 50%;
+    width: 100%; /* Fill the width of the container */
+    position: relative;
+    flex-basis: 50%;
+}
+.image-item img {
+    width: 100%;
+    height: 100%;
+}
+.hero-section {
+    flex: 2; /* Allow the hero section to take more space */
+    display: flex; /* Flexbox for centering text */
+    flex-direction: column; /* Stack text elements */
+    justify-content: flex-end; /* Center text vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center;
+    flex-basis: 50%;
+}
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+    justify-content: center; 
+}
+
+.hero-section p {
+    font-size: 1rem;
+    margin: 1rem 0;
+    justify-content: center; 
+}
+.images-container {
+    display: flex; /* Use flexbox for the two images below */
+    justify-content: space-between; /* Space between the two images */
+    margin-top: 30px;
+}
+
+.image-item1 {
+    flex: 1; /* Each image takes equal space */
+    padding-top: 6rem;
+    position: relative;
+}
+
+.image-item p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 25px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.image-item1 p {
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    border-radius: 3px;
+}
+.images-container img {
+    width: 100%; /* Set image to fill its container */
+    height: 100%; /* Maintain aspect ratio */
+}
+
+.scroll-left {
+    left: 0.625rem;
+}
+
+.scroll-right {
+    right: 0.625rem;
+}

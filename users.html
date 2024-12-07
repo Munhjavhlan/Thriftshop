@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="users"></section>
+
+    <script>
+        const usersData = {
+            "users": [
+                {
+                    "id": 1,
+                    "firstName": "Emily",
+                    "lastName": "Johnson",
+                    "maidenName": "Smith",
+                    "age": 15,
+                    "gender": "female",
+                    "email": "emily.johnson@x.dummyjson.com",
+                    "phone": "+81 965-431-3024",
+                    "username": "emilys",
+                    "password": "emilyspass",
+                    "birthDate": "1996-5-30",
+                    "image": "https://dummyjson.com/icon/emilys/128",
+                    "bloodGroup": "O-",
+                    "height": 193.24,
+                    "weight": 63.16,
+                    "eyeColor": "Green",
+                    "hair": {
+                        "color": "Brown",
+                        "type": "Curly"
+                    },
+                    "ip": "42.48.100.32",
+                    "address": {
+                        "address": "626 Main Street",
+                        "city": "Phoenix",
+                        "state": "Mississippi",
+                        "stateCode": "MS",
+                        "postalCode": "29112",
+                        "coordinates": {
+                            "lat": -77.16213,
+                            "lng": -92.084824
+                        },
+                        "country": "United States"
+                    },
+                    "macAddress": "47:fa:41:18:ec:eb",
+                    "universitys": [
+                        {
+                            name: "University of Wisconsin--Madison",
+                            country: "MN"
+                        },
+                        {
+                            name: "University of Ulaanbaatar",
+                            country: "MN"
+                        },
+                    ],
+                    "bank": {
+                        "cardExpire": "03/26",
+                        "cardNumber": "9289760655481815",
+                        "cardType": "Elo",
+                        "currency": "CNY",
+                        "iban": "YPUXISOBI7TTHPK2BR3HAIXL"
+                    },
+                    "company": {
+                        "department": "Engineering",
+                        "name": "Dooley, Kozey and Cronin",
+                        "title": "Sales Manager",
+                        "address": {
+                            "address": "263 Tenth Street",
+                            "city": "San Francisco",
+                            "state": "Wisconsin",
+                            "stateCode": "WI",
+                            "postalCode": "37657",
+                            "coordinates": {
+                                "lat": 71.814525,
+                                "lng": -161.150263
+                            },
+                            "country": "United States"
+                        }
+                    },
+                    "ein": "977-175",
+                    "ssn": "900-590-289",
+                    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+                    "crypto": {
+                        "coin": "Bitcoin",
+                        "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
+                        "network": "Ethereum (ERC20)"
+                    },
+                    "role": "admin"
+                },
+                {
+                    "id": 30,
+                    "firstName": "Addison",
+                    "lastName": "Wright",
+                    "maidenName": "",
+                    "age": 32,
+                    "gender": "female",
+                    "email": "addison.wright@x.dummyjson.com",
+                    "phone": "+1 514-384-3300",
+                    "username": "addisonw",
+                    "password": "addisonwpass",
+                    "birthDate": "1992-1-3",
+                    "image": "https://dummyjson.com/icon/addisonw/128",
+                    "bloodGroup": "B+",
+                    "height": 179.32,
+                    "weight": 76.93,
+                    "eyeColor": "Brown",
+                    "hair": {
+                        "color": "Blonde",
+                        "type": "Straight"
+                    },
+                    "ip": "11.35.69.81",
+                    "address": {
+                        "address": "568 Tenth Street",
+                        "city": "San Francisco",
+                        "state": "Montana",
+                        "stateCode": "MT",
+                        "postalCode": "54698",
+                        "coordinates": {
+                            "lat": 20.946052,
+                            "lng": 100.228822
+                        },
+                        "country": "United States"
+                    },
+                    "macAddress": "fb:0:94:21:16:c",
+                    "university": "Syracuse University",
+                    "bank": {
+                        "cardExpire": "05/28",
+                        "cardNumber": "3756638438861539",
+                        "cardType": "Carte Bancaire",
+                        "currency": "JPY",
+                        "iban": "OOPQTNZ74OLPKVT7TGB89UQL"
+                    },
+                    "company": {
+                        "department": "Services",
+                        "name": "Kreiger Inc",
+                        "title": "Human Resources Manager",
+                        "address": {
+                            "address": "1173 Eighth Street",
+                            "city": "San Diego",
+                            "state": "Michigan",
+                            "stateCode": "MI",
+                            "postalCode": "85777",
+                            "coordinates": {
+                                "lat": 65.324413,
+                                "lng": 87.142893
+                            },
+                            "country": "United States"
+                        }
+                    },
+                    "ein": "415-286",
+                    "ssn": "804-492-390",
+                    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+                    "crypto": {
+                        "coin": "Bitcoin",
+                        "wallet": "0xb9fc2fe63b2a6c003f1c324c3bfa53259162181a",
+                        "network": "Ethereum (ERC20)"
+                    },
+                    "role": "user"
+                }
+            ],
+            "total": 208,
+            "skip": 0,
+            "limit": 30
+        }
+        const users = usersData.users;
+
+
+        const filteredUsersByAge = users.filter(u => u.age <= 22);
+
+
+        const filteredUsersWithUniversityCountries = filteredUsersByAge.filter(u =>
+            
+        u.universitys.filter(univ => univ.country === "MN")
+        );
+
+        const usersSection = document.getElementById('users');
+
+            filteredUsersWithUniversityCountries.forEach(user => {
+                const userArticle = document.createElement('article');
+                const zurag = user.image
+                userArticle.innerHTML = `
+                    <h2>${user.firstName} ${user.lastName}</h2>
+                    <p>Age: ${user.age}</p>
+                    <p>Company name: ${user.company.name}
+                    <p>Universities: ${user.universitys.map(univ => univ.name).join(' ')}</p>
+                    <p>Universities: ${user.universitys.map(univ => univ.name).reduce((prev, curr) => prev + curr)}</p>
+                        <img src="${zurag}">
+                `;
+                usersSection.appendChild(userArticle);
+            });
+    </script>
+
+</body>
+
+</html>

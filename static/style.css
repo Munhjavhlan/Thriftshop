@@ -1,0 +1,439 @@
+/* Custom Properties */
+:root {
+    --primary-color: #353943;
+    --secondary-color: #ffffff;
+    --dark-bg: #1a1a1a;
+    --light-bg: #fbfbfb;
+    --font-color-dark: #ffffff;
+    --font-color-light: #000000;
+    --spacing: 0.5rem;
+    --spacing-unit: 0.5rem;
+    --transition-time: 0.3s;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --gradient-bg: linear-gradient(45deg, #272525, #7b7a78);
+    --text-color-dark: #ffffff;
+    --text-color-light: #000000;
+    --main-bg-color-dark: #1a1a1a;
+    --main-bg-color-light: #f4f4f4;
+    --color-gray: #828282;
+    --color-neutral-grey-1: #f4f4f4;
+    --color-neutral-grey-2: #e5e5e5;
+    --color-neutral-grey-3: #9b9b9b;
+    --color-neutral-grey-4: #757575;
+    --color-neutral-grey-5: #4a4a4a;
+    --color-neutral-grey-6: #353535;
+    --color-neutral-grey-7: #979797;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body section */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--main-bg-color-light);
+    transition: background-color var(--transition-time), color var(--transition-time);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--font-color-dark);
+}
+
+body.dark-mode header {
+    background-color: var(--primary-color);
+}
+
+body.dark-mode header h3 {
+    background-color: var(--light-bg);
+    color: var(--text-color-light);
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: var(--light-bg);
+    color: var(--font-color-light);
+}
+
+/* Typography */
+h1, h2, h3, p {
+    line-height: 1.5;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+/* Gradient title */
+h2.gradient {
+    font-size: 2rem;
+    background: linear-gradient(to right, #332f2e, #ded6d0);
+    text-align: center;
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+    color: transparent;
+    background-clip: text;
+}
+
+/* Form styling */
+.search-form {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    background-color: var(--color-neutral-grey-1);
+}
+
+.search-form input[type="text"] {
+    border: none;
+    text-align: center;
+    background-color: var(--color-neutral-grey-1);
+    padding: 5px;
+    width: 100%;
+    outline: none;
+    color: var(--text-color-light);
+}
+
+.search-form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: color var(--transition-time);
+}
+
+.search-form button:hover {
+    color: var(--secondary-color);
+}
+
+/* Rest of the CSS remains unchanged... */
+
+ul li {
+	list-style: none;
+    display: inline-block;
+	
+}
+
+/* Header section */
+
+header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+.back {
+    background-color: var(--primary-color);
+    font-size: 1em;
+    color: var(--font-color-dark);
+}
+
+
+/* Logo */
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Navigation Links */
+nav ul {
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Flex and Grid Layout */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0 1.25rem;
+}
+#navMenu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items within the nav menu */
+    gap: 20px;
+    flex-grow: 1; /* Makes the ul take up remaining space to center it */
+}
+
+/* Style for Individual Links */
+#navMenu li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+}
+#iconMenu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: #333;
+    flex-grow: 0.2; /* Makes the ul take up remaining space to center it */
+}
+
+/* Style for Individual Links */
+#iconMenu li a {
+    color: #333;
+}
+
+
+nav img.logo {
+    width: 6.25rem;
+    height: auto;
+    transition: filter 0.3s;
+    filter: brightness(1);
+}
+
+nav img.logo.dark-mode {
+    filter: brightness(0.2);
+}
+
+ul li {
+    margin: 0 0.85rem;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color-dark);
+    padding: 1.5rem 1.25rem;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+.footer-section {
+    flex: 1;
+    padding: 0 100px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #B0B0B0;
+}
+
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between input and button */
+}
+
+.subscribe-form input[type="email"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+}
+
+.subscribe-form button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.quick-links ul {
+    list-style: none;
+    display: grid;
+    
+}
+
+.quick-links ul li {
+    margin-bottom: 8px;
+}
+
+.quick-links ul li a {
+    text-decoration: none;
+    color: #B0B0B0;
+    font-size: 14px;
+}
+
+.quick-links ul li a:hover {
+    color: var(--secondary-color);
+}
+
+.icons{
+    display: flex; 
+    gap: 10px;
+}
+.download-app .qr-codes {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.download-app .qr-codes img {
+    width: 80px;
+    height: 80px;
+}
+.download-app .app-icons img {
+    display: block;
+    
+}
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: #B0B0B0;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    justify-content: center;
+    margin-top: 80px;
+    font-size: 12px;
+    color: #B0B0B0;
+    opacity: 0.3;
+}/* Эхний үед sticky-links хэсгийг hide хийж, footer харагдаж байх */
+.sticky-links {
+    display: none;
+}
+
+
+/* Footer-ийг утасны дэлгэц дээр далдлах */
+@media (max-width: 768px) {
+    body {
+        width:100%;
+    }
+    footer {
+        display: none; /* Footer-ийг hide хийж байна */
+    }
+    
+    /* Sticky Links хэсгийг дэлгэцийн доод хэсэгт байрлуулах */
+    .sticky-links {
+        position: fixed;
+        bottom: 0;
+        background-color: #ffffff;
+        border-top: 1px solid #ddd;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+        z-index: 1000; /* Дээд давхрагад харагдах байдлаар */
+    }
+
+    /* Sticky Links доторх холбоосуудын загвар */
+    .sticky-links ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .sticky-links ul li {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .sticky-links ul li a {
+        color: #353943;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Top Links хэсгийг утасны дэлгэц дээр далдлах */
+    .top-links {
+        display: none;
+    }
+    .about-thrift {
+        padding: 0 0;
+        font-size: large;
+    }
+    .product-item {
+        width: 50%; /* Reduce the card width */
+        padding: 10px; /* Reduce padding */
+    }
+    .products-grid {
+        grid-template-columns: 1fr; /* 1 product per row */
+    }
+    .product-thumbnail {
+        height: auto;
+        max-width: 100%; /* Ensure the image scales down */
+    }
+
+    .product-item h3 {
+        font-size: 16px; /* Smaller text size for the title */
+    }
+    .product-item button {
+        padding: 8px 16px; 
+        font-size: 8px; 
+    }
+    .hero-section h1 {
+        font-size: 10px;
+    }
+    .hero-section h2, h3 {
+        font-size: 8px;
+    }
+    .image-item1 {
+        padding-top: 0;
+    }
+    .shop-button {
+        padding: 5px 10px;
+    }
+    
+}
+

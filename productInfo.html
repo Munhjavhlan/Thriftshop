@@ -7,9 +7,9 @@
     <meta name="description"
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
-    <link rel="stylesheet" href="./static/css/cart.css">
-    <script type="module" src="./static/Js/cart-list.js"></script>
-    <script type="module" src="./static/Js/cart-total.js"></script>
+    <link rel="stylesheet" href="./static/productInfo.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <title>Thrift Shop</title>
 </head>
 
@@ -75,9 +75,78 @@
 
 
     <main>
+        <div class="product-container">
+            <div class="product-main">
+                <div class="product-image">
+                    <img id="main-image" src="placeholder.jpg" alt="Product Image">
+                    <div class="thumbnail-container" id="thumbnail-container">
+                        <!-- Thumbnail images will be added dynamically -->
+                    </div>
+                </div>
+                <div class="product-details">
+                    <h1 id="product-name">Product Name</h1>
+                    <p id="product-description">Description: </p>
+                    <p id="product-price">Price: $0</p>
+                    <p id="product-category">Category: </p>
+                    <p id="product-brand">Brand: </p>
+                    <p id="product-weight">Weight: </p>
+                    <p id="product-rating">Rating: </p>
+                    <div class="product-rating">
+                        <!-- Dynamic star rating will be here -->
+                    </div>
+                    <div class="product-options">
 
-        <cart-list></cart-list>
-        <cart-total></cart-total>
+                        <!-- Хэмжээ сонгох -->
+                        <label>Хэмжээ:</label>
+                        <div class="size-options">
+                            <button class="size-btn">жижиг</button>
+                            <button class="size-btn">дунд</button>
+                            <button class="size-btn">том</button>
+                        </div>
+                    
+                        <!-- Өнгө сонгох -->
+                        <label>Өнгө:</label>
+                        <div class="color-options">
+    
+                        </div>
+                    
+                        <!-- Тоо ширхэг сонгох -->
+                        <label>Тоо ширхэг:</label>
+                        <div class="quantity-container">
+                            <button class="quantity-btn" data-action="decrement">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" />
+                            <button class="quantity-btn" data-action="increment">+</button>
+                        </div>
+                        
+                        <div class="button-group">
+                            <!-- Add to Cart Button -->
+                            <button class="button primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                                    class="bi bi-cart3" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                </svg>
+                                Сагсанд нэмэх
+                            </button>
+                        
+                            <!-- Save Button -->
+                            <button class="button secondary">
+                                <span>Хадгалах</span>
+                            </button>
+                        </div>
+                        
+
+                </div>
+            </div>
+        </div>
+
+        <div class="related-products">
+            <h2>You may also like</h2>
+            <div class="product-carousel" id="related-products">
+                <!-- Related products will be displayed here -->
+            </div>
+        </div>
+
     </main>
 
     <footer>
@@ -147,6 +216,7 @@
             <br>
             <p>© Үйлчилгээний журам болон нөхцөл | Нууцлалын бодлого</p>
         </div>
+    </body>
     </footer>
 
     <div class="sticky-links">
@@ -180,7 +250,7 @@
         </ul>
     </div>
 
-</body>
-<script src="static/script.js"></script>
 
+<script src="static/script.js"></script>
+<script src="./static/productInfo.js"></script>
 </html>`
