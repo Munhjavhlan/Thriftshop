@@ -109,13 +109,6 @@ h2.gradient {
     border-radius: 5px; 
 }
 
-/* Текстийн талбарын фокусын үед */
-.search-form input[type="text"]:focus {
-    border: 2px solid var(--secondary-color); 
-    background-color: #fff;
-    color: var(--text-color-dark); 
-}
-
 /* Хайх товч */
 .search-form button {
     display: flex; 

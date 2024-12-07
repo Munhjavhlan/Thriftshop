@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="static/productCss.css">
     <link rel="stylesheet" href="static/pagination.css">
     <link rel="stylesheet" href="./static/css/snu.css">
-    <!-- <script defer src="./static/Js/urlParam.js"></script> -->
+    <script type="module" src="./static/productScript.js"></script>
+    <!-- <script src="./static/Js/urlParam.js"></script> -->
     <title>Thrift Shop</title>
 </head>
 
@@ -37,13 +38,11 @@
 
                 <li>
                     <form class="search-form">
-                        <label for="search-input" class="sr-only"></label>
-                        <input id="search-input" type="text" placeholder="бүтээгдэхүүн хайх.." aria-label="Search products" />
-                        <button type="submit" aria-label="Submit search" style="scale: 0.7;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        <label for="search-input-1" class="sr-only"></label>
+                        <input id="search-input-1" class="search-input" type="text" placeholder="бүтээгдэхүүн хайх.." aria-label="Search products" />
+                        <button type="submit" class="search-button" aria-label="Submit search" style="scale: 0.7;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg>
                         </button>
                     </form>
@@ -90,14 +89,13 @@
 
         <div class="filter-bar">
             <div class="search-container">
-                <input type="text" id="search-input" placeholder=" Бүтээгдэхүүн хайх...">
-                <button id="search-button" aria-label="Read more"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                <label for="search-input-2" class="sr-only"></label>
+                <input id="search-input-2" class="search-input" type="text" placeholder="бүтээгдэхүүн хайх..." aria-label="Search products" />
+                <button id="search-button" class="search-button" aria-label="Submit search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </button>
-
             </div>
             <div class="sort-buttons">
                 <span>Эрэмбэлэх:</span>
@@ -283,6 +281,5 @@
     </ul>
 </div>
 <script src="static/script.js"></script>
-<script src="static/productScript.js"></script>
 
 </html>`

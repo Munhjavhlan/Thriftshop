@@ -1,40 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
 
-    fetch('./static/products.json')
-        .then(response => response.json())
-        .then(data => {
-            const products = data.products;
-            const product = products.find(p => p.id === productId);
+export function showCartNotification(item) {
+    const notification = document.getElementById('cart-notification');
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center;">
+            <img src="${item.thumbnail}" alt="${item.name}" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 4px;">
+            <div>
+                <p style="margin: 0; font-size: 14px; font-weight: bold;">${item.name}</p>
+                <p style="margin: 0; font-size: 12px; color: #888;">Сагсанд нэмэгдлээ!</p>
+            </div>
+        </div>
+    `;
 
-            if (!product) {
-                alert('Product not found');
-                return;
-            }
-              
-            // Related products
-            const relatedProductsContainer = document.getElementById('related-products');
-            if (relatedProductsContainer) {
-                products
-                    .filter(p => p.id !== product.id)
-                    .slice(0, 4)
-                    .forEach(relatedProduct => {
-                        const relatedCard = document.createElement('div');
-                        relatedCard.classList.add('product-card');
-                        relatedCard.innerHTML = `
-                            <img src="${relatedProduct.thumbnail}" alt="${relatedProduct.name}">
-                            <p>${relatedProduct.name}</p>
-                            <p>$${relatedProduct.price}</p>
-                            <button onclick="location.href='productInfo.html?id=${relatedProduct.id}'">View</button>
-                        `;
-                        relatedProductsContainer.appendChild(relatedCard);
-                    });
-            }
+    // Мэдэгдлийг харуулах
+    notification.classList.add('show');
 
-        
+    // 4 секундийн дараа автоматаар алга болгох
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 4000);
+}
 
-        })
-        .catch(err => {
-            console.error('Error fetching product data:', err);
-            alert('Failed to load product data.');
-        });
-});
+export function addToCart(item) {
+    // LocalStorage-д хадгалах
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Мэдэгдэл харуулах
+    showCartNotification(item);
+}
+
+export function renderCart() {
+    const cartList = document.querySelector('cart-list');
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cartItems.forEach(item => cartList.addItem(item));
+}

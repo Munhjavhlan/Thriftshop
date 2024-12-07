@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('static/products.json')
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Өгөгдөл татахад алдаа гарлаа');
-            }
-        })
+document.addEventListener('DOMContentLoaded', async () => {
+    const fetchData = async () => {
+        const response = await fetch('static/products.json');
+        if (!response.ok) {
+            throw new Error('Өгөгдөл татахад алдаа гарлаа');
+        }
+        return response.json();
+    };
+    fetchData()
         .then(data => {
             const products = data.products;
             let currentPage = 1;
@@ -19,45 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const minLabel = document.getElementById('min-price-display');
             const maxLabel = document.getElementById('max-price-display');
             const rangeFill = document.querySelector('.slider-track');
-            const searchInput = document.getElementById('search-input');
-            const searchButton = document.getElementById('search-button');
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
             const keywordInput = document.getElementById('keyword');
             const addKeywordButton = document.getElementById('add-keyword');
             const keywordDisplay = document.getElementById('keyword-display');
             const productGrid = document.getElementById('product-grid');
             const sortButtons = document.querySelectorAll('.sort-button');
 
-              const savedMinPrice = localStorage.getItem('minPrice');
-              const savedMaxPrice = localStorage.getItem('maxPrice');
-              const savedKeywords = JSON.parse(localStorage.getItem('keywords')) || [];
-              const savedSearchTerm = localStorage.getItem('searchTerm') || '';
-              const savedSortOrder = localStorage.getItem('sortOrder') || '';
-  
-              if (savedMinPrice) rangeMin.value = savedMinPrice;
-              if (savedMaxPrice) rangeMax.value = savedMaxPrice;
-              if (savedKeywords.length > 0) {
-                savedKeywords.forEach(keyword => {
-                    const keywordTag = document.createElement('div');
-                    keywordTag.classList.add('keyword-tag');
-            keywordTag.innerHTML = `${keyword} <button class="remove-keyword">&times;</button>`;
-            const removeButton = keywordTag.querySelector('.remove-keyword');
-            removeButton.addEventListener('click', () => {
-                keywordDisplay.removeChild(keywordTag);
-                filterProducts();
-            });
-            keywordDisplay.appendChild(keywordTag);
-            keywordInput.value = '';
-                });
-            }
-              if (savedSortOrder) {
-                  sortButtons.forEach(button => {
-                      if (button.getAttribute('data-sort') === savedSortOrder) {
-                          button.classList.add('active');
-                      }
-                  });
-              }
               function updateUrl() {
-                const searchTerm = searchInput.value.trim();
+                const params = new URLSearchParams(window.location.search);
+                const searchTerm = params.get("searchTerm");
                 const minPrice = rangeMin.value;
                 const maxPrice = rangeMax.value;
                 const keywords = Array.from(keywordDisplay.querySelectorAll('.keyword-tag'))
@@ -74,31 +46,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
                 window.history.pushState({ path: newUrl }, '', newUrl);
             }   
-            document.getElementById("search-button").addEventListener("click", function() {
-                // Хайлтын оролтын утгыг авна
-                const searchInput = document.getElementById("search-input").value.trim();
-            
-                // URL-ийг шинэчлэх
-                if (searchInput) {
-                    // Өмнөх URL-ийг авах
-                    const currentUrl = new URL(window.location);
-            
-                    // Шинэ хайлтын утга нэмэх буюу устгах
-                    currentUrl.searchParams.set('q', searchInput);
-            
-                    // Шинэ URL үүсгэж түүнийг pushState-р хуулах
-                    window.history.pushState({ path: currentUrl.href }, '', currentUrl.href);
-            
-                    // Жишээ болгож консольд харуулах (эсвэл эндээс хайлтын үр дүнг харуулах функц дуудах боломжтой)
-                    console.log("Шинэ URL:", currentUrl.href);
-                }
-            });
+
             
 
+            document.getElementById("search-button").addEventListener("click", function () {
+                // Get the input element
+                const searchInput = document.getElementById("search-input-2");
+            
+                if (searchInput) {
+                    // Retrieve and trim the input value
+                    const searchValue = searchInput.value.trim();
+            
+                    if (searchValue) {
+                        // Update the URL with the search term
+                        const currentUrl = window.location.href.split('?')[0]; // Remove existing query parameters
+                        const newUrl = `${currentUrl}?searchTerm=${encodeURIComponent(searchValue)}`;
+                        window.history.pushState({}, "", newUrl); // Update URL without reloading
+            
+                        console.log("Search term added to URL:", newUrl);
+                    } else {
+                        console.log("Input is empty. Nothing to save.");
+                    }
+                } else {
+                    console.error("Input element not found.");
+                }
+                filterProducts(); // Call filter function
+            });
+                        
             rangeMax.setAttribute('max', maxPrice);
             rangeMin.setAttribute('max', maxPrice);
             rangeMax.value = maxPrice;
             maxLabel.textContent = `$${maxPrice}`;
+
             function updateMinSliderMax() {
                 rangeMin.setAttribute('max', rangeMax.value); // Set max of rangeMin to the current value of rangeMax
             }
@@ -161,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     .map(tag => tag.textContent.trim().replace('×', '').trim());
                 return existingKeywords.includes(newKeyword);
             }
-
-           
 
             function renderProducts(filteredProducts) {
                 currentProducts = filteredProducts;
@@ -240,7 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
             function filterProducts() {
                 const minPrice = parseInt(rangeMin.value);
                 const maxPrice = parseInt(rangeMax.value);
-                const searchTerm = searchInput.value.trim().toLowerCase();
+                const params = new URLSearchParams(window.location.search);
+                const searchTerm = params.get("searchTerm");
+                console.log("Search Term from URL:", searchTerm);
+
                 minLabel.textContent = `$${minPrice}`;
                 maxLabel.textContent = `$${maxPrice}`;
 
@@ -252,30 +232,49 @@ document.addEventListener('DOMContentLoaded', () => {
                     const matchesKeywords = filterKeywords.length === 0 || filterKeywords.some(keyword =>
                         product.tag.some(prodKeyword => prodKeyword.toLowerCase().includes(keyword.toLowerCase()))
                     );
-                    const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm);
+                    const matchesSearchTerm = !searchTerm || product.name.toLowerCase().includes(searchTerm.toLowerCase());
+
 
                     return priceInRange && matchesKeywords && matchesSearchTerm;
                 });
 
                 renderProducts(filteredProducts);
+
                 updateUrl();
-                saveFilterState(minPrice, maxPrice, filterKeywords, searchTerm);
-            }
 
-
-            function saveFilterState(minPrice, maxPrice, keywords, searchTerm) {
-                localStorage.setItem('minPrice', minPrice);
-                localStorage.setItem('maxPrice', maxPrice);
-                localStorage.setItem('keywords', JSON.stringify(keywords));
-                localStorage.setItem('searchTerm', searchTerm);
             }
-            searchButton.addEventListener('click', () => {
-                const searchTerm = searchInput.value.trim();
-                localStorage.setItem('searchTerm', searchTerm);
-                filterProducts();
-            });
+            // `input` эвент — Хэрэглэгч бичих бүрд ажиллана
             searchInput.addEventListener('input', () => {
-                localStorage.setItem('searchTerm', searchInput.value.trim());
+                // Одоогийн URL-аас query параметрийг устгана
+                const currentUrl = window.location.href.split('?')[0];
+                const searchValue = searchInput.value.trim(); // Input талбараас одоогийн утгыг авна
+
+                if (searchValue) {
+                    const newUrl = `${currentUrl}?searchTerm=${encodeURIComponent(searchValue)}`;
+                    window.history.pushState({}, "", newUrl); // URL-ийг шинэчилнэ (Refresh хийхгүй)
+                    filterProducts();
+                } else {
+                    // Хоосон үед query параметрийг устгана
+                    window.history.pushState({}, "", currentUrl);
+                    filterProducts();
+                }
+            });
+
+            // `click` эвент — Хайлт товч дарах үед ажиллана
+            searchButton.addEventListener('click', (event) => {
+                event.preventDefault(); // Default үйлдлийг болиулна (жишээ нь form submit хийхээс сэргийлэх)
+                const currentUrl = window.location.href.split('?')[0];
+                const searchValue = searchInput.value.trim(); // Input талбараас утгыг авна
+
+                if (searchValue) {
+                    const newUrl = `${currentUrl}?searchTerm=${encodeURIComponent(searchValue)}`;
+                    window.history.pushState({}, "", newUrl); // URL-ийг шинэчилнэ
+                    filterProducts();
+                } else {
+                    // Хоосон үед query параметрийг устгана
+                    window.history.pushState({}, "", currentUrl);
+                    filterProducts();
+                }
             });
 
             rangeMin.addEventListener('input', filterProducts);
@@ -331,48 +330,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
-            renderProducts(products);
+            renderProducts(products)
 
 
-
-            function sortProducts(products, order) {
-                switch (order) {
-                    case 'price-asc':
-                        return products.sort((a, b) => a.price - b.price);
-                    case 'price-desc':
-                        return products.sort((a, b) => b.price - a.price);
-                    case 'newest':
-                        return products.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-                    case 'popular':
-                        return products.sort((a, b) => b.popularity - a.popularity);
-                    default:
-                        return products;
-                }
-            }
         });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    function showCartNotification(item) {
-        const notification = document.getElementById('cart-notification');
-        notification.innerHTML = `
-            <div style="display: flex; align-items: center;">
-                <img src="${item.thumbnail}" alt="${item.name}" style="width: 50px; height: 50px; margin-right: 10px; border-radius: 4px;">
-                <div>
-                    <p style="margin: 0; font-size: 14px; font-weight: bold;">${item.name}</p>
-                    <p style="margin: 0; font-size: 12px; color: #888;">Сагсанд нэмэгдлээ!</p>
-                </div>
-            </div>
-        `;
-    
-        // Мэдэгдлийг харуулах
-        notification.classList.add('show');
-    
-        // 2 секундийн дараа автоматаар алга болгох
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 4000);
-    }
 
+});
+
+import { addToCart, renderCart } from './cart.js';
+
+document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('add-to-cart-button')) {
             const id = event.target.getAttribute('data-id');
@@ -380,22 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const price = event.target.getAttribute('data-price');
             const thumbnail = event.target.getAttribute('data-thumbnail');
 
-            // LocalStorage-д хадгалах
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ id, name, price, thumbnail });
-            localStorage.setItem('cart', JSON.stringify(cart));
+            const item = { id, name, price, thumbnail };
 
-            // Мэдэгдэл харуулах
-            showCartNotification({ id, name, price, thumbnail });
+            addToCart(item);
         }
     });
+
+    if (window.location.pathname.endsWith('Cart.html')) {
+        renderCart();
+    }
 });
-
-
-// Cart.html-д сагсыг харуулах
-if (window.location.pathname.endsWith('Cart.html')) {
-    const cartList = document.querySelector('cart-list');
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
-    cartItems.forEach(item => cartList.addItem(item));
-}

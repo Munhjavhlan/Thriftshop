@@ -94,8 +94,6 @@ if (!productId) {
                         relatedProductsContainer.appendChild(relatedCard);
                     });
             }
-            //картлах
-            document.addEventListener('DOMContentLoaded', () => {
                 function showCartNotification(item) {
                     const notification = document.getElementById('cart-notification');
                     notification.innerHTML = `
@@ -117,24 +115,28 @@ if (!productId) {
                     }, 4000);
                 }
             
-                document.addEventListener('click', (event) => {
-                    if (event.target.classList.contains('add-to-cart-button')) {
-                        const id = event.target.getAttribute('data-id');
-                        const name = event.target.getAttribute('data-name');
-                        const price = event.target.getAttribute('data-price');
-                        const thumbnail = event.target.getAttribute('data-thumbnail');
+                document.querySelector('.add-to-cart-button').addEventListener('click', () => {
+                    const id = product.id;
+                    const name = product.name;
+                    const price = product.price;
+                    const thumbnail = product.thumbnail;
             
-                        // LocalStorage-д хадгалах
-                        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-                        cart.push({ id, name, price, thumbnail });
-                        localStorage.setItem('cart', JSON.stringify(cart));
+                    // LocalStorage-д өгөгдөл нэмэх
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const existingItem = cart.find(item => item.id === id);
             
-                        // Мэдэгдэл харуулах
-                        showCartNotification({ id, name, price, thumbnail });
+                    if (existingItem) {
+                        alert('Энэ бараа таны сагсанд аль хэдийн нэмэгдсэн байна!');
+                        return;
                     }
+            
+                    cart.push({ id, name, price, thumbnail });
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    // Мэдэгдэл харуулах
+                    showCartNotification({ id, name, price, thumbnail });
                 });
-            });
-
+    
+            
             // Quantity buttons
             document.querySelectorAll('.quantity-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
