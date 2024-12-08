@@ -202,9 +202,9 @@ nav {
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center items within the nav menu */
+    justify-content: center; 
     gap: 20px;
-    flex-grow: 1; /* Makes the ul take up remaining space to center it */
+    flex-grow: 1; 
 }
 
 /* Style for Individual Links */
@@ -286,7 +286,7 @@ footer {
 .subscribe-form {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds spacing between input and button */
+    gap: 10px; 
 }
 
 .subscribe-form input[type="email"] {
