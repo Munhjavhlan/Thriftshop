@@ -111,7 +111,14 @@ hr {
   font-size: 12px;
   color: #666;
   text-align: center;
+
 }
+  .sda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px
+  }
             </style>
      <article class="order-summary">
                 <article class="item">
@@ -134,6 +141,7 @@ hr {
                 <p class="note">
                     Захиалга хийсний дараа барааны үнэ өөрчлөгдсөн тохиолдолд 24 цагийн дотор тантай холбоо барьж мэдэгдэнэ.
                 </p>
+                <img class="sda" src="./../../images/Frame 768.png" alt="zurag">
             </article>
         `;
 

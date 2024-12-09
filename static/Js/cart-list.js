@@ -96,7 +96,7 @@ hr {
                     ${isEmpty ? '<p>Сагс хоосон байна.</p>' : this.renderProducts(cart)}
                 </section>
             </article>
-            <slot name="footer">Footer content goes here</slot>
+           
         `;
 
         // Update attribute based on cart state
@@ -122,15 +122,15 @@ hr {
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .baraa img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+    border-radius: 10%;
     object-fit: cover;
     margin-right: 15px;
 }

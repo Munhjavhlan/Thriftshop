@@ -218,7 +218,7 @@ nav {
     list-style: none;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:space-around;
     gap: 20px;
     color: #333;
     flex-grow: 0.2; /* Makes the ul take up remaining space to center it */
@@ -262,9 +262,11 @@ footer {
 
 .footer-container {
     display: flex;
+    background-color: #353943;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
+    color: var(--font-color-dark);
 }
 
 
@@ -274,6 +276,10 @@ footer {
 }
 
 .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.footer-section h2 {
     font-size: 18px;
     margin-bottom: 10px;
 }
@@ -296,6 +302,7 @@ footer {
     border: 1px solid var(--secondary-color);
     background-color: var(--primary-color);
     border-radius: 5px;
+
     outline: none;
 }
 
