@@ -7,6 +7,7 @@
     <meta name="description"
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="static/css/index.css"/>
     <title>Thrift Shop</title>
 </head>
 
@@ -14,8 +15,9 @@
     <header>
         <h3 class="back">Гишүүд 50% хүртэл хямдралтай</h3>
         <nav>
-            <img class="logo" src="images/logo.png" alt="Thrift shop logo" />
-
+            <a href="index.html" aria-label="Go to home page">
+                <img class="logo" src="images/logo.png" alt="Thrift shop logo" />
+            </a>
             <ul id="navMenu">
 
                 <li class="top-links"><a href="index.html" aria-label="Go to home page"><svg
@@ -81,9 +83,95 @@
             </ul>
         </nav>
     </header>
-    <main>
-
-
+    <main class="grid-container">
+        <!-- Gallery Slider -->
+        <section class="gallery-container">
+            <div class="gallery-slider-wrapper">
+                <div class="gallery-slider">
+                    <img id="slide-1" src="./images/banner.jpg" alt="Manai delguurin huvtsasnuudiin zurguud">
+                    <img id="slide-2" src="./images/banner2.webp" alt="Manai delguurin huvtsasnuudiin zurguud">
+                    <img id="slide-3" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1771&auto=format&fit=crop" alt="Manai delguurin huvtsasnuudiin zurguud">
+                    <img id="slide-4" src="https://images.unsplash.com/photo-1498032087969-fd7d126f9d0b?q=80&w=1770&auto=format&fit=crop" alt="Manai delguurin huvtsasnuudiin zurguud">
+                    <img id="slide-5" src="https://images.unsplash.com/photo-1617951907145-53f6eb87a3a3?q=80&w=1780&auto=format&fit=crop" alt="Manai delguurin huvtsasnuudiin zurguud">
+                    <div class="home-sale">
+                        <h1>Шинэ жил айсуй...</h1>
+                        <p>20% хүртэл хямдралтай
+                        </p>
+                    </div>
+                </div>
+                <div class="gallery-slider-nav">
+                    <a href="#slide-1"></a>
+                    <a href="#slide-2"></a>
+                    <a href="#slide-3"></a>
+                    <a href="#slide-4"></a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Services -->
+        <section class="services">
+            <article>
+                <img src="images/shipping.jpg" alt="Image of free shipping services" />
+                <p>Захиалга</p>
+            </article>
+            <article>
+                <img src="images/delivery.jpg" alt="Delivery services" />
+                <p>Хүргэлт</p>
+            </article>
+            <article>
+                <img src="images/packing.jpg" alt="Packing services" />
+                <p>Баглаа боодол</p>
+            </article>
+        </section>
+    
+        <section class="featured-products" id="featured-products">
+            <h2>Онцлох бүтээгдэхүүнүүд</h2>
+            <div class="products-grid" id="products-grid">
+                <!-- Product items will be injected here by JS -->
+            </div>
+        </section>
+    
+        <!-- About Thrift -->
+        <section class="about-thrift">
+            <p>Өөрийн хувцасны шүүгээ болон гадаад төрхөө <b>өвөрмөц, дахин давтагдашгүй</b> бүтээгдэхүүнээр баяжуулж байгальд ээлтэй худалдан авалтыг дэмжээрэй.</p>
+        </section>
+    
+        <!-- Sale -->
+        <section class="sale">
+            <img src="images/sale.png" alt="sale" />
+            <h2 class="gradient">Шинэ жилийн 40% хүртэлх хямдрал!!!</h2>
+            <ul>
+                <li><button type="button" aria-label="Men's sale items">Эрчүүдийн хямдралтай хувцаснууд</button></li>
+                <li><button type="button" aria-label="Women's sale items">Эмэгтэйчүүдийн хямдралтай хувцаснууд</button></li>
+                <li><button type="button" aria-label="Kids' sale items">Хүүхдийн хямдралтай хувцаснууд</button></li>
+            </ul>
+        </section>
+        <img style="scale: 0.7;" src="./images/ssc.png" alt="ssc">
+    
+        <!-- Classics Collection -->
+        <section class="classics-collection">
+            <div class="flex-container">
+                <div class="image-item">
+                    <img src="images/con1.jpg" alt="Person in beige outfit with sneakers">
+                    <p>@The_R_Creative</p>
+                </div>
+                <div class="hero-section">
+                    <h1>Ultimate пүүзний цуглуулга</h1>
+                    <p>Ямар ч тохиолдолд тохирох пүүзээ олоорой.</p>
+                    <a href="products.html" class="shop-button">Цааш</a>
+                    <div class="images-container">
+                        <div class="image-item1">
+                            <img src="images/con2.jpg" alt="Person sitting in striped outfit">
+                            <p>@Melissa_barrera</p>
+                        </div>
+                        <div class="image-item1">
+                            <img src="images/con3.jpg" alt="Person in dark outfit and sneakers">
+                            <p>@Takafumi_sanbe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-container">
@@ -187,5 +275,6 @@
         </ul>
     </div>
     <script src="static/script.js"></script>
+    <script src="./static/ontslohBaraa.js"></script>
 
 </html>

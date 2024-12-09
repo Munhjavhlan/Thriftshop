@@ -357,3 +357,19 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCart();
     }
 });
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const toggleButton1 = document.getElementById('toggle-sidebar');
+
+// Sidebar болон overlay-г харуулах/нуух функц
+const toggleSidebar = () => {
+    sidebar.classList.toggle('active'); // Sidebar-г идэвхжүүлэх/унтраах
+    overlay.classList.toggle('active'); // Overlay-г идэвхжүүлэх/унтраах
+    console.log(overlay.classList); // Debugging: Check overlay class
+};
+
+// Товчлуур дээр дарсан үед sidebar болон overlay-г харуулах/нуух
+toggleButton1.addEventListener('click', toggleSidebar);
+
+// Overlay дээр дарсан үед sidebar болон overlay-г нуух
+overlay.addEventListener('click', toggleSidebar);
