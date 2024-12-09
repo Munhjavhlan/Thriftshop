@@ -99,6 +99,7 @@
 
 .products-grid {
     display: grid;
+    margin: 50px;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr); 
     

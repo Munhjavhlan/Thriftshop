@@ -40,41 +40,66 @@ if (!productId) {
             const mainImage = document.getElementById('main-image');
             mainImage.src = product.images[0];
 
+            const startIndex = 0; 
+            const endIndex = 7;  
             const thumbnailContainer = document.getElementById('thumbnail-container');
             if (thumbnailContainer) {
-                product.subImages.forEach((image, index) => {
+                product.subImages.slice(startIndex, endIndex).forEach((image, index) => {
                     const img = document.createElement('img');
                     img.src = image;
                     img.alt = `${product.name} thumbnail ${index + 1}`;
                     img.classList.add('thumbnail');
-
+            
                     img.addEventListener('click', () => {
                         mainImage.src = image;
                     });
-
+            
                     thumbnailContainer.appendChild(img);
                 });
             }
+            
 
-            // Color options
             const colorOptionsContainer = document.querySelector('.color-options');
-            if (colorOptionsContainer) {
-                product.baraaniiUngu.forEach(image => {
+            
+            if (colorOptionsContainer && thumbnailContainer) {
+                product.baraaniiUngu.forEach((image, colorIndex) => {
                     const colorBox = document.createElement('div');
                     colorBox.classList.add('color-box');
                     colorBox.style.backgroundImage = `url(${image})`;
                     colorBox.style.backgroundSize = 'cover';
                     colorBox.style.backgroundPosition = 'center';
-
+            
                     colorBox.addEventListener('click', () => {
+                        // Remove active class from all color boxes
                         document.querySelectorAll('.color-box').forEach(box => box.classList.remove('active'));
                         colorBox.classList.add('active');
                         mainImage.src = image;
+                        // Clear current thumbnails
+                        thumbnailContainer.innerHTML = '';
+            
+                        // Determine image range based on active color
+                        const startIndex = colorIndex * 7; // Start index based on color
+                        const endIndex = startIndex + 7;  // End index based on color
+            
+                        // Add thumbnails for the selected range
+                        product.subImages.slice(startIndex, endIndex).forEach((subImage, index) => {
+                            const img = document.createElement('img');
+                            img.src = subImage;
+                            img.alt = `${product.name} thumbnail ${startIndex + index + 1}`;
+                            img.classList.add('thumbnail');
+            
+                            img.addEventListener('click', () => {
+                                mainImage.src = subImage;
+                            });
+            
+                            thumbnailContainer.appendChild(img);
+                        });
                     });
-
+            
                     colorOptionsContainer.appendChild(colorBox);
                 });
             }
+            
 
             // Related products
             const relatedProductsContainer = document.getElementById('related-products');
