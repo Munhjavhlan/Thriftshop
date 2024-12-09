@@ -18,6 +18,9 @@ main {
     
     gap: 10px;
 }
+#toggle-sidebar {
+    grid-area: sidebar;
+}
 .filter-panel {
     grid-area: sidebar;
     margin: 10%;
@@ -323,7 +326,10 @@ input[type="range"]::-moz-range-track {
     display: flex;
 
 }
-
+a {
+    text-decoration: none;
+    color: black;
+  }
 
 #search-button {
     padding: 10px 20px;

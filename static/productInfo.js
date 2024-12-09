@@ -17,11 +17,11 @@ if (!productId) {
 
             // Populate product details
             document.getElementById('product-name').textContent = product.name;
-            document.getElementById('product-description').textContent = `Description: ${product.description}`;
-            document.getElementById('product-price').textContent = `Price: $${product.price}`;
-            document.getElementById('product-category').textContent = `Category: ${product.category}`;
-            document.getElementById('product-brand').textContent = `Brand: ${product.brand}`;
-            document.getElementById('product-weight').textContent = `Weight: ${product.weight}kg`;
+            document.getElementById('product-description').textContent = `Бүтээгдэхүүний нэр: ${product.description}`;
+            document.getElementById('product-price').textContent = `Үнэ: $${product.price}`;
+            document.getElementById('product-category').textContent = `Төрөл: ${product.category}`;
+            document.getElementById('product-brand').textContent = `Брэнд: ${product.brand}`;
+            document.getElementById('product-weight').textContent = `Жин: ${product.weight}kg`;
 
                 // Rating: Display dynamic stars
                 const rating = product.rating;

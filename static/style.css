@@ -378,6 +378,7 @@ footer {
 
 /* Footer-ийг утасны дэлгэц дээр далдлах */
 @media (max-width: 768px) {
+
     footer {
         display: none; /* Footer-ийг hide хийж байна */
     }
@@ -419,25 +420,25 @@ footer {
     }
 
     /* Top Links хэсгийг утасны дэлгэц дээр далдлах */
-    .top-links {
+    .top-links svg, .top-links a {
         display: none;
     }
+        /* Show the toggle button */
+        #toggleButton {
+            display: none;
+            
+            margin-top: 10px;
+        }
+    
+        /* When the toggle button is clicked */
+        #toggleButton.active + #navMenu {
+            display: flex; /* Show the menu when the button is clicked */
+        }
+        main {
+            max-width: 768px;
+        }
 }
 
-@media (max-width: 768px) {
-   
-    /* Show the toggle button */
-    #toggleButton {
-        display: none;
-        
-        margin-top: 10px;
-    }
-
-    /* When the toggle button is clicked */
-    #toggleButton.active + #navMenu {
-        display: flex; /* Show the menu when the button is clicked */
-    }
-}
 
 /* To toggle menu visibility */
 #toggleButton.active + #navMenu {
