@@ -1,15 +1,14 @@
 # My Project
-This is a collaborative web development project for building a web application.
+Энэ бол вэб програм бүтээхэд зориулсан хамтарсан вэб хөгжүүлэлтийн төсөл юм.
 
 ## Team Members
-- Developer 1: Frontend Development Batbayar, Munkhjavhklan, Badamgarav
-- Developer 2: Backend Development Batbayar, Munkhjavhklan, Badamgarav
-- Developer 3: DevOps and CI/CD Integration Batbayar, Munkhjavhklan, Badamgarav
-
+- Хөгжүүлэгч 1: Frontend Development Батбаяр, Мөнхжавхклан, Бадамгарав
+- Хөгжүүлэгч 2: Backend Development Батбаяр, Мөнхжавхклан, Бадамгарав
+- Хөгжүүлэгч 3: DevOps ба CI/CD интеграцчлал Батбаяр, Мөнхжавхклан, Бадамгарав
 ## Technologies
 - HTML, CSS, JavaScript
 - Node.js
-- MySql
+- MongoDB
 
 ## Instructions for Running the Project
 1. Clone the repository
