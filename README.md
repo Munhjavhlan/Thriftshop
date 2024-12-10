@@ -1,15 +1,14 @@
 # My Project
-This is a collaborative web development project for building a web application.
+Энэ бол вэб програм бүтээхэд зориулсан хамтарсан вэб хөгжүүлэлтийн төсөл юм.
 
 ## Team Members
-- Developer 1: Frontend Development Batbayar, Munkhjavhklan, Badamgarav
-- Developer 2: Backend Development Batbayar, Munkhjavhklan, Badamgarav
-- Developer 3: DevOps and CI/CD Integration Batbayar, Munkhjavhklan, Badamgarav
-
+- Хөгжүүлэгч 1: Frontend Development Батбаяр, Мөнхжавхклан, Бадамгарав
+- Хөгжүүлэгч 2: Backend Development Батбаяр, Мөнхжавхклан, Бадамгарав
+- Хөгжүүлэгч 3: DevOps ба CI/CD интеграцчлал Батбаяр, Мөнхжавхклан, Бадамгарав
 ## Technologies
 - HTML, CSS, JavaScript
 - Node.js
-- MySql
+- MongoDB
 
 ## Instructions for Running the Project
 1. Clone the repository
@@ -21,20 +20,29 @@ This is a collaborative web development project for building a web application.
 ## 1. Локал орчинд өөрчлөлт хийж байршуулах
 
 ### Локал төслөө шинэчилнэ:
+```bash
 $ git add .
+```
 Энэ команд нь таны локал орчин дахь бүх өөрчлөлтүүдийг Git-т нэмнэ.
 
 ### Хийсэн өөрчлөлтөө тайлбарлах:
+```bash
 $ git commit -m "Тайлбар текст"
+```
 `-m` нь commit хийх өөрчлөлтөд тайлбар өгч байна. Жишээ нь:
+```bash
 $ git commit -m "Initial commit"
-
+```
 ### GitHub руу өөрчлөлтийг илгээх:
+```bash
 $ git push origin master
+```
 Энэ команд нь таны локал өөрчлөлтүүдийг GitHub дээрх репозитор руу илгээнэ.
 
 ### Шинэ хувилбарыг татаж авах:
+```bash
 $ git pull origin master
+```
 Энэ команд нь GitHub дээрх шинэ өөрчлөлтүүдийг таны локал орчинд татаж авна.
 
 ---
@@ -50,24 +58,35 @@ $ git pull origin master
 ## 3. Git командууд
 
 ### Шинэ репозитор клонийг татах:
-
+```bash
 $ git clone https://github.com/Munhjavhlan/Thriftshop.git
+```
 Энэ команд нь GitHub дээрх репозиторын хуулбарыг таны локал орчинд татаж авчирна.
 
 ### Таны ажлын төлөвийг шалгах:
+```bash
 $ git status
+```
 Энэ команд нь таны локал орчинд ямар өөрчлөлтүүд байгааг харуулна.
 
 ### Branch үүсгэх:
+```bash
 $ git checkout -b branch_name
+```
 Энэ команд нь шинэ branch үүсгэнэ. Жишээ нь, `feature-branch` үүсгэх бол:
+```bash
 $ git checkout -b feature-branch
+```
 
 ### Шинэ branch руу шилжих:
+```bash
 $ git checkout branch_name
+```
 Хүссэн branch руу шилжих команд.
 
 ### Commit-ийн түүхийг харах:
+```bash
 $ git log
+```
 Энэ команд нь таны локал орчинд хийсэн commit-ийн түүхийг харуулна.
 
