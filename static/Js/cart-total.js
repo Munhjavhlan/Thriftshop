@@ -1,43 +1,39 @@
 class CartTotal extends HTMLElement {
     constructor() {
         super();
-        this.totalPrice = '0.00'; // Initial total price
+        this.totalPrice = '0.00'; 
         this.attachShadow({ mode: 'open' });
     }
 
     connectedCallback() {
-        this.loadCartData(); // Load cart data when component is connected
+        this.loadCartData(); 
     }
 
     loadCartData() {
-        const cart = this.getCartItems(); // Get cart data
+        const cart = this.getCartItems(); 
         const totalPrice = this.calculateTotal(cart);
-        const discount = this.calculateDiscount(cart); // Example discount calculation
-        const serviceFee = 5000; // Example service fee
-        const finalPrice = totalPrice - discount + serviceFee; // Final price after discount and service fee
+        const discount = this.calculateDiscount(cart); 
+        const serviceFee = 5000; 
+        const finalPrice = totalPrice - discount + serviceFee; 
         
-        this.render(totalPrice, discount, serviceFee, finalPrice); // Render the prices
+        this.render(totalPrice, discount, serviceFee, finalPrice); 
     }
 
     getCartItems() {
-        return JSON.parse(localStorage.getItem('cart')) || []; // LocalStorage-аас сагсны өгөгдлийг дуудаж авна
+        return JSON.parse(localStorage.getItem('cart')) || []; 
     }
 
     calculateTotal(cart) {
-        // Calculate total price by summing up all item prices
         return parseFloat(cart.reduce((sum, item) => sum + parseFloat(item.price), 0)).toFixed(2);
     }
 
     calculateDiscount(cart) {
-        // Example discount calculation (e.g., 13000₮)
-        return 4; // Replace this with your own discount logic
+        return 4; 
     }
 
     render(totalPrice, discount, serviceFee, finalPrice) {
         const template = document.createElement('template');
-        
-        // Template for rendering cart total information
-        template.innerHTML = `
+                template.innerHTML = `
             <style>
 main {
   display: grid;

@@ -1,77 +1,33 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
-const User = require('../models/User'); // Хэрэглэгчийн загвар
+const { registerUser, loginUser } = require('../models/User');
+
 const router = express.Router();
 
-// Бүртгэл (Register)
+// Register route
 router.post('/register', async (req, res) => {
+  const { username, email, password } = req.body;
   try {
-    const { username, email, password } = req.body;
-
-    // Хоосон талбар шалгах
-    if (!username || !email || !password) {
-      return res.status(400).json({ message: 'Бүх талбарыг бөглөнө үү.' });
-    }
-
-    // Хэрэглэгч аль хэдийн бүртгэлтэй эсэхийг шалгах
-    const userExists = await User.findOne({ email });
-    if (userExists) {
-      return res.status(400).json({ message: 'Имэйл аль хэдийн бүртгэгдсэн байна.' });
-    }
-
-    // Нууц үг шифрлэх
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Хэрэглэгч үүсгэх
-    const newUser = new User({ username, email, password: hashedPassword });
-    await newUser.save();
-
-    res.status(201).json({ message: 'Бүртгэл амжилттай боллоо.' });
-  } catch (error) {
-    res.status(500).json({ message: 'Серверийн алдаа.', error });
+    const user = await registerUser(username, email, password);
+    res.redirect('/login');
+  } catch (err) {
+    res.status(400).json({ message: 'Бүртгэл амжилтгүй', error: err.message });
   }
 });
 
-// Нэвтрэх (Login)
+// Login route
 router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
-
-    // Хоосон талбар шалгах
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Имэйл болон нууц үг шаардлагатай.' });
-    }
-
-    // Хэрэглэгч шалгах
-    const user = await User.findOne({ email });
+    const user = await loginUser(email, password);
     if (!user) {
-      return res.status(400).json({ message: 'Имэйл буруу байна.' });
+      return res.status(401).json({ message: 'Буруу email or password' });
     }
 
-    // Нууц үг таарч байгаа эсэхийг шалгах
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Нууц үг буруу байна.' });
-    }
-
-    // Session-д хэрэглэгчийн ID хадгалах
-    req.session.userId = user._id;
-
-    res.json({ message: 'Нэвтрэх амжилттай.', userId: user._id });
-  } catch (error) {
-    res.status(500).json({ message: 'Серверийн алдаа.', error });
+    req.session.userId = user.id;
+    res.status(200).json({ message: 'Амжилттай нэвтэрлээ.', user });
+  } catch (err) {
+    res.status(500).json({ message: 'Нэвтрэлт амжилтгүй', error: err.message });
   }
-});
-
-// Гарах (Logout)
-router.post('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ message: 'Гарах үед алдаа гарлаа.' });
-    }
-    res.clearCookie('connect.sid');
-    res.json({ message: 'Амжилттай гарлаа.' });
-  });
 });
 
 module.exports = router;

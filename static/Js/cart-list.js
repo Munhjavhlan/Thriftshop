@@ -1,7 +1,6 @@
 class CartList extends HTMLElement {
     constructor() {
         super();
-        // Attach shadow DOM
         this.attachShadow({ mode: 'open' });
     }
 
@@ -13,7 +12,7 @@ class CartList extends HTMLElement {
         const cart = this.getCartItems();
         const isEmpty = cart.length === 0;
 
-        // Update the content in shadow DOM
+
         this.shadowRoot.innerHTML = `
         <style>
         main {
@@ -99,7 +98,7 @@ hr {
            
         `;
 
-        // Update attribute based on cart state
+
         if (isEmpty) {
             this.setAttribute('empty', '');
         } else {
@@ -107,7 +106,7 @@ hr {
         }
 
         this.addRemoveListeners();
-        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
+        this.dispatchCartUpdateEvent(cart); 
     }
 
     getCartItems() {
