@@ -1,4 +1,4 @@
-const pool = require('../db'); // PostgreSQL connection
+const pool = require('../db'); 
 const bcrypt = require('bcryptjs');
 
 const registerUser = async (username, email, password) => {

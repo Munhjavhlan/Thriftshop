@@ -86,7 +86,9 @@ h2.gradient {
     color: transparent;
     background-clip: text;
 }
-
+#lak{
+    width: 100%;
+}
 /* Хайлт хийх формын ерөнхий тохиргоо */
 .search-form {
     display: flex; 
@@ -99,9 +101,9 @@ h2.gradient {
 /* Хайлт хийх оролт талбар */
 .search-form input[type="text"] {
     border: none; 
-    text-align: center; /* Текстийг голлуулж байрлуулах */
-    background-color: var(--color-neutral-grey-1); /* Арын өнгийг тохируулах */
-    padding: 12px; /* Дотор талын хоосон зайг нэмэх */
+    text-align: center; 
+    background-color: var(--color-neutral-grey-1); 
+    padding: 12px;
     width: 100%; 
     outline: none; 
     font-size: 16px; 
@@ -119,9 +121,9 @@ h2.gradient {
     background: none; 
     border: none; 
     cursor: pointer;
-    color: var(--primary-color); /* Товчны үндсэн өнгө */
-    transition: color var(--transition-time), transform 0.2s; /* Хариу үйлдлийн шилжилт */
-    border-radius: 50%; /* Товчийг дугуй болгох */
+    color: var(--primary-color); 
+    transition: color var(--transition-time), transform 0.2s;
+    border-radius: 50%; 
 }
 
 /* Товчин дээр хулганаар заах үед */
@@ -154,6 +156,7 @@ ul li {
 /* Header section */
 
 header {
+    width: 100%;
     background-color: var(--primary-color);
     color: var(--secondary-color);
     text-align: center;
@@ -434,18 +437,56 @@ footer {
         /* Show the toggle button */
         #toggleButton {
             display: none;
-            
-            margin-top: 10px;
+
         }
     
         /* When the toggle button is clicked */
         #toggleButton.active + #navMenu {
             display: flex; /* Show the menu when the button is clicked */
         }
-        main {
-            max-width: 768px;
-        }
+
 }
+@media (max-width: 768px) {
+    /* Header загварыг сайжруулах */
+    header {
+        text-align: center;
+        font-size: 1rem;
+    }
+
+    /* Navigation menu товч гарч ирэх */
+    #toggleButton {
+      display: none;
+    }
+
+    /* Navigation менюг default байдлаар далдлах */
+    #navMenu {
+        display: flex;
+        width: 1px;
+    }
+
+    /* Navigation доторх холбоосууд */
+    #navMenu li {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    #navMenu li a {
+        font-size: 1rem;
+        color: var(--primary-color);
+    }
+
+    /* Sticky menu styles */
+    .sticky-links {
+        display: flex; /* Гар утасны дэлгэц дээр харагдана */
+    }
+
+    .sticky-links ul li a {
+        font-size: 0.875rem; /* Холбоосын үсгийн хэмжээг багасгах */
+    }
+
+}
+
+
 
 
 /* To toggle menu visibility */

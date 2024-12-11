@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./static/css/snu.css">
     <link rel="stylesheet" href="static/css/mediaQuery.css">
     <script type="module" src="./static/productScript.js"></script>
+    <script type="module" src="./static/Js/product-grid.js"></script>
     <!-- <script src="./static/Js/urlParam.js"></script> -->
     <title>Thrift Shop</title>
 </head>
@@ -99,7 +100,7 @@
                     </svg>
                 </button>
             </div>
-            <button id="toggle-sidebar" aria-label="Фильтрүүдийг харуулах/нуух">☰ Шүүх</button>
+            <button id="toggle-sidebar" aria-label="Фильтрүүдийг харуулах/нуух">☰</button>
             <div class="sort-buttons">
                 <p id="erembleh">Эрэмбэлэх:</p>
                 <button class="sort-button" data-sort="price-asc" aria-label="үнэӨсөх">
@@ -172,9 +173,7 @@
             </div>
         </div>
 
-        <div id="product-grid" class="product-grid">
-            <!-- Products will be dynamically inserted here -->
-        </div>
+        <product-grid></product-grid>
 
         <!-- Pagination Section -->
         <div class="pagination">
