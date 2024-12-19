@@ -1,0 +1,152 @@
+main {
+    display: grid;
+    grid-template-areas:
+        "baruun zuun";
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    justify-items: center;
+}
+
+.add-product-section {
+    grid-area: baruun;
+}
+
+.product-list-section {
+    grid-area: zuun;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section Styling */
+section {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Headings */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #353943;
+    text-align: center;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Button Styling */
+button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #353943;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #555a66;
+}
+
+button:focus {
+    outline: 2px solid #555a66;
+}
+
+/* Product List */
+#productList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 280px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #353943;
+}
+
+.product-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.product-item .price {
+    font-weight: bold;
+    color: #000;
+    font-size: 1rem;
+}
+
+/* Additional Input Styling */
+input[type="file"] {
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        grid-template-areas:
+            "baruun"
+            "zuun";
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    section {
+        margin: 0 auto;
+    }
+}

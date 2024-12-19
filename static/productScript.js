@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
 
-        // `click` эвент — Хайлт товч дарах үед ажиллана
+ 
         searchButton.addEventListener("click", (event) => {
             event.preventDefault(); // Default үйлдлийг болиулна (жишээ нь form submit хийхээс сэргийлэх)
             const currentUrl = window.location.href.split("?")[0];

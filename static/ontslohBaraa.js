@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
             products.forEach(product => {
                 
                  const productHTML = `
-                                            <a href="productInfo.html?id=${product.id}" class="product-link">
+                <a href="productInfo.html?id=${product.id}" class="product-link">
                         <div class="product-image-container">
                             <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
                             <button aria-label="зүрх" class="heart-button" data-id="${product.id}"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"

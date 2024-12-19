@@ -75,9 +75,6 @@
         width: 100%;
     }
 
-
-
-
     .filter-panel.active {
         display: block;
         position: fixed;
