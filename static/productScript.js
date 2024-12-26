@@ -362,10 +362,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    document.addEventListener("click", (event) => {
+        if (event.target.classList.contains("heart-button")) {
+            const id = event.target.getAttribute("data-id");
+            const name = event.target.getAttribute("data-name");
+            const price = event.target.getAttribute("data-price");
+            const thumbnail = event.target.getAttribute("data-thumbnail");
+
+            const item = { id, name, price, thumbnail };
+
+            addToWishlist(item);
+        }
+    });
+
     if (window.location.pathname.endsWith("Cart.html")) {
         renderCart();
     }
 });
+
+function addToWishlist(item) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (!wishlist.some(product => product.id === item.id)) {
+        wishlist.push(item);
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        alert("Бүтээгдэхүүн хүсэлтийн жагсаалтад нэмэгдлээ!");
+    } else {
+        alert("Энэ бүтээгдэхүүн аль хэдийн хүсэлтийн жагсаалтад байна.");
+    }
+}
+
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const toggleButton1 = document.getElementById("toggle-sidebar");

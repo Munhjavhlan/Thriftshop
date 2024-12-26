@@ -67,9 +67,6 @@
         /* Энгийн нөхцөлд нуух */
     }
 
-    .search-container{
-        width: 30%;
-    }
     .search-container input[type="text"] {
         width: 100%;
     }
@@ -98,6 +95,7 @@
 
     #toggle-sidebar {
         display: flex;
+        
     }
 
     #product-grid {

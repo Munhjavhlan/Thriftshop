@@ -356,4 +356,37 @@ input[type="text"]{
     #product-grid {
         grid-template-columns: 1fr; /* 1 багана */
     }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-container {
+        width: 100%;
+        margin-bottom: 10px;
+        gap: 10px;
+    }
+
+    #toggle-sidebar {
+        align-self: center;
+    }
+
+    .sort-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .sort-button {
+        flex-grow: 1;
+        justify-content: center;
+    }
+
+    .sort-button span {
+        display: none;
+    }
+
+    .sort-button i {
+        margin-right: 5px;
+    }
 }

@@ -84,7 +84,7 @@
 .services {
     grid-area: services;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     text-align: center;
 }
 .featured-products {
@@ -101,10 +101,13 @@
         font-size: 1.8rem;
         margin-bottom: 15px;
     }
+    .services {
+        scale: 0.8;
+    }
 
     .products-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 20px;
     }
 

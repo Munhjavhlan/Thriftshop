@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <!-- ...existing code... -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const wishlistContainer = document.getElementById("wishlist-container");
+            const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+            if (wishlist.length === 0) {
+                wishlistContainer.innerHTML = "<p>Таны хүсэлтийн жагсаалт хоосон байна.</p>";
+            } else {
+                wishlist.forEach((item, index) => {
+                    const productCard = document.createElement("div");
+                    productCard.classList.add("product-card");
+                    productCard.innerHTML = `
+                        <div class="product-image-container">
+                            <img src="${item.thumbnail}" alt="${item.name}" class="product-thumbnail">
+                        </div>
+                        <h3>${item.name}</h3>
+                        <p>Үнэ: ${item.price}₮</p>
+                        <button class="remove-button" data-index="${index}">Remove</button>
+                    `;
+                    wishlistContainer.appendChild(productCard);
+                });
+            }
+
+            document.querySelectorAll(".remove-button").forEach(button => {
+                button.addEventListener("click", (event) => {
+                    const index = event.target.getAttribute("data-index");
+                    wishlist.splice(index, 1);
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                    location.reload();
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- ...existing code... -->
+    <main>
+        <div id="wishlist-container"></div>
+    </main>
+    <!-- ...existing code... -->
+</body>
+</html>
