@@ -90,6 +90,35 @@
 .featured-products {
     text-align: center;
 }
+/* Утасны дэлгэцэнд зориулсан хэв маяг */
+@media (max-width: 768px) {
+    .featured-products {
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    .featured-products h2 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .products-grid .product-item {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+}
+
+
 
 .featured-products h2 {
     margin-bottom: 20px;
@@ -104,6 +133,26 @@
     grid-template-columns: repeat(4, 1fr); 
     
 }
+
+/* Responsive design for product grid */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .product-image-container {
     position: relative;
     width: 100%;
@@ -360,4 +409,38 @@ a {
 
 .scroll-right {
     right: 0.625rem;
+}
+
+@media (max-width: 992px) {
+    .classics-collection .flex-container {
+        flex-direction: column;
+    }
+
+    .classics-collection .image-item,
+    .classics-collection .hero-section {
+        flex-basis: 100%;
+    }
+
+    .classics-collection .images-container {
+        flex-direction: column;
+    }
+
+    .classics-collection .image-item1 {
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .classics-collection .hero-section h1 {
+        font-size: 24px;
+    }
+
+    .classics-collection .hero-section p {
+        font-size: 0.875rem;
+    }
+
+    .classics-collection .shop-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }

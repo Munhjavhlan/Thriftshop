@@ -88,6 +88,77 @@ hr {
   color: #666;
   text-align: center;
 }
+
+.baraa {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.baraa:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.baraa img {
+  width: 170px;
+  height: 170px;
+  border-radius: 10%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.details {
+  flex: 1;
+}
+
+.details h4 {
+  font-size: 16px;
+  margin: 0 0 5px;
+}
+
+.details .price {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.details .price span {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.quantity input {
+  width: 50px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.remove-button {
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: #b71c1c;
+}
         </style>
             <article class="sags">
                 <h2>Таны сагс</h2>
@@ -115,68 +186,18 @@ hr {
 
     renderProducts(cart) {
         return cart.map((item, index) => `
-        <style>
-        .baraa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.baraa img {
-    width: 170px;
-    height: 170px;
-    border-radius: 10%;
-    object-fit: cover;
-    margin-right: 15px;
-}
-
-.details {
-    flex: 1;
-}
-
-.details h4 {
-    font-size: 16px;
-    margin: 0 0 5px;
-}
-
-.details .price {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.details .price span {
-    font-weight: bold;
-    color: #d32f2f;
-}
-
-.remove-button {
-    background-color: #d32f2f;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.remove-button:hover {
-    background-color: #b71c1c;
-}
-
-        </style>
-            <article class="baraa">
-                <img src="${item.thumbnail}" alt="${item.name}">
-                <div>
-                    <h4>${item.name}</h4>
-                    <p>Үнэ: ${item.price}₮</p>
-                    <button class="remove-button" data-index="${index}">Хасах</button>
+        <article class="baraa">
+            <img src="${item.thumbnail}" alt="${item.name}">
+            <div class="details">
+                <h4>${item.name}</h4>
+                <p class="price">Үнэ: <span>${(item.price * (item.quantity || 1)).toFixed(2)}₮</span></p>
+                <div class="quantity">
+                    <input type="number" min="1" value="${item.quantity || 1}" data-index="${index}">
+                    <span>ширхэг</span>
                 </div>
-            </article>
+                <button class="remove-button" data-index="${index}">Хасах</button>
+            </div>
+        </article>
         `).join('');
     }
 
@@ -188,6 +209,15 @@ hr {
                 this.removeItem(index);
             });
         });
+
+        const quantityInputs = this.shadowRoot.querySelectorAll('.quantity input');
+        quantityInputs.forEach(input => {
+            input.addEventListener('change', (event) => {
+                const index = event.target.getAttribute('data-index');
+                const quantity = parseInt(event.target.value);
+                this.updateQuantity(index, quantity);
+            });
+        });
     }
 
     removeItem(index) {
@@ -195,10 +225,19 @@ hr {
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
         this.loadCart(); // Reload the cart after removing an item
+        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
+    }
+
+    updateQuantity(index, quantity) {
+        let cart = this.getCartItems();
+        cart[index].quantity = quantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        this.loadCart(); // Reload the cart after updating quantity
+        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
     }
 
     dispatchCartUpdateEvent(cart) {
-        const totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price), 0).toFixed(2);
+        const totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0).toFixed(2);
         const event = new CustomEvent('cart-updated', {
             detail: { totalPrice },
             bubbles: true,

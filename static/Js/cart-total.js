@@ -7,6 +7,7 @@ class CartTotal extends HTMLElement {
 
     connectedCallback() {
         this.loadCartData(); 
+        window.addEventListener('cart-updated', () => this.loadCartData());
     }
 
     loadCartData() {
@@ -24,7 +25,7 @@ class CartTotal extends HTMLElement {
     }
 
     calculateTotal(cart) {
-        return parseFloat(cart.reduce((sum, item) => sum + parseFloat(item.price), 0)).toFixed(2);
+        return parseFloat(cart.reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0)).toFixed(2);
     }
 
     calculateDiscount(cart) {

@@ -272,4 +272,24 @@
 </div>
 <script src="static/script.js"></script>
 <script src="./static/productInfo.js"></script>
-</html>`
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sizeButtons = document.querySelectorAll('.size-btn');
+        const colorBoxes = document.querySelectorAll('.color-box');
+
+        sizeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                sizeButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        colorBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                colorBoxes.forEach(bx => bx.classList.remove('active'));
+                box.classList.add('active');
+            });
+        });
+    });
+</script>
+</html>

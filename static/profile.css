@@ -221,3 +221,43 @@ section p:nth-child(3){
   .slider.round:before {
     border-radius: 50%;
   }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    .form-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-header button {
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .social-login {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .socialBtn {
+        width: 100%;
+    }
+}

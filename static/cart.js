@@ -26,7 +26,6 @@ export function addToCart(item) {
     cart.push(item);
     localStorage.setItem('cart', JSON.stringify(cart));
 
-    // Мэдэгдэл харуулах
     showCartNotification(item);
 }
 

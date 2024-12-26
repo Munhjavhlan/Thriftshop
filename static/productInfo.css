@@ -1,5 +1,4 @@
-
-  /* Бүтээгдэхүүний үндсэн контейнер */
+/* Бүтээгдэхүүний үндсэн контейнер */
   .product-container {
     display: flex;
     flex-direction: column;
@@ -96,8 +95,11 @@
     font-size: 14px;
 }
 
-.size-btn:hover, .quantity-btn:hover {
-    background-color: #f0f0f0;
+
+.size-btn.active {
+    background-color: #353943;
+    color: #fff;
+    border-color: #353943;
 }
 
 .color-box {
@@ -110,6 +112,11 @@
 
 .color-box:hover {
     border-color: #000;
+}
+
+.color-box.active {
+    border-color: #353943;
+    box-shadow: 0 0 0 2px #353943;
 }
 
 .quantity-input {
@@ -319,5 +326,11 @@
   .button {
     padding: 8px 15px;
     font-size: 14px;
+  }
+
+  .size-options,
+  .color-options {
+    flex-direction: column;
+    gap: 15px;
   }
 }

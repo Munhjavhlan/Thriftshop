@@ -26,14 +26,12 @@
     --color-neutral-grey-7: #979797;
 }
 
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* General body section */
 body {
     font-family: 'Arial', sans-serif;
     font-size: 1rem;
@@ -80,9 +78,9 @@ h1, h2, h3, p {
 /* Gradient title */
 h2.gradient {
     font-size: 2rem;
-    background: linear-gradient(to right, #332f2e, #ded6d0);
+    background: linear-gradient(to right, #cd650f, #ded6d0);
     text-align: center;
-    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(176, 99, 22, 0.5);
     color: transparent;
     background-clip: text;
 }
@@ -141,8 +139,8 @@ h2.gradient {
 
 /* Тусламжийн текстийн өнгө */
 .search-form input[type="text"]::placeholder {
-    color: var(--text-color-light); /* Оролтын туслах текстийн өнгө */
-    opacity: 0.7; /* Туслах текстийн тодролтыг багасгах */
+    color: var(--text-color-light); 
+    opacity: 0.7; 
 }
 
 /* Rest of the CSS remains unchanged... */
@@ -211,7 +209,6 @@ nav {
     flex-grow: 1; 
 }
 
-/* Style for Individual Links */
 #navMenu li a {
     color: #333;
     text-decoration: none;
@@ -224,10 +221,10 @@ nav {
     justify-content:space-around;
     gap: 20px;
     color: #333;
-    flex-grow: 0.2; /* Makes the ul take up remaining space to center it */
+    flex-grow: 0.2; 
 }
 
-/* Style for Individual Links */
+
 #iconMenu li a {
     color: #333;
 }
@@ -381,20 +378,18 @@ footer {
     font-size: 12px;
     color: #B0B0B0;
     opacity: 0.3;
-}/* Эхний үед sticky-links хэсгийг hide хийж, footer харагдаж байх */
+}
 .sticky-links {
     display: none;
 }
 
 
-/* Footer-ийг утасны дэлгэц дээр далдлах */
-@media (max-width: 768px) {
+@media (max-width: 768px) and (max-width: 1024px){
 
     footer {
-        display: none; /* Footer-ийг hide хийж байна */
+        display: none; 
     }
     
-    /* Sticky Links хэсгийг дэлгэцийн доод хэсэгт байрлуулах */
     .sticky-links {
         position: fixed;
         bottom: 0;
@@ -404,10 +399,9 @@ footer {
         display: flex;
         justify-content: space-around;
         padding: 20px 0;
-        z-index: 1000; /* Дээд давхрагад харагдах байдлаар */
+        z-index: 1000; 
     }
 
-    /* Sticky Links доторх холбоосуудын загвар */
     .sticky-links ul {
         display: flex;
         list-style-type: none;
@@ -430,41 +424,34 @@ footer {
         align-items: center;
     }
 
-    /* Top Links хэсгийг утасны дэлгэц дээр далдлах */
     .top-links svg, .top-links a {
         display: none;
     }
-        /* Show the toggle button */
         #toggleButton {
             display: none;
 
         }
-    
-        /* When the toggle button is clicked */
+
         #toggleButton.active + #navMenu {
-            display: flex; /* Show the menu when the button is clicked */
+            display: flex; 
         }
 
 }
-@media (max-width: 768px) {
-    /* Header загварыг сайжруулах */
+@media (max-width: 768px) and (max-width: 1024px){
     header {
         text-align: center;
         font-size: 1rem;
     }
 
-    /* Navigation menu товч гарч ирэх */
     #toggleButton {
       display: none;
     }
 
-    /* Navigation менюг default байдлаар далдлах */
     #navMenu {
         display: flex;
         width: 1px;
     }
 
-    /* Navigation доторх холбоосууд */
     #navMenu li {
         text-align: center;
         margin: 10px 0;
@@ -475,21 +462,16 @@ footer {
         color: var(--primary-color);
     }
 
-    /* Sticky menu styles */
     .sticky-links {
-        display: flex; /* Гар утасны дэлгэц дээр харагдана */
+        display: flex; 
     }
 
     .sticky-links ul li a {
-        font-size: 0.875rem; /* Холбоосын үсгийн хэмжээг багасгах */
+        font-size: 0.875rem; 
     }
 
 }
 
-
-
-
-/* To toggle menu visibility */
 #toggleButton.active + #navMenu {
     display: flex;
 }
@@ -499,7 +481,6 @@ footer {
     align-items: center; 
 }
 
-/* Style for the SVG icon */
 .top-links svg {
     margin-right: 8px; 
 

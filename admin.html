@@ -126,7 +126,7 @@
         <!-- Бүтээгдэхүүний мэдээлэл -->
         <div class="form-group">
             <label for="images">Үндсэн зураг</label>
-            <input type="file" id="images" name="images" accept="image/*" multiple>
+            <input type="file" id="images" name="images" accept="image/*">
         </div>
         <div class="form-group">
             <label for="subImages">Дэд зургууд</label>
@@ -211,11 +211,11 @@
     });
 
   </script>
-  <Script>
-    // Бүтээгдэхүүний жагсаалт харуулах
+  <script>
+
     async function fetchProducts() {
       try {
-        const response = await fetch('http://localhost:3000/products'); // Серверээс бүтээгдэхүүнүүдийг авах
+        const response = await fetch('http://localhost:3000/products'); 
         if (!response.ok) {
           throw new Error('Бүтээгдэхүүн татахад алдаа гарлаа');
         }
@@ -243,7 +243,7 @@
     // Бүтээгдэхүүний жагсаалтыг ачаалах
     fetchProducts();
 
-  </Script>
+  </script>
 </body>
 
 </html>

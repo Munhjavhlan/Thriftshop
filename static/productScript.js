@@ -51,16 +51,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         document
             .getElementById("search-button")
             .addEventListener("click", function () {
-                // Get the input element
                 const searchInput = document.getElementById("search-input-2");
 
                 if (searchInput) {
-                    // Retrieve and trim the input value
                     const searchValue = searchInput.value.trim();
 
                     if (searchValue) {
-                        // Update the URL with the search term
-                        const currentUrl = window.location.href.split("?")[0]; // Remove existing query parameters
+                      
+                        const currentUrl = window.location.href.split("?")[0]; 
                         const newUrl = `${currentUrl}?searchTerm=${encodeURIComponent(
                             searchValue
                         )}`;
@@ -73,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     console.error("Input element not found.");
                 }
-                filterProducts(); // Call filter function
+                filterProducts(); 
             });
 
         rangeMax.setAttribute("max", maxPrice);
@@ -156,8 +154,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             paginatedProducts.forEach((product) => {
                 const productCard = document.createElement("div");
                 productCard.classList.add("product-card");
-
-                // Add product image and heart button
                 productCard.innerHTML = `
                         
                          <a href="productInfo.html?id=${product.id}" class="product-link">
