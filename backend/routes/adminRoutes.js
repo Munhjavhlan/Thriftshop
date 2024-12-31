@@ -4,7 +4,29 @@ const db = require('../db');
 const { authenticateAdmin } = require('../auth'); 
 const multer = require('multer'); 
 const path = require('path');
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
+// Swagger тохиргоо
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Админы Удирдлагын API',
+      version: '1.0.0',
+      description: 'Админ эрхээр бараа нэмэх, засах, устгах API.',
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000/admin',
+      },
+    ],
+  },
+  apis: [__filename], 
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+router.use('/admin/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

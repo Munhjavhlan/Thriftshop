@@ -16,7 +16,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3000/auth',
       },
     ],
   },
@@ -24,7 +24,7 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+router.use('/auth/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
@@ -69,7 +69,7 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *               email:
  *                 type: string
  *               password:
- *                 type: strinа
+ *                 type: string
  *     responses:
  *       302:
  *         description: Хэрэглэгч амжилттай бүртгэгдэж, нэвтрэх хуудас руу чиглүүлэгдлээ.
@@ -107,7 +107,7 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *     summary: Админы хуудас руу нэвтрэх
  *     responses:
  *       200:
- *         description: Админы хуудас руу нэвтэрч чадлаа.
+ *         description: Админы хуудас руу нэвтрэж чадлаа.
  *       401:
  *         description: Хэрэглэгч нэвтрээгүй байна.
  *       403:

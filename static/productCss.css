@@ -355,6 +355,7 @@ input[type="text"]{
 @media screen and (max-width: 480px) {
     #product-grid {
         grid-template-columns: 1fr; /* 1 багана */
+        justify-content: center;
     }
 
     .filter-bar {
@@ -388,5 +389,12 @@ input[type="text"]{
 
     .sort-button i {
         margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 багана */
+        justify-content: center;
     }
 }

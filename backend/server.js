@@ -1,14 +1,16 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-const authRoutes = require('./routes/auth');
-const pool = require('./db'); 
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/products');
+const pool = require('./db'); // PostgreSQL холболт
 
 const app = express();
 const PORT = 3000;
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -19,20 +21,19 @@ app.use(
     cookie: { secure: false },
   })
 );
-
 app.use(express.static(path.join(__dirname, '..')));
 
-// Swagger Configuration
+// Swagger тохиргоо
 const swaggerOptions = {
   swaggerDefinition: {
     openapi: '3.0.0',
     info: {
-      title: 'E-Commerce API',
+      title: 'Цахим худалдааны API',
       version: '1.0.0',
-      description: 'API documentation for the E-Commerce platform',
+      description: 'Цахим худалдааны платформын API баримт бичиг',
       contact: {
-        name: 'Developer',
-        email: 'developer@example.com',
+        name: 'Хөгжүүлэгч',
+        email: 'Batkabata42@gmail.com',
       },
     },
     servers: [
@@ -45,99 +46,92 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/server/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
  * /:
  *   get:
- *     summary: Render the homepage.
+ *     summary: Нүүр хуудсыг үзүүлэх.
  *     tags:
- *       - Pages
+ *       - Хуудаснууд
  *     responses:
  *       200:
- *         description: Successfully rendered homepage.
+ *         description: Нүүр хуудсыг амжилттай үзүүлсэн.
  */
-
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 /**
  * @swagger
  * /login:
  *   get:
- *     summary: Render the login page.
+ *     summary: Нэвтрэх хуудсыг үзүүлэх.
  *     tags:
- *       - Pages
+ *       - Хуудаснууд
  *     responses:
  *       200:
- *         description: Successfully rendered login page.
+ *         description: Нэвтрэх хуудсыг амжилттай үзүүлсэн.
  */
-
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '../login.html')));
 
 /**
  * @swagger
  * /register:
  *   get:
- *     summary: Render the registration page.
+ *     summary: Бүртгэлийн хуудсыг үзүүлэх.
  *     tags:
- *       - Pages
+ *       - Хуудаснууд
  *     responses:
  *       200:
- *         description: Successfully rendered registration page.
+ *         description: Бүртгэлийн хуудсыг амжилттай үзүүлсэн.
  */
-
 app.get('/register', (req, res) => res.sendFile(path.join(__dirname, '../register.html')));
+
 /**
  * @swagger
  * /cart:
  *   get:
- *     summary: Render the cart page.
+ *     summary: Сагсны хуудсыг үзүүлэх.
  *     tags:
- *       - Pages
+ *       - Хуудаснууд
  *     responses:
  *       200:
- *         description: Successfully rendered cart page.
+ *         description: Сагсны хуудсыг амжилттай үзүүлсэн.
  */
-
-
 app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, '../cart.html')));
 
 /**
  * @swagger
  * /profile:
  *   get:
- *     summary: Render the profile page. Requires authentication.
+ *     summary: Хувийн мэдээллийн хуудсыг үзүүлэх. Нэвтрэлт шаардлагатай.
  *     tags:
- *       - Pages
+ *       - Хуудаснууд
  *     responses:
  *       200:
- *         description: Successfully rendered profile page.
+ *         description: Хувийн мэдээллийн хуудсыг амжилттай үзүүлсэн.
  *       401:
- *         description: Unauthorized. User not logged in.
+ *         description: Зөвшөөрөлгүй. Хэрэглэгч нэвтрээгүй байна.
  */
-
 app.get('/profile', isAuthenticated, (req, res) => res.sendFile(path.join(__dirname, '../profile.html')));
-
 
 /**
  * @swagger
  * /logout:
  *   get:
- *     summary: Log out the user and destroy the session.
+ *     summary: Хэрэглэгчийг гаргаж, сессийг устгах.
  *     tags:
- *       - Authentication
+ *       - Нэвтрэлт
  *     responses:
  *       200:
- *         description: Successfully logged out and redirected to login.
+ *         description: Амжилттай гарсан ба нэвтрэх хуудас руу шилжүүлсэн.
  *       500:
- *         description: Server error during logout.
+ *         description: Гарах үед серверийн алдаа гарсан.
  */
-
 app.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if (err) {
-      return res.status(500).json({ message: 'Гарах үед алдаа гарлаа..' });
+      return res.status(500).json({ message: 'Гарах үед алдаа гарлаа.' });
     }
     res.clearCookie('connect.sid');
     res.redirect('/login');
@@ -152,8 +146,11 @@ function isAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
+// Routes
 app.use('/auth', authRoutes);
+app.use('/products', productRoutes);
 
+// PostgreSQL холболт
 pool.connect((err) => {
   if (err) {
     console.error('PostgreSQL холбогдож чадсангүй', err);
@@ -162,6 +159,7 @@ pool.connect((err) => {
   }
 });
 
+// Сервер эхлүүлэх
 app.listen(PORT, () => {
   console.log(`Сервер http://localhost:${PORT} дээр ажиллаж байна.`);
 }).on('error', (err) => {
@@ -171,6 +169,3 @@ app.listen(PORT, () => {
     console.error('Серверийн алдаа:', err.message);
   }
 });
-const productRoutes = require('./routes/products');
-
-app.use('/products', productRoutes);

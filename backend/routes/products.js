@@ -6,23 +6,22 @@ const router = express.Router();
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-// Swagger тохиргоо
 const swaggerOptions = {
-    definition: {
-      openapi: '3.0.0',
-      info: {
-        title: 'Хэрэглэгчийн Удирдлагын API',
-        version: '1.0.0',
-        description: 'Бараа нэмэх, нэмсэн бараа харах хэсэг.',
-      },
-      servers: [
-        {
-          url: 'http://localhost:3000',
-        },
-      ],
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Бүтээгдэхүүний Удирдлагын API',
+      version: '1.0.0',
+      description: 'Бараа нэмэх, нэмсэн бараа харах хэсэг.',
     },
-    apis: [__filename], 
-  };
+    servers: [
+      {
+        url: 'http://localhost:3000/products',
+      },
+    ],
+  },
+  apis: [__filename], 
+};
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
