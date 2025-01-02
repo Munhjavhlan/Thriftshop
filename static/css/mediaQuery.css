@@ -195,7 +195,7 @@
 
     
         .sticky-links ul li a {
-            font-size: 0.875rem; /* Холбоосын үсгийн хэмжээг багасгах */
+            font-size: 0.875rem; 
         }
     
 }
@@ -203,13 +203,14 @@
    .product-card { width: 100%; height: auto; margin-bottom: 20px; }
 }
 
-
-/*Desktop */
-@media(max-width: 1024px) {
+@media(min-width: 1024px) {
     #product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/*  Huge */
-@media(min-width: 1280px) {}
+@media(min-width: 1280px) {
+    #product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
