@@ -72,7 +72,47 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
  *       200:
  *         description: Нэвтрэх хуудсыг амжилттай үзүүлсэн.
  */
-app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '../login.html')));
+app.get('/login', (req, res) => {
+  if (req.session.userId) {
+    return res.redirect('/profile'); // Redirect to profile if already authenticated
+  }
+  res.sendFile(path.join(__dirname, '../login.html'));
+});
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Хэрэглэгчийг нэвтрүүлэх.
+ *     tags:
+ *       - Нэвтрэлт
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Амжилттай нэвтэрсэн.
+ *       401:
+ *         description: Нэвтрэх нэр эсвэл нууц үг буруу байна.
+ */
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // Here you would normally check the username and password against your database
+  if (username === 'user' && password === 'password') {
+    req.session.userId = username; // Create session
+    res.status(200).json({ message: 'Амжилттай нэвтэрсэн.' });
+  } else {
+    res.status(401).json({ message: 'Нэвтрэх нэр эсвэл нууц үг буруу байна.' });
+  }
+});
 
 /**
  * @swagger
@@ -113,7 +153,12 @@ app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, '../cart.html')
  *       401:
  *         description: Зөвшөөрөлгүй. Хэрэглэгч нэвтрээгүй байна.
  */
-app.get('/profile', isAuthenticated, (req, res) => res.sendFile(path.join(__dirname, '../profile.html')));
+app.get('/profile', (req, res) => {
+  if (!req.session.userId) {
+    return res.redirect('/login'); // Redirect to login if not authenticated
+  }
+  res.sendFile(path.join(__dirname, '../profile.html'));
+});
 
 /**
  * @swagger

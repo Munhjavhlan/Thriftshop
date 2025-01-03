@@ -134,7 +134,7 @@ hr {
                     <span>Нийт</span>
                     <span>${finalPrice}₮</span>
                 </article>
-                <button class="continue-btn">Үргэлжлүүлэх</button>
+                <a href="login.html"><button class="continue-btn" aria-label="Read more">Үргэлжлүүлэх</button></a>
                 <p class="note">
                     Захиалга хийсний дараа барааны үнэ өөрчлөгдсөн тохиолдолд 24 цагийн дотор тантай холбоо барьж мэдэгдэнэ.
                 </p>

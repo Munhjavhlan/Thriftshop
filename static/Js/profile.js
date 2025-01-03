@@ -20,24 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        alert("Мэдээлэл амжилттай хадгалагдлаа!");
     });
 
     // Email subscription toggle
     emailCheckbox.addEventListener("change", () => {
         if (emailCheckbox.checked) {
-            alert("И-мэйл мэдэгдэл идэвхжлээ.");
         } else {
-            alert("И-мэйл мэдэгдэл идэвхгүй боллоо.");
         }
     });
 
     // Phone verification toggle
     phoneCheckbox.addEventListener("change", () => {
         if (phoneCheckbox.checked) {
-            alert("SMS баталгаажуулалт идэвхжлээ.");
         } else {
-            alert("SMS баталгаажуулалт идэвхгүй боллоо.");
         }
     });
 
