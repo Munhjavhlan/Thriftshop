@@ -64,9 +64,15 @@ router.use('/auth/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *           schema:
  *             type: object
  *             properties:
+ *               lastname:
+ *                 type: string
+ *               firstname:
+ *                 type: string
  *               username:
  *                 type: string
  *               email:
+ *                 type: string
+ *               phone:
  *                 type: string
  *               password:
  *                 type: string
@@ -134,9 +140,9 @@ const isAdmin = async (req, res, next) => {
 
 // Бүртгэл API
 router.post('/register', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { lastname, firstname, username, email, phone, password } = req.body;
   try {
-    const user = await registerUser(username, email, password);
+    const user = await registerUser(lastname, firstname, username, email, phone, password);
     res.status(302).redirect('/login');
   } catch (err) {
     res.status(400).json({ message: 'Бүртгэл амжилтгүй', error: err.message });

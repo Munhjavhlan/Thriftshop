@@ -1,14 +1,15 @@
 const pool = require("../db");
 const bcrypt = require("bcryptjs");
 
-const registerUser = async (username, email, password) => {
+
+const registerUser = async (lastname, firstname, username, email, phone, password) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const query = `
-    INSERT INTO users (username, email, password)
-    VALUES ($1, $2, $3)
+    INSERT INTO users (lastname, firstname, username, email, phone, password)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `;
-  const values = [username, email, hashedPassword];
+  const values = [lastname, firstname, username, email, phone, hashedPassword];
   const result = await pool.query(query, values);
   return result.rows[0];
 };
@@ -36,4 +37,11 @@ const getUserRole = async (userId) => {
   return result.rows[0].role;  
 };
 
-module.exports = { registerUser, loginUser, getUserById, getUserRole };
+const getUserDataById = async (userId) => {
+  const query = `SELECT lastname, firstname, email, phone FROM users WHERE id = $1;`;
+  const result = await pool.query(query, [userId]);
+  if (result.rows.length === 0) return null;
+  return result.rows[0];
+};
+
+module.exports = { registerUser, loginUser, getUserById, getUserRole, getUserDataById };

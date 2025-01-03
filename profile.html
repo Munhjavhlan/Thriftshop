@@ -253,4 +253,20 @@
     </div>
     <script src="static/script.js"></script>
     <script src="static/Js/profile.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = 1; // Replace with actual user ID
+        try {
+            const response = await fetch(`/api/users/${userId}`);
+            const userData = await response.json();
+            console.log(userData.lastname);
+            document.getElementById("lastname").placeholder = userData.lastname || 'Овог';
+            document.getElementById("firstname").placeholder = userData.firstname || 'Нэр';
+            document.getElementById("email").placeholder = userData.email || 'И-Мэйл';
+            document.getElementById("phone").placeholder = userData.phone || 'Утас';
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    });
+</script>
 </html>

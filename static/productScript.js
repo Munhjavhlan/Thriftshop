@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const newUrl = `${currentUrl}?searchTerm=${encodeURIComponent(
                             searchValue
                         )}`;
-                        window.history.pushState({}, "", newUrl); // Update URL without reloading
+                        window.history.pushState({}, "", newUrl); 
 
                         console.log("Search term added to URL:", newUrl);
                     } else {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         maxLabel.textContent = `$${maxPrice}`;
 
         function updateMinSliderMax() {
-            rangeMin.setAttribute("max", rangeMax.value); // Set max of rangeMin to the current value of rangeMax
+            rangeMin.setAttribute("max", rangeMax.value); 
         }
 
         function controlFromInput(fromSlider, fromInput, toSlider, toInput) {
@@ -221,14 +221,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             const maxPrice = parseInt(rangeMax.value);
             const params = new URLSearchParams(window.location.search);
             const searchTerm = params.get("searchTerm");
-            console.log("Search Term from URL:", searchTerm);
 
             minLabel.textContent = `$${minPrice}`;
             maxLabel.textContent = `$${maxPrice}`;
 
-            const filterKeywords = Array.from(
-                keywordDisplay.querySelectorAll(".keyword-tag")
-            ).map((tag) => tag.textContent.trim().replace("×", "").trim());
+            const filterKeywords =keywordDisplay.querySelectorAll(".keyword-tag")
+            .map((tag) => tag.textContent.trim().replace("×", "").trim());
 
             const filteredProducts = products.filter((product) => {
                 const priceInRange =
@@ -251,9 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             updateUrl();
         }
-        // `input` эвент — Хэрэглэгч бичих бүрд ажиллана
         searchInput.addEventListener("input", () => {
-            // Одоогийн URL-аас query параметрийг устгана
             const currentUrl = window.location.href.split("?")[0];
             const searchValue = searchInput.value.trim(); // Input талбараас одоогийн утгыг авна
 

@@ -87,12 +87,24 @@
             <p>Доорх мэдээллийг бөглөнө үү</p>
             <form action="/auth/register" method="POST">
                 <div class="form-group">
-                    <label for="username">Нэр</label>
-                    <input type="text" id="username" name="username" placeholder="Нэрээ оруулна уу" required>
+                    <label for="lastname">Овог</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Овгоо оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstname">Нэр</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Нэрээ оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Хэрэглэгчийн нэр</label>
+                    <input type="text" id="username" name="username" placeholder="Хэрэглэгчийн нэрээ оруулна уу" required>
                 </div>
                 <div class="form-group">
                     <label for="email">И-мэйл</label>
                     <input type="email" id="email" name="email" placeholder="И-мэйл хаягаа оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Утас</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Утасны дугаараа оруулна уу" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Нууц үг</label>

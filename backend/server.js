@@ -6,9 +6,13 @@ const swaggerUi = require('swagger-ui-express');
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
 const pool = require('./db'); // PostgreSQL холболт
+const { getUserById } = require('./models/User');
 
 const app = express();
 const PORT = 3000;
+
+// Set the view engine to ejs
+app.set('view engine', 'ejs');
 
 // Middleware
 app.use(express.json());
@@ -59,7 +63,7 @@ app.use('/server/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *       200:
  *         description: Нүүр хуудсыг амжилттай үзүүлсэн.
  */
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.get('/', (req, res) => res.render('index'));
 
 /**
  * @swagger
@@ -125,7 +129,14 @@ app.post('/login', (req, res) => {
  *       200:
  *         description: Бүртгэлийн хуудсыг амжилттай үзүүлсэн.
  */
-app.get('/register', (req, res) => res.sendFile(path.join(__dirname, '../register.html')));
+app.get('/register', async (req, res) => {
+  let user = null;
+  if (req.session.userId) {
+    user = await getUserById(req.session.userId);
+    console.log('Fetched user data:', user); // Log user data
+  }
+  res.render('register', { user });
+});
 
 /**
  * @swagger
@@ -153,11 +164,13 @@ app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, '../cart.html')
  *       401:
  *         description: Зөвшөөрөлгүй. Хэрэглэгч нэвтрээгүй байна.
  */
-app.get('/profile', (req, res) => {
+app.get('/profile', async (req, res) => {
   if (!req.session.userId) {
     return res.redirect('/login'); // Redirect to login if not authenticated
   }
-  res.sendFile(path.join(__dirname, '../profile.html'));
+  const user = await getUserById(req.session.userId);
+  console.log('Fetched user data for profile:', user); // Log user data
+  res.render('profile', { user });
 });
 
 /**

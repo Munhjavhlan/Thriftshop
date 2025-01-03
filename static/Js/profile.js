@@ -1,10 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     // Form elements
     const form = document.querySelector("form");
     const saveButton = document.querySelector(".search-button");
     const emailCheckbox = document.querySelector(".switch input[type='checkbox']");
     const phoneCheckbox = document.querySelector(".switch input[type='checkbox']");
     const socialLinks = document.querySelectorAll("a");
+
+    // Fetch user data and populate form fields
+    const userId = 1; // Replace with actual user ID
+    try {
+        const response = await fetch(`/api/users/${userId}`);
+        const userData = await response.json();
+        document.getElementById("lastname").value = userData.lastname;
+        document.getElementById("firstname").value = userData.firstname;
+        document.getElementById("email").value = userData.email;
+        document.getElementById("phone").value = userData.phone;
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+    }
 
     // Save button handler
     form.addEventListener("submit", (event) => {

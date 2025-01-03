@@ -12,6 +12,86 @@
     <script type="module" src="./static/Js/cart-list.js"></script>
     <script type="module" src="./static/Js/cart-total.js"></script>
     <title>Thrift Shop</title>
+    <style>
+        /* Mobile devices */
+        @media (max-width: 600px) {
+            main {
+                grid-template-areas:
+                "topbar"
+                "content"
+                "baraa"
+                "sambar"
+                "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            cart-list, cart-total {
+                grid-area: auto;
+            }
+
+            .order-summary {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .baraa {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .baraa img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .details {
+                width: 100%;
+            }
+        }
+
+        /* Tablet devices */
+        @media (min-width: 601px) and (max-width: 1024px) {
+            main {
+                grid-template-areas:
+                "topbar topbar"
+                "content content"
+                "baraa sambar"
+                "footer footer";
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            cart-list {
+                grid-area: baraa;
+            }
+
+            cart-total {
+                grid-area: sambar;
+            }
+
+            .order-summary {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .baraa {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .baraa img {
+                width: 150px;
+                height: 150px;
+                margin-right: 10px;
+            }
+
+            .details {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 
 <body class="light-mode"> <!-- Энэ defualt -аар lightmode -той байгаа шүү -->
@@ -181,7 +261,7 @@
                             fill="#1C274C" />
                     </svg>
                 </a></li>
-            <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943"
+            <li><a href="http://localhost:3000/login"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943"
                         class="bi bi-cart3" viewBox="0 0 17 17">
                         <path
                             d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
