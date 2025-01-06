@@ -106,14 +106,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         function getParsedValues(currentFrom, currentTo) {
-            const from = parseInt(currentFrom.value);
-            const to = parseInt(currentTo.value);
+            const from = Number(currentFrom.value);
+            const to = Number(currentTo.value);
             return [from, to];
         }
 
         function fillSlider(fromSlider, toSlider, toInput) {
-            const fromValue = parseInt(fromSlider.value);
-            const toValue = parseInt(toSlider.value);
+            const fromValue = Number(fromSlider.value);
+            const toValue = Number(toSlider.value);
             const percentage =
                 ((toValue - fromSlider.min) / (toSlider.max - fromSlider.min)) * 100;
             const fromPercentage =
@@ -217,8 +217,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         function filterProducts() {
-            const minPrice = parseInt(rangeMin.value);
-            const maxPrice = parseInt(rangeMax.value);
+            const minPrice = Number(rangeMin.value);
+            const maxPrice = Number(rangeMax.value);
             const params = new URLSearchParams(window.location.search);
             const searchTerm = params.get("searchTerm");
 

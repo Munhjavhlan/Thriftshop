@@ -11,7 +11,6 @@ const { getUserById } = require('./models/User');
 const app = express();
 const PORT = 3000;
 
-// Set the view engine to ejs
 app.set('view engine', 'ejs');
 
 // Middleware
@@ -109,9 +108,9 @@ app.get('/login', (req, res) => {
  */
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-  // Here you would normally check the username and password against your database
+
   if (username === 'user' && password === 'password') {
-    req.session.userId = username; // Create session
+    req.session.userId = username; 
     res.status(200).json({ message: 'Амжилттай нэвтэрсэн.' });
   } else {
     res.status(401).json({ message: 'Нэвтрэх нэр эсвэл нууц үг буруу байна.' });
@@ -166,7 +165,7 @@ app.get('/cart', (req, res) => res.sendFile(path.join(__dirname, '../cart.html')
  */
 app.get('/profile', async (req, res) => {
   if (!req.session.userId) {
-    return res.redirect('/login'); // Redirect to login if not authenticated
+    return res.redirect('/login'); 
   }
   const user = await getUserById(req.session.userId);
   console.log('Fetched user data for profile:', user); // Log user data
@@ -195,14 +194,6 @@ app.get('/logout', (req, res) => {
     res.redirect('/login');
   });
 });
-
-// Authentication middleware
-function isAuthenticated(req, res, next) {
-  if (req.session.userId) {
-    return next();
-  }
-  res.redirect('/login');
-}
 
 // Routes
 app.use('/auth', authRoutes);

@@ -1,5 +1,5 @@
 const params = new URLSearchParams(window.location.search);
-const productId = parseInt(params.get('id')); // Ensure the ID is a number
+const productId = parseInt(params.get('id')); 
 
 if (!productId) {
     alert('Invalid or missing product ID');
@@ -15,7 +15,6 @@ if (!productId) {
                 return;
             }
 
-            // Populate product details
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-description').textContent = `Бүтээгдэхүүний нэр: ${product.description}`;
             document.getElementById('product-price').textContent = `Үнэ: $${product.price}`;
@@ -23,20 +22,17 @@ if (!productId) {
             document.getElementById('product-brand').textContent = `Брэнд: ${product.brand}`;
             document.getElementById('product-weight').textContent = `Жин: ${product.weight}kg`;
 
-                // Rating: Display dynamic stars
                 const rating = product.rating;
-                const fullStars = Math.floor(rating); // Бүхэл однууд
-                const halfStar = (rating % 1) >= 0.5 ? 1 : 0; // Хагас од
-                const emptyStars = 5 - fullStars - halfStar; // Хоосон однууд
+                const fullStars = Math.floor(rating); 
+                const halfStar = (rating % 1) >= 0.5 ? 1 : 0; 
+                const emptyStars = 5 - fullStars - halfStar; 
 
-                                            // ★ - Бүхэл од, ☆ - Хоосон од, 🌓 - Хагас од
                                         const ratingStars = '<i class="fas fa-star"></i>'.repeat(fullStars) +
                     (halfStar ? '<i class="fas fa-star-half-alt"></i>' : '') +
                     '<i class="far fa-stasr"></i>'.repeat(emptyStars);
 
                     document.getElementById('product-rating').innerHTML = `Rating: ${ratingStars} (${rating})`;
 
-            // Main image and thumbnails
             const mainImage = document.getElementById('main-image');
             mainImage.src = product.images[0];
 
@@ -70,18 +66,14 @@ if (!productId) {
                     colorBox.style.backgroundPosition = 'center';
             
                     colorBox.addEventListener('click', () => {
-                        // Remove active class from all color boxes
                         document.querySelectorAll('.color-box').forEach(box => box.classList.remove('active'));
                         colorBox.classList.add('active');
                         mainImage.src = image;
-                        // Clear current thumbnails
                         thumbnailContainer.innerHTML = '';
             
-                        // Determine image range based on active color
-                        const startIndex = colorIndex * 7; // Start index based on color
-                        const endIndex = startIndex + 7;  // End index based on color
+                        const startIndex = colorIndex * 7; 
+                        const endIndex = startIndex + 7;  
             
-                        // Add thumbnails for the selected range
                         product.subImages.slice(startIndex, endIndex).forEach((subImage, index) => {
                             const img = document.createElement('img');
                             img.src = subImage;
@@ -134,7 +126,6 @@ if (!productId) {
                     // Мэдэгдлийг харуулах
                     notification.classList.add('show');
                 
-                    // 2 секундийн дараа автоматаар алга болгох
                     setTimeout(() => {
                         notification.classList.remove('show');
                     }, 4000);
@@ -157,7 +148,7 @@ if (!productId) {
             
                     cart.push({ id, name, price, thumbnail });
                     localStorage.setItem('cart', JSON.stringify(cart));
-                    // Мэдэгдэл харуулах
+
                     showCartNotification({ id, name, price, thumbnail });
                 });
     

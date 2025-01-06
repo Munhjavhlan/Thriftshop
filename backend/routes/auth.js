@@ -5,7 +5,6 @@ const { registerUser, loginUser, getUserById } = require('../models/User');
 
 const router = express.Router();
 
-// Swagger тохиргоо
 const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
