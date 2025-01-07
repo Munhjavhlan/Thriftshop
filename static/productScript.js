@@ -106,14 +106,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         function getParsedValues(currentFrom, currentTo) {
-            const from = Number(currentFrom.value);
-            const to = Number(currentTo.value);
+            const from =currentFrom.value;
+            const to = currentTo.value;
             return [from, to];
         }
 
         function fillSlider(fromSlider, toSlider, toInput) {
-            const fromValue = Number(fromSlider.value);
-            const toValue = Number(toSlider.value);
+            const fromValue = (fromSlider.value);
+            const toValue = (toSlider.value);
             const percentage =
                 ((toValue - fromSlider.min) / (toSlider.max - fromSlider.min)) * 100;
             const fromPercentage =
@@ -159,9 +159,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                          <a href="productInfo.html?id=${product.id}" class="product-link">
                         <div class="product-image-container">
                             <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
-                            
                         </div>
-
                             <h3>${product.name}</h3>
                             <p>Үнэ: ${product.price}₮</p>
                         </a>
@@ -175,7 +173,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     `;
 
                 productGrid.appendChild(productCard);
-            });
+            }); 
             updatePagination(filteredProducts.length);
         }
 
@@ -217,15 +215,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         function filterProducts() {
-            const minPrice = Number(rangeMin.value);
-            const maxPrice = Number(rangeMax.value);
+            const minPrice = rangeMin.value;
+            const maxPrice = rangeMax.value;
             const params = new URLSearchParams(window.location.search);
             const searchTerm = params.get("searchTerm");
 
             minLabel.textContent = `$${minPrice}`;
             maxLabel.textContent = `$${maxPrice}`;
 
-            const filterKeywords =keywordDisplay.querySelectorAll(".keyword-tag")
+            const filterKeywords =Array.from(keywordDisplay.querySelectorAll(".keyword-tag"))
             .map((tag) => tag.textContent.trim().replace("×", "").trim());
 
             const filteredProducts = products.filter((product) => {

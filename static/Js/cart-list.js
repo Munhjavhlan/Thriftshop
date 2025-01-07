@@ -2,7 +2,7 @@ class CartList extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.category = '';
+        this.turul = '';
     }
 
     connectedCallback() {
@@ -12,8 +12,6 @@ class CartList extends HTMLElement {
     loadCart() {
         const cart = this.getCartItems();
         const isEmpty = cart.length === 0;
-
-
         this.shadowRoot.innerHTML = `
         <style>
         main {
@@ -161,22 +159,28 @@ hr {
   background-color: #b71c1c;
 }
         </style>
+        <template id="cart-template">
             <article class="sags">
                 <h2>Таны сагс</h2>
                 <section>
-                    ${isEmpty ? '<p>Сагс хоосон байна.</p>' : this.renderProducts(cart)}
+                    <slot name="cart-content"></slot>
                 </section>
             </article>
-           
+        </template>
         `;
 
+        const template = this.shadowRoot.getElementById('cart-template').content.cloneNode(true);
+        const slot = template.querySelector('slot[name="cart-content"]');
 
         if (isEmpty) {
+            slot.innerHTML = '<p>Сагс хоосон байна.</p>';
             this.setAttribute('empty', '');
         } else {
+            slot.innerHTML = this.renderProducts(cart);
             this.removeAttribute('empty');
         }
 
+        this.shadowRoot.appendChild(template);
         this.addRemoveListeners();
         this.dispatchCartUpdateEvent(cart); 
     }
@@ -225,16 +229,16 @@ hr {
         let cart = this.getCartItems();
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        this.loadCart(); // Reload the cart after removing an item
-        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
+        this.loadCart(); 
+        this.dispatchCartUpdateEvent(cart); 
     }
 
     updateQuantity(index, quantity) {
         let cart = this.getCartItems();
         cart[index].quantity = quantity;
         localStorage.setItem('cart', JSON.stringify(cart));
-        this.loadCart(); // Reload the cart after updating quantity
-        this.dispatchCartUpdateEvent(cart); // Dispatch event to update total price
+        this.loadCart(); 
+        this.dispatchCartUpdateEvent(cart); 
     }
 
     dispatchCartUpdateEvent(cart) {
@@ -246,8 +250,6 @@ hr {
         });
         this.dispatchEvent(event);
     }
-
-    // Add state management for dynamic styles
     static get observedAttributes() {
         return ['empty'];
     }

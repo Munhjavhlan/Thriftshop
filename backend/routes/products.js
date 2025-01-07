@@ -193,6 +193,71 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *         description: Серверт алдаа гарлаа
  */
 
+/**
+ * @swagger
+ * /products:
+ *   get:
+ *     summary: Бүх бүтээгдэхүүнийг авах.
+ *     tags:
+ *       - Бүтээгдэхүүн
+ *     parameters:
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Бүтээгдэхүүний ангилал
+ *       - in: query
+ *         name: minPrice
+ *         schema:
+ *           type: number
+ *         description: Хамгийн бага үнэ
+ *       - in: query
+ *         name: maxPrice
+ *         schema:
+ *           type: number
+ *         description: Хамгийн их үнэ
+ *       - in: query
+ *         name: rating
+ *         schema:
+ *           type: number
+ *         description: Үнэлгээ
+ *     responses:
+ *       200:
+ *         description: Бүх бүтээгдэхүүнийг амжилттай авсан.
+ *       500:
+ *         description: Серверийн алдаа.
+ */
+router.get('/', async (req, res) => {
+  const { category, minPrice, maxPrice, rating } = req.query;
+  let query = 'SELECT * FROM products WHERE 1=1';
+  const params = [];
+
+  if (category) {
+    query += ' AND category = $1';
+    params.push(category);
+  }
+  if (minPrice) {
+    query += ' AND price >= $2';
+    params.push(minPrice);
+  }
+  if (maxPrice) {
+    query += ' AND price <= $3';
+    params.push(maxPrice);
+  }
+  if (rating) {
+    query += ' AND rating >= $4';
+    params.push(rating);
+  }
+
+  try {
+    const result = await pool.query(query, params);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error fetching products:', err);
+    res.status(500).json({ message: 'Серверийн алдаа' });
+  }
+});
+
 // Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

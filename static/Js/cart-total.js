@@ -29,7 +29,7 @@ class CartTotal extends HTMLElement {
     }
 
     calculateDiscount(cart) {
-        return 4; 
+        return cart.price * 0.1
     }
 
     render(totalPrice, discount, serviceFee, finalPrice) {
