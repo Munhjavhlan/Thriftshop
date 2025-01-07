@@ -280,21 +280,19 @@ router.post('/add', upload.fields([
     try {
         const { name, description, price, category, rating, tag = '', brand, weight, dimensions } = req.body;
 
-        // Parse tags
         const tags = typeof tag === 'string' ? tag.split(',') : [];
 
-        // Handle uploaded files
-        const images = req.files?.images?.map(file => `/images/${file.filename}`) || [];
-        const subImages = req.files?.subImages?.map(file => `/images/${file.filename}`) || [];
-        const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `/images/${file.filename}`) || [];
-        const thumbnail = req.files?.thumbnail?.[0]?.filename ? `/images/${req.files.thumbnail[0].filename}` : '';
+        const images = req.files?.images?.map(file => `/images/${file.filename}`) || ['1.webp'];
+        const subImages = req.files?.subImages?.map(file => `/images/${file.filename}`) || ['1.webp'];
+        const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `/images/${file.filename}`) || ['1.webp'];
+        const thumbnail = req.files?.thumbnail?.[0]?.filename ? `/images/${req.files.thumbnail[0].filename}` : '1.webp';
 
-        // Validate and serialize dimensions
+        // Баталгаажуулах 
         const pgDimensions = typeof dimensions === 'string' 
             ? JSON.stringify(JSON.parse(dimensions)) 
             : JSON.stringify(dimensions);
 
-        // Insert product into the database
+        // датасан руу оруулах
         const result = await pool.query(
             `INSERT INTO products (name, description, price, category, rating, tag, brand, weight, dimensions, images, subImages, baraaniiUngu, thumbnail) 
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
@@ -308,7 +306,6 @@ router.post('/add', upload.fields([
     }
 });
 
-// GET route to fetch all products
 router.get('/', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM products');
