@@ -38,7 +38,7 @@ cart-total{
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--main-bg-color-dark);
 }
 
 .item {
@@ -52,7 +52,7 @@ cart-total{
 }
 
 .service-fee {
-  color: #333;
+  color: var(--color-neutral-grey-6);
 }
 
 .total {
@@ -79,7 +79,7 @@ hr {
 }
 
 .continue-btn:hover {
-  background-color: #555;
+  background-color: var(--color-neutral-grey-5);
 }
 
 .note {
