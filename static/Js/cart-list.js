@@ -7,6 +7,7 @@ class CartList extends HTMLElement {
 
     connectedCallback() {
         this.loadCart();
+        window.addEventListener('шинэчлэх', (event) => this.handleCustomEvent(event.detail.finalPrice));
     }
 
     loadCart() {
@@ -68,7 +69,7 @@ hr {
 .continue-btn {
   width: 100%;
   padding: 10px 0;
-  background-color: #353943;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -250,6 +251,12 @@ hr {
         });
         this.dispatchEvent(event);
     }
+
+    handleCustomEvent(finalPrice) {
+        console.log(`Final price updated: ${finalPrice}₮`);
+        // Handle the custom event (e.g., update UI or perform other actions)
+    }
+
     static get observedAttributes() {
         return ['empty'];
     }

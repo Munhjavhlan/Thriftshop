@@ -7,7 +7,7 @@ class CartTotal extends HTMLElement {
 
     connectedCallback() {
         this.loadCartData(); 
-        window.addEventListener('cart-updated', () => this.loadCartData());
+        window.addEventListener('cart-updated', (event) => this.updateTotalPrice(event.detail.totalPrice));
     }
 
     loadCartData() {
@@ -29,7 +29,21 @@ class CartTotal extends HTMLElement {
     }
 
     calculateDiscount(cart) {
-        return cart.price * 0.1
+        return  100
+    }
+
+    updateTotalPrice(totalPrice) {
+        const discount = this.calculateDiscount(this.getCartItems());
+        const serviceFee = 5000;
+        const finalPrice = totalPrice - discount + serviceFee;
+        this.render(totalPrice, discount, serviceFee, finalPrice);
+        
+        const customEvent = new CustomEvent('шинэчлэх', {
+            detail: { finalPrice },
+            bubbles: true,
+            composed: true,
+        });
+        this.dispatchEvent(customEvent);
     }
 
     render(totalPrice, discount, serviceFee, finalPrice) {
@@ -73,7 +87,7 @@ cart-total{
 }
 
 .service-fee {
-  color: #333;
+  color: var(--color-neutral-grey-6);
 }
 
 .total {
@@ -90,7 +104,7 @@ hr {
 .continue-btn {
   width: 100%;
   padding: 10px 0;
-  background-color: #353943;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 5px;

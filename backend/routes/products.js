@@ -282,10 +282,10 @@ router.post('/add', upload.fields([
 
         const tags = typeof tag === 'string' ? tag.split(',') : [];
 
-        const images = req.files?.images?.map(file => `/images/${file.filename}`) || ['1.webp'];
-        const subImages = req.files?.subImages?.map(file => `/images/${file.filename}`) || ['1.webp'];
-        const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `/images/${file.filename}`) || ['1.webp'];
-        const thumbnail = req.files?.thumbnail?.[0]?.filename ? `/images/${req.files.thumbnail[0].filename}` : '1.webp';
+        const images = req.files?.images?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+        const subImages = req.files?.subImages?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+        const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+        const thumbnail = req.files?.thumbnail?.[0]?.filename ? `../../images/${req.files.thumbnail[0].filename}` : '../../images/1.webp';
 
         // Баталгаажуулах 
         const pgDimensions = typeof dimensions === 'string' 
