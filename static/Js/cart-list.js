@@ -159,6 +159,16 @@ hr {
 .remove-button:hover {
   background-color: #b71c1c;
 }
+
+:host(:state(empty)) .sags {
+  background-color:var(--secondary-color);
+  color: #999;
+}
+
+:host(:state(non-empty)) .sags {
+  background-color: #fff;
+  color: #000;
+}
         </style>
         <template id="cart-template">
             <article class="sags">

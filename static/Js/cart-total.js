@@ -14,10 +14,10 @@ class CartTotal extends HTMLElement {
         const cart = this.getCartItems(); 
         const totalPrice = this.calculateTotal(cart);
         const discount = this.calculateDiscount(cart); 
-        const serviceFee = 5000; 
-        const finalPrice = totalPrice - discount + serviceFee; 
+        const uilchilgeeniiTulbur = 5000; 
+        const finalPrice = totalPrice - discount + uilchilgeeniiTulbur; 
         
-        this.render(totalPrice, discount, serviceFee, finalPrice); 
+        this.render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice); 
     }
 
     getCartItems() {
@@ -33,10 +33,10 @@ class CartTotal extends HTMLElement {
     }
 
     updateTotalPrice(totalPrice) {
-        const discount = this.calculateDiscount(this.getCartItems());
-        const serviceFee = 5000;
-        const finalPrice = totalPrice - discount + serviceFee;
-        this.render(totalPrice, discount, serviceFee, finalPrice);
+        const hymdral = this.calculateDiscount(this.getCartItems());
+        const uilchilgeeniiTulbur = 5000;
+        const finalPrice = totalPrice - hymdral + uilchilgeeniiTulbur;
+        this.render(totalPrice, hymdral, uilchilgeeniiTulbur, finalPrice);
         
         const customEvent = new CustomEvent('шинэчлэх', {
             detail: { finalPrice },
@@ -46,7 +46,7 @@ class CartTotal extends HTMLElement {
         this.dispatchEvent(customEvent);
     }
 
-    render(totalPrice, discount, serviceFee, finalPrice) {
+    render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice) {
         const template = document.createElement('template');
                 template.innerHTML = `
             <style>
@@ -130,6 +130,16 @@ hr {
     align-items: center;
     margin-left: 15px
   }
+
+:host(:state(empty)) .order-summary {
+    background-color: var(--light-bg);
+    color: var(--color-gray);
+}
+
+:host(:state(non-empty)) .order-summary {
+    background-color: var(--secondary-color);
+    color: var(--font-color-light);
+}
             </style>
      <article class="order-summary">
                 <article class="item">
@@ -142,7 +152,7 @@ hr {
                 </article>
                 <article class="item service-fee">
                     <span>Үйлчилгээний төлбөр</span>
-                    <span>${serviceFee}₮</span>
+                    <span>${uilchilgeeniiTulbur}₮</span>
                 </article>
                 <article class="item total">
                     <span>Нийт</span>
