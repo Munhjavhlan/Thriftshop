@@ -229,7 +229,7 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  */
 router.get('/', async (req, res) => {
   const { category, minPrice, maxPrice, rating } = req.query;
-  let query = 'SELECT * FROM products WHERE 1=1';
+  let query = 'SELECT * FROM products ';
   const params = [];
 
   if (category) {

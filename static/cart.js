@@ -1,4 +1,3 @@
-
 export function showCartNotification(item) {
     const notification = document.getElementById('cart-notification');
     notification.innerHTML = `
@@ -21,10 +20,13 @@ export function showCartNotification(item) {
 }
 
 export function addToCart(item) {
-    // LocalStorage-д хадгалах
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart));
+    // Dispatch custom event to add item to cart
+    const event = new CustomEvent('add-to-cart', {
+        detail: { item },
+        bubbles: true,
+        composed: true,
+    });
+    window.dispatchEvent(event);
 
     showCartNotification(item);
 }
