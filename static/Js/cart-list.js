@@ -2,7 +2,7 @@ class CartList extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        this.turul = '';
+        this.zahialga = new Map();
     }
 
     connectedCallback() {
@@ -12,7 +12,7 @@ class CartList extends HTMLElement {
 
     loadCart() {
         const cart = this.getCartItems();
-        const isEmpty = cart.length === 0;
+        const isEmpty = cart.size === 0;
         this.shadowRoot.innerHTML = `
         <style>
         main {
@@ -183,25 +183,19 @@ class CartList extends HTMLElement {
         const template = this.shadowRoot.getElementById('cart-template').content.cloneNode(true);
         const slot = template.querySelector('slot[name="cart-content"]');
 
-        if (isEmpty) {
-            slot.innerHTML = '<p>Сагс хоосон байна.</p>';
-            this.setAttribute('empty', '');
-        } else {
-            slot.innerHTML = this.renderProducts(cart);
-            this.removeAttribute('empty');
-        }
-
+        slot.innerHTML = isEmpty ? '<p>Сагс хоосон байна.</p>' : this.renderProducts(cart);
         this.shadowRoot.appendChild(template);
         this.addRemoveListeners();
-        this.dispatchCartUpdateEvent(cart); 
+        this.dispatchCartUpdateEvent(cart);
     }
 
     getCartItems() {
-        return JSON.parse(localStorage.getItem('cart')) || [];
+        const cartArray = JSON.parse(localStorage.getItem('cart')) || [];
+        return this.zahialga = new Map(cartArray.map(item => [item.id, item]));
     }
 
     renderProducts(cart) {
-        return cart.map((item, index) => `
+        return Array.from(cart.values()).map((item, index) => `
         <article class="baraa">
             <img src="${item.thumbnail}" alt="${item.name}">
             <div class="details">
@@ -218,67 +212,50 @@ class CartList extends HTMLElement {
     }
 
     addRemoveListeners() {
-        const removeButtons = this.shadowRoot.querySelectorAll('.remove-button');
-        removeButtons.forEach(button => {
+        this.shadowRoot.querySelectorAll('.remove-button').forEach(button => {
             button.addEventListener('click', (event) => {
-                const index = event.target.getAttribute('data-index');
-                this.removeItem(index);
+                this.removeItem(event.target.getAttribute('data-index'));
             });
         });
 
-        const quantityInputs = this.shadowRoot.querySelectorAll('.quantity input');
-        quantityInputs.forEach(input => {
+        this.shadowRoot.querySelectorAll('.quantity input').forEach(input => {
             input.addEventListener('change', (event) => {
-                const index = event.target.getAttribute('data-index');
-                const quantity = parseInt(event.target.value);
-                this.updateQuantity(index, quantity);
+                this.updateQuantity(event.target.getAttribute('data-index'), parseInt(event.target.value));
             });
         });
     }
 
     removeItem(index) {
         let cart = this.getCartItems();
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        this.loadCart(); 
-        this.dispatchCartUpdateEvent(cart); 
+        cart.delete(Array.from(cart.keys())[index]);
+        this.updateCart(cart);
     }
 
     updateQuantity(index, quantity) {
         let cart = this.getCartItems();
-        cart[index].quantity = quantity;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        this.loadCart(); 
-        this.dispatchCartUpdateEvent(cart); 
-    }
-
-    dispatchCartUpdateEvent(cart) {
-        const totalPrice = cart.reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0).toFixed(2);
-        const event = new CustomEvent('cart-updated', {
-            detail: { totalPrice },
-            bubbles: true,
-            composed: true,
-        });
-        this.dispatchEvent(event);
+        cart.get(Array.from(cart.keys())[index]).quantity = quantity;
+        this.updateCart(cart);
     }
 
     addItem(item) {
         let cart = this.getCartItems();
-        cart.push(item);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        cart.set(item.id, item);
+        this.updateCart(cart);
+    }
+
+    updateCart(cart) {
+        localStorage.setItem('cart', JSON.stringify(Array.from(cart.values())));
         this.loadCart();
         this.dispatchCartUpdateEvent(cart);
     }
 
-    static get observedAttributes() {
-        return ['empty'];
+    dispatchCartUpdateEvent(cart) {
+        const totalPrice = Array.from(cart.values()).reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0).toFixed(2);
+        this.dispatchEvent(new CustomEvent('cart-updated', {
+            detail: { totalPrice },   
+        }));
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'empty') {
-            this.loadCart();
-        }
-    }
 }
 
 customElements.define('cart-list', CartList);

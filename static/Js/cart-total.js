@@ -14,7 +14,7 @@ class CartTotal extends HTMLElement {
         const cart = this.getCartItems(); 
         const totalPrice = this.calculateTotal(cart);
         const discount = this.calculateDiscount(cart); 
-        const uilchilgeeniiTulbur = 5000; 
+        const uilchilgeeniiTulbur = 1000; 
         const finalPrice = totalPrice - discount + uilchilgeeniiTulbur; 
         
         this.render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice); 
@@ -29,12 +29,12 @@ class CartTotal extends HTMLElement {
     }
 
     calculateDiscount() {
-        return  100
+        return 100;
     }
 
     updateTotalPrice(totalPrice) {
         const hymdral = this.calculateDiscount();
-        const uilchilgeeniiTulbur = 5000;
+        const uilchilgeeniiTulbur = 1000;
         const finalPrice = totalPrice - hymdral + uilchilgeeniiTulbur;
         this.render(totalPrice, hymdral, uilchilgeeniiTulbur, finalPrice);
     }
