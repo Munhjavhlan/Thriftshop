@@ -1,86 +1,120 @@
-/* Бүтээгдэхүүний үндсэн контейнер */
-  .product-container {
+:root {
+    --primary-color: #353943;
+    --secondary-color: #ffffff;
+    --dark-bg: #1a1a1a;
+    --light-bg: #fbfbfb;
+    --font-color-dark: #ffffff;
+    --font-color-light: #000000;
+    --spacing: 0.5rem;
+    --spacing-unit: 0.5rem;
+    --transition-time: 0.3s;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --gradient-bg: linear-gradient(45deg, #272525, #7b7a78);
+    --text-color-dark: #ffffff;
+    --text-color-light: #000000;
+    --main-bg-color-dark: #1a1a1a;
+    --main-bg-color-light: #f4f4f4;
+    --color-gray: #828282;
+    --color-neutral-grey-1: #f4f4f4;
+    --color-neutral-grey-2: #e5e5e5;
+    --color-neutral-grey-3: #9b9b9b;
+    --color-neutral-grey-4: #757575;
+    --color-neutral-grey-5: #4a4a4a;
+    --color-neutral-grey-6: #353535;
+    --color-neutral-grey-7: #979797;
+}
+
+.product-container {
     display: flex;
     flex-direction: column;
     gap: 32px;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
+    background-color: var(--secondary-color);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
   
-  /* Бүтээгдэхүүний зураг */
-  .product-main {
+/* Бүтээгдэхүүний зураг */
+.product-main {
     display: flex;
     gap: 40px;
-  }
-  
-  /* Зургийн хэсэг */
-  .product-image {
+}
+
+.product-image {
     position: relative;
     flex-basis: 50%;
-  }
+}
   
-  .product-image img {
+.product-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  /* Thumbnail зургийн контейнер */
-  .thumbnail-container {
+}
+
+.thumbnail-container {
     display: flex;
     gap: 8px;
     margin-top: 10px;
-  }
+}
   
-  .thumbnail-container img {
+.thumbnail-container img {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease;
-  }
+}
   
-  .thumbnail-container img:hover {
+.thumbnail-container img:hover {
     transform: scale(1.1);
-  }
+}
   
-  /* Бүтээгдэхүүний дэлгэрэнгүй */
-  .product-details {
+.product-details {
     flex-basis: 50%;
     margin-left: 50px;
-  }
+}
   
-  .product-details h1 {
+.product-details h1 {
     font-size: 2rem;
     margin-bottom: 10px;
-    color: #333;
-  }
+    color: var(--text-color-light);
+}
   
-  .product-details p {
+.product-details p {
     font-size: 1rem;
-    color: #666;
+    color: var(--color-gray);
     margin-bottom: 10px;
-  }
+}
+.product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.product-main {
+  display: contents;
+}
+.product-image {
+  grid-column: 1;
+}
+.product-details {
+  grid-column: 2;
+}
   
-  /* Үнэлгээний хэсэг */
-  .product-rating {
+/* Үнэлгээний хэсэг */
+.product-rating {
     display: flex;
     gap: 8px;
-  }
+}
   
-
-  /* Бүтээгдэхүүний сонголт */
-  .product-options {
+/* Бүтээгдэхүүний сонголт */
+.product-options {
     font-family: Arial, sans-serif;
-
 }
 
 .size-options, .color-options, .quantity-selector {
-    display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 15px;
@@ -95,11 +129,10 @@
     font-size: 14px;
 }
 
-
 .size-btn.active {
-    background-color: #353943;
-    color: #fff;
-    border-color: #353943;
+    background-color: var(--primary-color);
+    color: var(--font-color-dark);
+    border-color: var(--primary-color);
 }
 
 .color-box {
@@ -115,8 +148,8 @@
 }
 
 .color-box.active {
-    border-color: #353943;
-    box-shadow: 0 0 0 2px #353943;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .quantity-input {
@@ -125,7 +158,6 @@
     font-size: 14px;
     border: none;
     cursor: not-allowed;
-    
 }
 .quantity-input::-webkit-outer-spin-button,
 .quantity-input::-webkit-inner-spin-button {
@@ -140,29 +172,29 @@
   justify-content: center;
 }
 
-  .size-btn{
+.size-btn{
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 8px;
     gap: 20px;
-  }
-  #product-options select,
-  #product-options option {
+}
+#product-options select,
+#product-options option {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
     font-size: 1rem;
-  }
-  .button-group {
+}
+.button-group {
     margin-top: 10px;
     display: flex; /* Flexbox layout */
     gap: 16px; /* Товчлууруудын хоорондын зай */
     align-items: center; /* Товчлууруудыг босоо төвд байршуулах */
 }
   
-  /* Бүтээгдэхүүн нэмэх болон хадгалах товчлуурууд */
-  .button {
+/* Бүтээгдэхүүн нэмэх болон хадгалах товчлуурууд */
+.button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -170,79 +202,78 @@
     cursor: pointer;
 }
   
-  .button.primary {
-    background-color: #2d2f36; /* Хар өнгө */
-    color: #ffffff; /* Цагаан өнгө */
+.button.primary {
+    background-color: var(--primary-color); /* Хар өнгө */
+    color: var(--font-color-dark); /* Цагаан өнгө */
     display: flex;
     align-items: center; /* Icon болон текстийг босоо төвд байршуулах */
     gap: 8px; /* Icon болон текстийн хоорондын зай */
 }
   
-  .button.primary:hover {
-    background-color: #76787d;
-  }
+.button.primary:hover {
+    background-color: var(--color-neutral-grey-6);
+}
   
-  .button.secondary {
-    background-color: #ffffff; /* Цагаан өнгө */
-    color: #2d2f36; /* Хар өнгө */
+.button.secondary {
+    background-color: var(--secondary-color); /* Цагаан өнгө */
+    color: var(--primary-color); /* Хар өнгө */
     display: flex;
-    border: 1px solid #2d2f36; /* Хүрээтэй */
+    border: 1px solid var(--primary-color); /* Хүрээтэй */
     align-items: center; /* Icon болон текстийг босоо төвд байршуулах */
     gap: 8px; /* Icon болон текстийн хоорондын зай */
 }
   
-  .button.secondary:hover {
-    background-color: #76787d;
-    color: white;
-  }
+.button.secondary:hover {
+    background-color: var(--color-neutral-grey-6);
+    color: var(--font-color-dark);
+}
   
-
-  
-  /* Related products хэсэг */
-  .related-products {
+/* Related products хэсэг */
+.related-products {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-  }
+}
   
-  .related-products h2 {
+.related-products h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     color: #333;
-  }
+}
   
-  /* Related products carousel */
-  .product-carousel {
+/* Related products carousel */
+.product-carousel {
     display: flex;
     gap: 20px;
     overflow-x: auto;
-  }
+}
   
-  .product-carousel .product-card {
+.product-carousel .product-card {
     flex-shrink: 0;
     width: 220px;
     height: 320px;
     background-color: #f8f8f8;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  .product-carousel .product-card img {
+.product-carousel .product-card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-radius: 8px 8px 0 0;
-  }
+}
   
-  .product-carousel .product-card .product-name {
+.product-carousel .product-card .product-name {
     padding: 10px;
     font-size: 1rem;
     color: #333;
-  }
-  /* Small screens: Mobile devices */
+}
+/* Small screens: Mobile devices */
 @media screen and (max-width: 768px) {
   .product-container {
+    grid-template-columns: 1fr;
     padding: 15px;
   }
 
@@ -253,7 +284,7 @@
 
   .product-image,
   .product-details {
-    flex-basis: 100%;
+    grid-column: 1;
     margin-left: 0;
     text-align: center;
   }
@@ -295,7 +326,6 @@
   }
 
   .product-image {
-    flex-basis: 100%;
     margin-bottom: 20px;
   }
 
@@ -309,7 +339,6 @@
   }
 }
 
-/* Extra small screens: Mobile */
 @media screen and (max-width: 480px) {
   .product-details h1 {
     font-size: 1.5rem;
@@ -344,12 +373,10 @@
 
   .size-options,
   .color-options {
-    flex-direction: column;
     gap: 15px;
   }
 
   .product-image {
-    flex-basis: 100%;
     margin-bottom: 15px;
   }
 
@@ -361,33 +388,7 @@
     width: 40px;
     height: 40px;
   }
-}
 
-/* Laptop screens: 1024px and above */
-@media screen and (min-width: 1024px) {
-  .product-container {
-    padding: 30px;
-  }
-
-  .product-main {
-    gap: 50px;
-  }
-
-  .product-details h1 {
-    font-size: 2.5rem;
-  }
-
-  .product-details p {
-    font-size: 1.2rem;
-  }
-
-  .button {
-    font-size: 18px;
-  }
-}
-
-/* Phone screens: 480px and below */
-@media screen and (max-width: 480px) {
   .product-container {
     padding: 10px;
   }
@@ -399,17 +400,8 @@
 
   .product-image,
   .product-details {
-    flex-basis: 100%;
     margin-left: 0;
     text-align: center;
-  }
-
-  .product-details h1 {
-    font-size: 1.5rem;
-  }
-
-  .product-details p {
-    font-size: 0.85rem;
   }
 
   .size-options,

@@ -20,13 +20,9 @@ export function showCartNotification(item) {
 }
 
 export function addToCart(item) {
-    // Dispatch custom event to add item to cart
-    const event = new CustomEvent('add-to-cart', {
-        detail: { item },
-        bubbles: true,
-        composed: true,
-    });
-    window.dispatchEvent(event);
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    cartItems.push(item);
+    localStorage.setItem('cart', JSON.stringify(cartItems));
 
     showCartNotification(item);
 }

@@ -52,8 +52,11 @@
                 width: 100%;
             }
         }
-
-        /* Tablet devices */
+        cart-total {
+                margin-top: 30px;
+                grid-area: sambar;
+            }
+        
         @media (min-width: 601px) and (max-width: 1024px) {
             main {
                 grid-template-areas:
@@ -70,6 +73,7 @@
             }
 
             cart-total {
+                margin-top: 30px;
                 grid-area: sambar;
             }
 
@@ -167,9 +171,7 @@
     </header>
 
     <main>
-
         <cart-list></cart-list>
-        <cart-total></cart-total>
     </main>
 
     <footer>

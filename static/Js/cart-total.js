@@ -1,27 +1,38 @@
 class CartTotal extends HTMLElement {
     constructor() {
         super();
-        this.totalPrice = '0.00'; 
+        this.totalPrice = '0.00';
         this.attachShadow({ mode: 'open' });
     }
 
+    static get observedAttributes() {
+        return ['total-price'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'total-price') {
+            this.totalPrice = newValue;
+            this.loadCartData();
+        }
+    }
+
     connectedCallback() {
-        this.loadCartData(); 
+        this.loadCartData();
         window.addEventListener('cart-updated', (event) => this.updateTotalPrice(event.detail.totalPrice));
     }
 
     loadCartData() {
-        const cart = this.getCartItems(); 
-        const totalPrice = this.calculateTotal(cart);
-        const discount = this.calculateDiscount(cart); 
-        const uilchilgeeniiTulbur = 1000; 
-        const finalPrice = totalPrice - discount + uilchilgeeniiTulbur; 
-        
-        this.render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice); 
+        const cart = this.getCartItems();
+        const totalPrice = this.totalPrice;
+        const discount = this.calculateDiscount(cart);
+        const uilchilgeeniiTulbur = 1000;
+        const finalPrice = totalPrice - discount + uilchilgeeniiTulbur;
+
+        this.render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice);
     }
 
     getCartItems() {
-        return JSON.parse(localStorage.getItem('cart')) || []; 
+        return JSON.parse(localStorage.getItem('cart')) || [];
     }
 
     calculateTotal(cart) {
@@ -41,7 +52,7 @@ class CartTotal extends HTMLElement {
 
     render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice) {
         const template = document.createElement('template');
-                template.innerHTML = `
+        template.innerHTML = `
             <style>
       main {
         display: grid;
@@ -133,6 +144,7 @@ class CartTotal extends HTMLElement {
           background-color: var(--secondary-color);
           color: var(--font-color-light);
       }
+          
             </style>
      <article class="order-summary">
                 <article class="item">
@@ -158,7 +170,7 @@ class CartTotal extends HTMLElement {
                 <img class="sda" src="./../../images/Frame 768.png" alt="zurag">
             </article>
         `;
-        this.shadowRoot.innerHTML = ''; 
+        this.shadowRoot.innerHTML = '';
         this.shadowRoot.appendChild(template.content.cloneNode(true));
         if (this.getCartItems().length === 0) {
             this.setAttribute('empty', '');
@@ -167,4 +179,5 @@ class CartTotal extends HTMLElement {
         }
     }
 }
+
 customElements.define('cart-total', CartTotal);

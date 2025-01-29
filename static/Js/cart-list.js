@@ -16,159 +16,159 @@ class CartList extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <style>
         main {
-    display: grid;
-    grid-template-areas:
-    "topbar topbar topbar"
-    "baraa content sambar"
-    "footer footer footer";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50px auto 70px; 
-    justify-items: center;
-    
-  }
-  cart-list{
-    grid-area: baraa;
-  }
-  cart-total{
-    grid-area: sambar;
-  }
+            display: grid;
+            grid-template-areas:
+            "topbar topbar topbar"
+            "baraa content sambar"
+            "footer footer footer";
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 50px auto 70px; 
+            justify-items: center;
+        }
+        cart-list {
+            grid-area: baraa;
+        }
+        cart-total {
+            grid-area: sambar;
+            justify-self: end;
+        }
 
-  .order-summary {
-    width: 350px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px var(--main-bg-color-dark);
-  }
+        .order-summary {
+            width: 350px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px var(--main-bg-color-dark);
+        }
 
-  .item {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-  }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
 
-  .discount {
-    color: red;
-  }
+        .discount {
+            color: red;
+        }
 
-  .service-fee {
-    color: var(--color-neutral-grey-6);
-  }
+        .service-fee {
+            color: var(--color-neutral-grey-6);
+        }
 
-  .total {
-    font-weight: bold;
-    font-size: 18px;
-  }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-  hr {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 10px 0;
-  }
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 10px 0;
+        }
 
-  .continue-btn {
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-  }
+        .continue-btn {
+            width: 100%;
+            padding: 10px 0;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
 
-  .continue-btn:hover {
-    background-color: var(--color-neutral-grey-5);
-  }
+        .continue-btn:hover {
+            background-color: var(--color-neutral-grey-5);
+        }
 
-  .note {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-  }
+        .note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
 
-  .baraa {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+        .baraa {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-  .baraa:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+        .baraa:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-  .baraa img {
-    width: 170px;
-    height: 170px;
-    border-radius: 10%;
-    object-fit: cover;
-    margin-right: 15px;
-  }
+        .baraa img {
+            width: 170px;
+            height: 170px;
+            border-radius: 10%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
 
-  .details {
-    flex: 1;
-  }
+        .details {
+            flex: 1;
+        }
 
-  .details h4 {
-    font-size: 16px;
-    margin: 0 0 5px;
-  }
+        .details h4 {
+            font-size: 16px;
+            margin: 0 0 5px;
+        }
 
-  .details .price {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 10px;
-  }
+        .details .price {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
 
-  .details .price span {
-    font-weight: bold;
-    color: #d32f2f;
-  }
+        .details .price span {
+            font-weight: bold;
+            color: #d32f2f;
+        }
 
-  .quantity {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-  .quantity input {
-    width: 50px;
-    text-align: center;
-    margin-right: 10px;
-  }
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            margin-right: 10px;
+        }
 
-  .remove-button {
-    background-color: #d32f2f;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
+        .remove-button {
+            background-color: #d32f2f;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
 
-  .remove-button:hover {
-    background-color: #b71c1c;
-  }
+        .remove-button:hover {
+            background-color: #b71c1c;
+        }
 
-  :host(:state(empty)) .sags {
-    background-color:var(--secondary-color);
-    color: #999;
-  }
+        :host(:state(empty)) .sags {
+            background-color: var(--secondary-color);
+            color: #999;
+        }
 
-  :host(:state(non-empty)) .sags {
-    background-color: #fff;
-    color: #000;
-  }
+        :host(:state(non-empty)) .sags {
+            background-color: #fff;
+            color: #000;
+        }
         </style>
         <template id="cart-template">
             <article class="sags">
@@ -176,6 +176,7 @@ class CartList extends HTMLElement {
                 <section>
                     <slot name="cart-content"></slot>
                 </section>
+                <cart-total></cart-total>
             </article>
         </template>
         `;
@@ -251,8 +252,12 @@ class CartList extends HTMLElement {
 
     dispatchCartUpdateEvent(cart) {
         const totalPrice = Array.from(cart.values()).reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0).toFixed(2);
+        const cartTotalElement = this.shadowRoot.querySelector('cart-total');
+        if (cartTotalElement) {
+            cartTotalElement.setAttribute('total-price', totalPrice);
+        }
         this.dispatchEvent(new CustomEvent('cart-updated', {
-            detail: { totalPrice },   
+            detail: { totalPrice },
         }));
     }
 
