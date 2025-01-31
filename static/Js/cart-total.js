@@ -65,7 +65,7 @@ class CartTotal extends HTMLElement {
         justify-items: center;
         
       }
-      cart-list{
+      .sags{
         grid-area: baraa;
       }
       cart-total{

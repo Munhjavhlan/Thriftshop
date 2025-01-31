@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="./static/css/snu.css">
     <link rel="stylesheet" href="static/css/mediaQuery.css">
     <script type="module" src="./static/productScript.js"></script>
-    <script type="module" src="./static/Js/product-grid.js"></script>
-    <!-- <script src="./static/Js/urlParam.js"></script> -->
+    <script type="module" src="./static/Js/product-list.js"></script>
     <title>Thrift Shop</title>
 </head>
 
@@ -100,7 +99,7 @@
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                 </button>
-                <button id="toggle-sidebar" aria-label="Фильтрүүдийг харуулах/нуух"  align-items: center;">☰</button>
+                <button id="toggle-sidebar" aria-label="Фильтрүүдийг харуулах/нуух"  align-items: center;>☰</button>
             </div>
            
             <div class="sort-buttons">
@@ -129,13 +128,12 @@
                 </div>
             </div>
 
-            <!-- Description Section -->
             <div class="filter-section">
-                <label>Description:</label>
+                <label>Ангилал:</label>
                 <div class="checkbox-group">
-                    <label><input type="checkbox" checked> Label 1</label>
-                    <label><input type="checkbox" checked> Label 2</label>
-                    <label><input type="checkbox" checked> Label 3</label>
+                    <label><input type="checkbox" id="label-1" checked > Эрэгтэй</label>
+                    <label><input type="checkbox" id="label-2" > Эмэгтэй</label>
+                    <label><input type="checkbox" id="label-3" > Хүүхдийн</label>
                 </div>
             </div>
 
@@ -149,7 +147,7 @@
                     
                 </div>
                 <div class="price-display">
-                    <span id="min-price-display">$0</span> - <span id="max-price-display">$100</span>
+                    <span id="min-price-display">0₮</span> - <span id="max-price-display">100₮</span>
                 </div>
             </div>
 
@@ -285,6 +283,5 @@
                 </svg></a></li>
     </ul>
 </div>
-<script src="static/script.js"></script>
-
+<script src="static/script.js"></script>    
 </html>

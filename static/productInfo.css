@@ -118,6 +118,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 15px;
+    display: flex;
 }
 
 .size-btn, .quantity-btn {

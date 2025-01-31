@@ -195,67 +195,76 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /products:
+ * /api/filter:
  *   get:
- *     summary: Бүх бүтээгдэхүүнийг авах.
+ *     summary: Үнэ болон эрэмбээр бүтээгдэхүүнүүдийг авах
  *     tags:
- *       - Бүтээгдэхүүн
+ *       - Products
  *     parameters:
  *       - in: query
- *         name: category
+ *         name: sortorder
  *         schema:
  *           type: string
- *         description: Бүтээгдэхүүний ангилал
+ *           enum: [asc, desc]
+ *         required: true
+ *         description: Эрэмбийн дараалал
  *       - in: query
- *         name: minPrice
+ *         name: price
  *         schema:
  *           type: number
- *         description: Хамгийн бага үнэ
- *       - in: query
- *         name: maxPrice
- *         schema:
- *           type: number
- *         description: Хамгийн их үнэ
+ *         required: true
+ *         description: Үнэ
  *       - in: query
  *         name: rating
  *         schema:
  *           type: number
- *         description: Үнэлгээ
+ *         required: false
+ *         description: Бүтээгдэхүүний үнэлгээ
+ *       - in: query
+ *         name: name
+ *         schema:
+ *           type: string
+ *         required: false
+ *         description: Бүтээгдэхүүний нэр
  *     responses:
  *       200:
- *         description: Бүх бүтээгдэхүүнийг амжилттай авсан.
+ *         description: Эрэмбийн дараалал болон үнээр бүтээгдэхүүнүүд амжилттай татагдсан
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
  *       500:
- *         description: Серверийн алдаа.
+ *         description: Серверт алдаа гарлаа
  */
-router.get('/', async (req, res) => {
-  const { category, minPrice, maxPrice, rating } = req.query;
-  let query = 'SELECT * FROM products ';
-  const params = [];
+router.get('/api', async (req, res) => {
+    const { sortorder = 'asc', price = 0, rating = 0, name } = req.query;
+    try {
+        let query = 'SELECT * FROM products WHERE 1=1';
+        const params = [];
 
-  if (category) {
-    query += ' AND category = $1';
-    params.push(category);
-  }
-  if (minPrice) {
-    query += ' AND price >= $2';
-    params.push(minPrice);
-  }
-  if (maxPrice) {
-    query += ' AND price <= $3';
-    params.push(maxPrice);
-  }
-  if (rating) {
-    query += ' AND rating >= $4';
-    params.push(rating);
-  }
+        if (price) {
+            query += ' AND price >= $' + (params.length + 1);
+            params.push(price);
+        }
+        if (rating) {
+            query += ' AND rating >= $' + (params.length + 1);
+            params.push(rating);
+        }
 
-  try {
-    const result = await pool.query(query, params);
-    res.json(result.rows);
-  } catch (err) {
-    console.error('Error fetching products:', err);
-    res.status(500).json({ message: 'Серверийн алдаа' });
-  }
+        if (name) {
+            query += ' AND name ILIKE $' + (params.length + 1);
+            params.push(`%${name}%`);
+        }
+
+        query += ` ORDER BY price ${sortorder}`;
+        const result = await pool.query(query, params);
+        res.status(200).json(result.rows);
+    } catch (err) {
+        console.error('Алдаа:', err.message);
+        res.status(500).json({ message: 'Бүтээгдэхүүн татаж чадсангүй', error: err.message });
+    }
 });
 
 // Multer storage configuration
@@ -272,38 +281,38 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post('/add', upload.fields([
-    { name: 'images', maxCount: 5 },
-    { name: 'subImages', maxCount: 10 },
-    { name: 'baraaniiUngu', maxCount: 5 },
-    { name: 'thumbnail', maxCount: 1 }
+  { name: 'images', maxCount: 5 },
+  { name: 'subImages', maxCount: 10 },
+  { name: 'baraaniiUngu', maxCount: 5 },
+  { name: 'thumbnail', maxCount: 1 }
 ]), async (req, res) => {
-    try {
-        const { name, description, price, category, rating, tag = '', brand, weight, dimensions } = req.body;
+  try {
+      const { name, description, price, category, rating, tag = '', brand, weight, dimensions } = req.body;
 
-        const tags = typeof tag === 'string' ? tag.split(',') : [];
+      const tags = typeof tag === 'string' ? tag.split(',') : [];
 
-        const images = req.files?.images?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-        const subImages = req.files?.subImages?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-        const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-        const thumbnail = req.files?.thumbnail?.[0]?.filename ? `../../images/${req.files.thumbnail[0].filename}` : '../../images/1.webp';
+      const images = req.files?.images?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+      const subImages = req.files?.subImages?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+      const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
+      const thumbnail = req.files?.thumbnail?.[0]?.filename ? `../../images/${req.files.thumbnail[0].filename}` : '../../images/1.webp';
 
-        // Баталгаажуулах 
-        const pgDimensions = typeof dimensions === 'string' 
-            ? JSON.stringify(JSON.parse(dimensions)) 
-            : JSON.stringify(dimensions);
+      // Баталгаажуулах 
+      const pgDimensions = typeof dimensions === 'string' 
+          ? JSON.stringify(JSON.parse(dimensions)) 
+          : JSON.stringify(dimensions);
 
-        // датасан руу оруулах
-        const result = await pool.query(
-            `INSERT INTO products (name, description, price, category, rating, tag, brand, weight, dimensions, images, subImages, baraaniiUngu, thumbnail) 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
-            [name, description, price, category, rating, tags, brand, weight, pgDimensions, images, subImages, baraaniiUngu, thumbnail]
-        );
+      // датасан руу оруулах
+      const result = await pool.query(
+          `INSERT INTO products (name, description, price, category, rating, tag, brand, weight, dimensions, images, subImages, baraaniiUngu, thumbnail) 
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
+          [name, description, price, category, rating, tags, brand, weight, pgDimensions, images, subImages, baraaniiUngu, thumbnail]
+      );
 
-        res.status(200).json({ message: 'Бүтээгдэхүүн амжилттай нэмэгдлээ', productId: result.rows[0].id });
-    } catch (error) {
-        console.error('Error inserting product:', error);
-        res.status(500).json({ message: 'Бүтээгдэхүүн нэмэхэд алдаа гарлаа', error: error.message });
-    }
+      res.status(200).json({ message: 'Бүтээгдэхүүн амжилттай нэмэгдлээ', productId: result.rows[0].id });
+  } catch (error) {
+      console.error('Error inserting product:', error);
+      res.status(500).json({ message: 'Бүтээгдэхүүн нэмэхэд алдаа гарлаа', error: error.message });
+  }
 });
 
 router.get('/', async (req, res) => {

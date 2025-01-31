@@ -19,13 +19,13 @@ class CartList extends HTMLElement {
             display: grid;
             grid-template-areas:
             "topbar topbar topbar"
-            "baraa content sambar"
+            "baraa sambar sambar"
             "footer footer footer";
             grid-template-columns: 2fr 1fr;
             grid-template-rows: 50px auto 70px; 
             justify-items: center;
         }
-        cart-list {
+        .sags {
             grid-area: baraa;
         }
         cart-total {
@@ -176,9 +176,10 @@ class CartList extends HTMLElement {
                 <section>
                     <slot name="cart-content"></slot>
                 </section>
-                <cart-total></cart-total>
+                
             </article>
         </template>
+        <cart-total></cart-total>
         `;
 
         const template = this.shadowRoot.getElementById('cart-template').content.cloneNode(true);

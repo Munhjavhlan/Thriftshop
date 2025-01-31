@@ -4,7 +4,7 @@ const path = require('path');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const authRoutes = require('./routes/auth');
-const productRoutes = require('./routes/products');
+const productRoutes = require('./routes/products.js');
 const pool = require('./db'); // PostgreSQL холболт
 const { getUserById } = require('./models/User');
 
