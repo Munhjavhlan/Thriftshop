@@ -1,0 +1,72 @@
+main {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: var(--max-width);
+    margin: 0;
+}
+.login-container {
+    padding: calc(var(--font-size-md)*2);
+    text-align: center;
+    width: var(--mid-width);
+    position: relative;
+
+}
+h1 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--font-size-md);
+}
+
+p {
+    font-size: var(--font-size-md);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-md);
+}
+
+form .form-group {
+    margin-bottom: var(--font-size-md);
+    text-align: left;
+}
+
+form .form-group label {
+    font-size: var(--font-size-md);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-xxs);
+    display: block;
+}
+
+form .form-group input {
+    width: var(--max-width);
+    padding: var(--font-size-xs);
+    font-size: var(--font-size-md);
+    border: var(--border-width) solid var(--color-neutral-grey-2);
+    border-radius: var(--spacing-xs);
+    box-sizing: border-box;
+}
+
+form .form-group input:focus {
+    outline: none;
+    border-color: var(--color-neutral-grey-4);
+}
+
+.btn {
+    background-color: var(--color-neutral-grey-6);
+    color: var(--secondary-color);
+    padding: var(--font-size-xs);
+    border: none;
+    border-radius: var(--spacing-xs);
+    width: var(--max-width);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--color-neutral-grey-5);
+}
+
+.small-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
+    margin-top: var(--font-size-md);
+}
