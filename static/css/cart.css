@@ -7,12 +7,13 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50px auto 70px; 
   justify-items: center;
-  
 }
-cart-list{
+
+cart-list {
   grid-area: baraa;
 }
-cart-total{
+
+cart-total {
   grid-area: sambar;
 }
 
@@ -71,7 +72,87 @@ hr {
   color: #666;
   text-align: center;
 }
-.related-products{
+
+.related-products {
   grid-area: footer;
   align-items: start;
+}
+
+@media (max-width: 600px) {
+  main {
+    grid-template-areas:
+    "topbar"
+    "content"
+    "baraa"
+    "sambar"
+    "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  cart-list, cart-total {
+    grid-area: auto;
+  }
+
+  .order-summary {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .baraa {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+  .baraa img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .details {
+    width: 100%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  main {
+    grid-template-areas:
+    "topbar topbar"
+    "content content"
+    "baraa sambar"
+    "footer footer";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .sags {
+    grid-area: baraa;
+  }
+
+  cart-total {
+    margin-top: 30px;
+    grid-area: sambar;
+  }
+
+  .order-summary {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .baraa {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .baraa img {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+  }
+
+  .details {
+    width: auto;
+  }
 }

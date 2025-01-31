@@ -2,11 +2,8 @@ class CartTotal extends HTMLElement {
     constructor() {
         super();
         this.totalPrice = '0.00';
+        this.uichilgeeniiFee = 1000;
         this.attachShadow({ mode: 'open' });
-    }
-
-    static get observedAttributes() {
-        return ['total-price'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -24,11 +21,10 @@ class CartTotal extends HTMLElement {
     loadCartData() {
         const cart = this.getCartItems();
         const totalPrice = this.totalPrice;
-        const discount = this.calculateDiscount(cart);
-        const uilchilgeeniiTulbur = 1000;
-        const finalPrice = totalPrice - discount + uilchilgeeniiTulbur;
+        const hymdral = this.calculateDiscount(cart);
+        const finalPrice = totalPrice - hymdral + this.uichilgeeniiFee;
 
-        this.render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice);
+        this.render(totalPrice, hymdral, this.uichilgeeniiFee, finalPrice);
     }
 
     getCartItems() {
@@ -45,12 +41,11 @@ class CartTotal extends HTMLElement {
 
     updateTotalPrice(totalPrice) {
         const hymdral = this.calculateDiscount();
-        const uilchilgeeniiTulbur = 1000;
-        const finalPrice = totalPrice - hymdral + uilchilgeeniiTulbur;
-        this.render(totalPrice, hymdral, uilchilgeeniiTulbur, finalPrice);
+        const finalPrice = totalPrice - hymdral + this.uichilgeeniiFee;
+        this.render(totalPrice, hymdral, this.uichilgeeniiFee, finalPrice);
     }
 
-    render(totalPrice, discount, uilchilgeeniiTulbur, finalPrice) {
+    render(totalPrice, hymdral, uichilgeeniiFee, finalPrice) {
         const template = document.createElement('template');
         template.innerHTML = `
             <style>
@@ -86,7 +81,7 @@ class CartTotal extends HTMLElement {
         margin: 10px 0;
       }
 
-      .discount {
+      .hymdral {
         color: red;
       }
 
@@ -151,13 +146,13 @@ class CartTotal extends HTMLElement {
                     <span>Захиалгын дүн</span>
                     <span>${totalPrice}₮</span>
                 </article>
-                <article class="item discount">
+                <article class="item hymdral">
                     <span>Хөнгөлөлт</span>
-                    <span>-${discount}₮</span>
+                    <span>-${hymdral}₮</span>
                 </article>
                 <article class="item service-fee">
                     <span>Үйлчилгээний төлбөр</span>
-                    <span>${uilchilgeeniiTulbur}₮</span>
+                    <span>${uichilgeeniiFee}₮</span>
                 </article>
                 <article class="item total">
                     <span>Нийт</span>
