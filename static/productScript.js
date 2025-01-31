@@ -39,9 +39,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (from > to) {
             fromSlider.value = to;
-            fromInput.textContent = `$${to}`;
+            fromInput.textContent = `${to}₮`;
         } else {
-            fromInput.textContent = `$${from}`;
+            fromInput.textContent = `${from}₮`;
         }
     }
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (from <= to) {
             toSlider.value = to;
-            toInput.textContent = `$${to}`;
+            toInput.textContent = `${to}₮`;
         }
     }
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         rangeFill.style.left = `${fromPercentage}%`;
         rangeFill.style.width = `${percentage - fromPercentage}%`;
 
-        toInput.textContent = `$${toValue}`;
+        toInput.textContent = `${toValue}₮`;
     }
 
     fillSlider(rangeMin, rangeMax, maxLabel);
@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
             productCard.innerHTML = `
-                    
                      <a href="productInfo.html?id=${product.id}" class="product-link">
                     <div class="product-image-container">
                         <img src="${product.thumbnail}" alt="${product.name}" class="product-thumbnail">
@@ -165,36 +164,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function filterProducts() {
-        const minPrice = rangeMin.value;
-        const maxPrice = rangeMax.value;
-        const searchTerm = document.getElementById("search-input-2").value.trim();
-
-        minLabel.textContent = `$${minPrice}`;
-        maxLabel.textContent = `$${maxPrice}`;
 
         const filterKeywords = Array.from(keywordDisplay.querySelectorAll(".keyword-tag"))
             .map((tag) => tag.textContent.trim().replace("×", "").trim());
 
         const filteredProducts = products.filter((product) => {
-            const priceInRange = product.price >= minPrice && product.price <= maxPrice;
             const matchesKeywords = filterKeywords.length === 0 ||
                 filterKeywords.some((keyword) =>
                     product.tag.some((prodKeyword) =>
                         prodKeyword.toLowerCase().includes(keyword.toLowerCase())
                     )
                 );
-            const matchesSearchTerm = !searchTerm ||
-                product.name.toLowerCase().includes(searchTerm.toLowerCase());
+           
 
-            return priceInRange && matchesKeywords && matchesSearchTerm;
+            return matchesKeywords;
         });
 
         renderProducts(filteredProducts);
-        updateUrl();
     }
 
-    rangeMin.addEventListener("input", filterProducts);
-    rangeMax.addEventListener("input", filterProducts);
+    rangeMin.addEventListener("input", async () => {
+        const query = `minPrice=${rangeMin.value}&maxPrice=${rangeMax.value}`;
+        const filteredProducts = await fetchData(query);
+        renderProducts(filteredProducts);
+    });
+
+    rangeMax.addEventListener("input", async () => {
+        const query = `minPrice=${rangeMin.value}&maxPrice=${rangeMax.value}`;
+        const filteredProducts = await fetchData(query);
+        renderProducts(filteredProducts);
+    });
+
     addKeywordButton.addEventListener("click", filterProducts);
     keywordInput.addEventListener("keypress", (event) => {
         if (event.key === "Enter") {
@@ -223,32 +223,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     sortButtons.forEach((button) => {
-        button.addEventListener("click", async() => {
+        button.addEventListener("click", async () => {
             sortButtons.forEach((btn) => btn.classList.remove("active"));
             button.classList.add("active");
 
-            let sortedProducts = [...products];
-            const sortType = button.getAttribute("data-sort");
-            query="";
+            let query = "";
             let filteredProducts;
+            const sortType = button.getAttribute("data-sort");
+
             switch (sortType) {
                 case "price-asc":
-                    query = `ORDER BY price=${asc}`;
+                    query = `sortorder=asc`;
                     filteredProducts = await fetchData(query);
-                    renderProducts(filteredProducts);
                     break;
                 case "price-desc":
-                    query = `ORDER BY price=${desc}` ;
+                    query = `sortorder=desc`;
                     filteredProducts = await fetchData(query);
-                    renderProducts(filteredProducts);
                     break;
                 case "rating":
-                    sortedProducts.sort((a, b) => b.rating - a.rating);
+                    filteredProducts = [...products].sort((a, b) => b.rating - a.rating);
                     break;
             }
 
-            renderProducts(sortedProducts);
-        });
+            renderProducts(filteredProducts);
+        }); 
     });
 
     document.getElementById("search-button").addEventListener("click", async (event) => {
@@ -263,7 +261,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (event.key === "Enter") {
             event.preventDefault();
             const searchTerm = document.getElementById("search-input-2").value.trim();
-            const query = searchTerm ? `name=${searchTerm}` : "";
+            const query = searchTerm ? `http://localhost:3000/products/api?name=${searchTerm}` : "";
             const filteredProducts = await fetchData(query);
             renderProducts(filteredProducts);
         }
@@ -321,15 +319,13 @@ const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const toggleButton1 = document.getElementById("toggle-sidebar");
 
-// Sidebar болон overlay-г харуулах/нуух функц
+
 const toggleSidebar = () => {
-    sidebar.classList.toggle("active"); // Sidebar-г идэвхжүүлэх/унтраах
-    overlay.classList.toggle("active"); // Overlay-г идэвхжүүлэх/унтраах
-    console.log(overlay.classList); // Debugging: Check overlay class
+    sidebar.classList.toggle("active"); 
+    overlay.classList.toggle("active"); 
+    console.log(overlay.classList); 
 };
 
-// Товчлуур дээр дарсан үед sidebar болон overlay-г харуулах/нуух
 toggleButton1.addEventListener("click", toggleSidebar);
 
-// Overlay дээр дарсан үед sidebar болон overlay-г нуух
 overlay.addEventListener("click", toggleSidebar);

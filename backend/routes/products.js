@@ -1,29 +1,29 @@
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
-const pool = require('../db');
+const express = require("express");
+const multer = require("multer");
+const path = require("path");
+const pool = require("../db");
 const router = express.Router();
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const swaggerOptions = {
   definition: {
-    openapi: '3.0.0',
+    openapi: "3.0.0",
     info: {
-      title: 'Бүтээгдэхүүний Удирдлагын API',
-      version: '1.0.0',
-      description: 'Бараа нэмэх, нэмсэн бараа харах хэсэг.',
+      title: "Бүтээгдэхүүний Удирдлагын API",
+      version: "1.0.0",
+      description: "Бараа нэмэх, нэмсэн бараа харах хэсэг.",
     },
     servers: [
       {
-        url: 'http://localhost:3000/products',
+        url: "http://localhost:3000/products",
       },
     ],
   },
-  apis: [__filename], 
+  apis: [__filename],
 };
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+router.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
@@ -238,91 +238,152 @@ router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *       500:
  *         description: Серверт алдаа гарлаа
  */
-router.get('/api', async (req, res) => {
-    const { sortorder = 'asc', price = 0, rating = 0, name } = req.query;
-    try {
-        let query = 'SELECT * FROM products WHERE 1=1';
-        const params = [];
+router.get("/api", async (req, res) => {
+  const {
+    sortorder = "",
+    minPrice=0,
+    maxPrice=0,
+    rating,
+    name,
+  } = req.query;
+  try {
+    let query = "SELECT * FROM products WHERE 1=1";
+    const params = [];
 
-        if (price) {
-            query += ' AND price >= $' + (params.length + 1);
-            params.push(price);
-        }
-        if (rating) {
-            query += ' AND rating >= $' + (params.length + 1);
-            params.push(rating);
-        }
-
-        if (name) {
-            query += ' AND name ILIKE $' + (params.length + 1);
-            params.push(`%${name}%`);
-        }
-
-        query += ` ORDER BY price ${sortorder}`;
-        const result = await pool.query(query, params);
-        res.status(200).json(result.rows);
-    } catch (err) {
-        console.error('Алдаа:', err.message);
-        res.status(500).json({ message: 'Бүтээгдэхүүн татаж чадсангүй', error: err.message });
+    if (minPrice) {
+      query += " AND price >= $" + (params.length + 1);
+      params.push(minPrice);
     }
+    if (maxPrice) {
+      query += " AND price <= $" + (params.length + 1);
+      params.push(maxPrice);
+    }
+    if (rating) {
+      query += " AND rating >= $" + (params.length + 1);
+      params.push(rating);
+    }
+
+    if (name) {
+      query += " AND name ILIKE $" + (params.length + 1);
+      params.push(`%${name}%`);
+    }
+    if (sortorder === "") {
+      query += ``;
+    } else if (sortorder === "asc") {
+      query += ` ORDER BY price asc`;
+    } else if (sortorder === "desc") {
+      query += ` ORDER BY price desc`;
+    }
+    const result = await pool.query(query, params);
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error("Алдаа:", err.message);
+    res
+      .status(500)
+      .json({ message: "Бүтээгдэхүүн татаж чадсангүй", error: err.message });
+  }
 });
 
-// Multer storage configuration
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadPath = path.resolve(__dirname, '../../images');
-        cb(null, uploadPath);
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
+  destination: (req, file, cb) => {
+    const uploadPath = path.resolve(__dirname, "../../images");
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
 
 const upload = multer({ storage });
 
-router.post('/add', upload.fields([
-  { name: 'images', maxCount: 5 },
-  { name: 'subImages', maxCount: 10 },
-  { name: 'baraaniiUngu', maxCount: 5 },
-  { name: 'thumbnail', maxCount: 1 }
-]), async (req, res) => {
-  try {
-      const { name, description, price, category, rating, tag = '', brand, weight, dimensions } = req.body;
+router.post(
+  "/add",
+  upload.fields([
+    { name: "images", maxCount: 5 },
+    { name: "subImages", maxCount: 10 },
+    { name: "baraaniiUngu", maxCount: 5 },
+    { name: "thumbnail", maxCount: 1 },
+  ]),
+  async (req, res) => {
+    try {
+      const {
+        name,
+        description,
+        price,
+        category,
+        rating,
+        tag = "",
+        brand,
+        weight,
+        dimensions,
+      } = req.body;
 
-      const tags = typeof tag === 'string' ? tag.split(',') : [];
+      const tags = typeof tag === "string" ? tag.split(",") : [];
 
-      const images = req.files?.images?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-      const subImages = req.files?.subImages?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-      const baraaniiUngu = req.files?.baraaniiUngu?.map(file => `../../images/${file.filename}`) || ['../../images/1.webp'];
-      const thumbnail = req.files?.thumbnail?.[0]?.filename ? `../../images/${req.files.thumbnail[0].filename}` : '../../images/1.webp';
+      const images = req.files?.images?.map(
+        (file) => `../../images/${file.filename}`
+      ) || ["../../images/1.webp"];
+      const subImages = req.files?.subImages?.map(
+        (file) => `../../images/${file.filename}`
+      ) || ["../../images/1.webp"];
+      const baraaniiUngu = req.files?.baraaniiUngu?.map(
+        (file) => `../../images/${file.filename}`
+      ) || ["../../images/1.webp"];
+      const thumbnail = req.files?.thumbnail?.[0]?.filename
+        ? `../../images/${req.files.thumbnail[0].filename}`
+        : "../../images/1.webp";
 
-      // Баталгаажуулах 
-      const pgDimensions = typeof dimensions === 'string' 
-          ? JSON.stringify(JSON.parse(dimensions)) 
+      // Баталгаажуулах
+      const pgDimensions =
+        typeof dimensions === "string"
+          ? JSON.stringify(JSON.parse(dimensions))
           : JSON.stringify(dimensions);
 
       // датасан руу оруулах
       const result = await pool.query(
-          `INSERT INTO products (name, description, price, category, rating, tag, brand, weight, dimensions, images, subImages, baraaniiUngu, thumbnail) 
+        `INSERT INTO products (name, description, price, category, rating, tag, brand, weight, dimensions, images, subImages, baraaniiUngu, thumbnail) 
           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
-          [name, description, price, category, rating, tags, brand, weight, pgDimensions, images, subImages, baraaniiUngu, thumbnail]
+        [
+          name,
+          description,
+          price,
+          category,
+          rating,
+          tags,
+          brand,
+          weight,
+          pgDimensions,
+          images,
+          subImages,
+          baraaniiUngu,
+          thumbnail,
+        ]
       );
 
-      res.status(200).json({ message: 'Бүтээгдэхүүн амжилттай нэмэгдлээ', productId: result.rows[0].id });
-  } catch (error) {
-      console.error('Error inserting product:', error);
-      res.status(500).json({ message: 'Бүтээгдэхүүн нэмэхэд алдаа гарлаа', error: error.message });
-  }
-});
-
-router.get('/', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM products');
-        res.status(200).json(result.rows);
-    } catch (err) {
-        console.error('Алдаа:', err.message);
-        res.status(500).json({ message: 'Бүтээгдэхүүн татаж чадсангүй', error: err.message });
+      res.status(200).json({
+        message: "Бүтээгдэхүүн амжилттай нэмэгдлээ",
+        productId: result.rows[0].id,
+      });
+    } catch (error) {
+      console.error("Error inserting product:", error);
+      res.status(500).json({
+        message: "Бүтээгдэхүүн нэмэхэд алдаа гарлаа",
+        error: error.message,
+      });
     }
+  }
+);
+
+router.get("/", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM products");
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error("Алдаа:", err.message);
+    res
+      .status(500)
+      .json({ message: "Бүтээгдэхүүн татаж чадсангүй", error: err.message });
+  }
 });
 
 module.exports = router;
