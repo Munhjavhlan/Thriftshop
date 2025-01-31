@@ -1,0 +1,216 @@
+.filter-panel {
+    transition: left var(--transition-time) ease;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--max-width);
+    height: var(--max-width);
+    background: var(--font-color-dark);
+    z-index: 900;
+    /* Sidebar-аас доош байрлалтай */
+    display: none;
+    /* Эхэндээ нуух */
+    transition: opacity var(--transition-time) ease;
+}
+
+#overlay.active {
+    display: block;
+    /* Overlay-г харагдуулах */
+    opacity: 1099;
+    /* Бүрэн харагдах */
+    opacity: 0.5;
+    visibility: visible;
+}
+
+
+/* Toggle товчлуур */
+#toggle-sidebar {
+    display: none;
+    z-index: 1100;
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+    border: none;
+    padding: var(--border-radius) var(--font-size-sm);
+    cursor: pointer;
+    border-radius:var(--spacing-xs);
+}
+
+/* Media Query: Дэлгэцийн хэмжээ бага үед */
+@media (max-width: 768px) {
+    #product-grid {
+        margin: 0%;
+        margin-left: var(--font-size-sm);
+        margin-top: var(--font-size-xxl);
+        display: grid;
+        grid-area: content;
+        align-items: start;
+        grid-template-columns: repeat(3, var(--grid-column)); /* 4 багана */
+        gap: var(--font-size-lg);
+    
+    }
+    .logo {
+        height: auto;
+        width: auto;
+    }
+
+    .filter-bar {
+        width: var(--max-width);
+    }
+
+    #erembleh {
+        display: none;
+    }
+
+    .filter-panel {
+        display: none;
+        /* Энгийн нөхцөлд нуух */
+    }
+
+    .search-container input[type="text"] {
+        width: var(--max-width);
+    }
+
+    .filter-panel.active {
+        display: block;
+        position: fixed;
+        z-index: 1100;
+        margin: 0;
+        left: 0;
+        top: 0;
+        height: var(--max-width);
+        overflow-y: auto;
+    }
+
+    product-grid {
+        justify-content: center;
+        width: var(--max-width);
+
+    }
+
+    .search-container {
+        padding-left: 0;
+        display: flex;
+    }
+
+    #toggle-sidebar {
+        display: flex;
+        
+    }
+
+    #product-grid {
+        margin-top: var(--font-size-xxl);
+    }
+
+    .sort-buttons span {
+        display: none;
+    }
+
+    #product-grid {
+        grid-template-columns: repeat(1, var(--grid-column));
+    }
+
+    #product-grid {
+        grid-template-columns: repeat(2, var(--grid-column)); /* 2 багана */
+        justify-content: center;
+    }
+
+}
+
+/*phone*/
+@media(max-width: 480px) {
+    #product-grid {
+        grid-template-columns: repeat(1, var(--grid-column));
+        margin: 0%;
+        margin-left: var(--font-size-xxl);
+        margin-top: var(--font-size-xxl);
+    }
+        
+
+    
+        /* Navigation menu товч гарч ирэх */
+        #toggleButton {
+          display: none;
+        }
+    
+        /* Navigation менюг default байдлаар далдлах */
+        #navMenu {
+            display: flex;
+            width: var(--border-width);
+        }
+    
+        /* Navigation доторх холбоосууд */
+        #navMenu li {
+            text-align: center;
+            margin: var(--border-radius) 0;
+        }
+    
+        #navMenu li a {
+            font-size: var(--font-size-md);
+            color: var(--primary-color);
+        }
+    
+        .sticky-links ul li a {
+            font-size: var(--font-size-sm); /* Холбоосын үсгийн хэмжээг багасгах */
+        }
+    
+    #product-grid {
+        grid-template-columns: var(--grid-column); /* 1 багана */
+        justify-content: center;
+    }
+
+}
+
+/* Tablet */
+@media(min-width: 768px) {
+        /* Header загварыг сайжруулах
+        header {
+            text-align: center;
+            font-size: 1rem;
+        }
+     */
+        /* Navigation menu товч гарч ирэх */
+        #toggleButton {
+          display: none;
+        }
+    
+        /* Navigation менюг default байдлаар далдлах */
+        #navMenu {
+            display: flex;
+            width: var(--border-width);
+        }
+    
+        /* Navigation доторх холбоосууд */
+        #navMenu li {
+            text-align: center;
+            margin: var(--border-radius) 0;
+        }
+    
+        #navMenu li a {
+            font-size: var(--font-size-md);
+            color: var(--primary-color);
+        }
+
+    
+        .sticky-links ul li a {
+            font-size: var(--font-size-sm); 
+        }
+    
+}
+@media screen and (max-width: 768px) {
+   .product-card { width: var(--max-width); height: auto; margin-bottom: var(--font-size-lg); }
+}
+
+@media(min-width: 1024px) {
+    #product-grid {
+        grid-template-columns: repeat(2, var(--grid-column));
+    }
+}
+
+@media(min-width: 1280px) {
+    #product-grid {
+        grid-template-columns: repeat(3, var(--grid-column));
+    }
+}

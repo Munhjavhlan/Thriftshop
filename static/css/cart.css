@@ -4,8 +4,8 @@ main {
   "topbar topbar topbar"
   "baraa content sambar"
   "footer footer footer";
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 50px auto 70px; 
+  grid-template-columns: var(--grid-column) var(--grid-column) var(--grid-column);
+  grid-template-rows: var(--font-size-xxl) auto var(--header-height); 
   justify-items: center;
   
 }
@@ -17,57 +17,62 @@ cart-total{
 }
 
 .order-summary {
-  width: 350px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: var(--mid-width);
+  padding: var(--font-size-lg);
+  border-radius: var(--font-size-xs);
+  box-shadow: 0 var(--spacing-xs) calc(var(--spacing-xxs)*3) var(--font-color-dark);
+  position: fixed;
+  top: var(--mid-width);
+  left: var(--mid-width);
 }
 
 .item {
   display: flex;
+  color: var(--color-neutral-grey-6);
   justify-content: space-between;
-  margin: 10px 0;
+  margin: var(--border-radius) 0;
 }
 
 .discount {
-  color: red;
+  color: var(--color-red);
 }
 
-.service-fee {
-  color: #333;
-}
 
 .total {
   font-weight: bold;
-  font-size: 18px;
+  font-size: var(--spacing-md);
+  color: var(--color-neutral-grey-6);
 }
 
 hr {
   border: none;
-  border-top: 1px solid #eee;
-  margin: 10px 0;
+  border-top: var(--border-width) solid var(--color-neutral-grey-1);
+  margin: var(--border-radius) 0;
 }
 
 .continue-btn {
-  width: 100%;
-  padding: 10px 0;
-  background-color: #353943;
-  color: #fff;
+  width: var(--max-width);
+  padding: var(--border-radius) 0;
+  background-color: var(--color-neutral-grey-6);
+  color: var(--font-color-light);
   border: none;
-  border-radius: 5px;
+  border-radius:var(--spacing-xs);
   cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: var(--font-size-md);
+  margin-top: var(--border-radius);
 }
 
 .continue-btn:hover {
-  background-color: #555;
+  background-color: var(--color-neutral-grey-5);
 }
 
 .note {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #666;
+  margin-top: var(--font-size-lg);
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-grey-4);
   text-align: center;
+}
+.related-products{
+  grid-area: footer;
+  align-items: start;
 }

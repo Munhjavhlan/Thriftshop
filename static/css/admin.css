@@ -1,0 +1,152 @@
+main {
+    display: grid;
+    grid-template-areas:
+        "baruun zuun";
+    grid-template-columns: var(--grid-column) var(--grid-column);
+    gap: calc(var(--font-size-md)*2);
+    justify-items: center;
+}
+
+.add-product-section {
+    grid-area: baruun;
+}
+
+.product-list-section {
+    grid-area: zuun;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Section Styling */
+section {
+    width: var(--max-width);
+    max-width: calc(var(--mid-width)*1.5);
+    background: var(--font-color-light);
+    border: var(--border-width) solid var(--color-neutral-grey-1);
+    border-radius:var(--spacing-xs);
+    box-shadow: 0 var(--spacing-xs) calc(var(--spacing-xxs)*3) var(--font-color-dark);
+    padding: calc(var(--font-size-md)*2);
+    margin-bottom: var(--font-size-xl);
+}
+
+/* Headings */
+h2 {
+    font-size: calc(var(--border-radius)*3);
+    margin-bottom: var(--font-size-md);
+    color: var(--color-neutral-grey-6);
+    text-align: center;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: var(--font-size-md);
+}
+
+label {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-xxs);
+    display: block;
+}
+
+input,
+textarea {
+    width: var(--max-width);
+    padding: var(--font-size-xs);
+    border: var(--border-width) solid var(--color-neutral-grey-1);
+    border-radius:var(--spacing-xs);
+    font-size: var(--font-size-md);
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: none;
+    height: calc(var(--font-size-lg)*5);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--color-neutral-grey-3);
+    font-size: var(--font-size-sm);
+}
+
+/* Button Styling */
+button {
+    display: inline-block;
+    width: var(--max-width);
+    padding: var(--font-size-xs);
+    border: none;
+    border-radius:var(--spacing-xs);
+    background-color: var(--color-neutral-grey-6);
+    color: var(--font-color-light);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    transition: background-color var(--transition-time) ease;
+}
+
+button:hover {
+    background-color: var(--color-neutral-grey-5);
+}
+
+button:focus {
+    outline: var(--spacing-xxs) solid var(--color-neutral-grey-5);
+}
+
+/* Product List */
+#productList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--font-size-md);
+}
+
+.product-item {
+    background: var(--font-color-light);
+    border: var(--border-width) solid var(--color-neutral-grey-1);
+    border-radius:var(--spacing-xs);
+    padding: var(--font-size-md);
+    width: calc(var(--max-width) - calc(var(--font-size-md)*2));
+    max-width: calc(var(--mid-width)*0.7);
+    box-shadow: 0 var(--spacing-xxs) var(--spacing-xs) var(--font-color-dark);
+}
+
+.product-item h3 {
+    font-size: 1.calc(var(--font-size-md)*2);
+    margin-bottom: var(--font-size-xxs);
+    color: var(--color-neutral-grey-6);
+}
+
+.product-item p {
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-xxs);
+}
+
+.product-item .price {
+    font-weight: bold;
+    color: var(--font-color-dark);
+    font-size: var(--font-size-md);
+}
+
+/* Additional Input Styling */
+input[type="file"] {
+    padding: 0;
+    font-size: var(--font-size-sm);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        grid-template-areas:
+            "baruun"
+            "zuun";
+        grid-template-columns: var(--grid-column);
+        gap: var(--font-size-md);
+    }
+
+    section {
+        margin: 0 auto;
+    }
+}
