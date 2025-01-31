@@ -1,10 +1,10 @@
 .gallery-container{
     display: flex;
-    padding: 1%;
+    padding: calc(var(--max-width)*0.01);
 }
 .gallery-slider-wrapper{
     position: relative;
-    max-width: 100%;
+    max-width: var(--max-width);
     margin: 0 auto;
 }
 .gallery-slider{
@@ -13,44 +13,44 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
-    border-radius: 0.5rem;
+    box-shadow: 0 var(--font-size-xl) var(--font-size-xxl) -var(--font-size-xs) var(--font-color-dark);
+    border-radius: var(--font-size-xxs);
 }
 .gallery-slider::-webkit-scrollbar {
     display: none; /* Hides the scrollbar */
   }
 .gallery-slider img{
-    flex: 1 0 100%;
+    flex: 1 0 var(--max-width);
     scroll-snap-align: start;
     object-fit: cover;
 }
 .gallery-slider-nav{
     display: flex;
-    column-gap: 1rem;
+    column-gap: var(--font-size-md);
     position: absolute;
-    bottom: 1.25rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: var(--font-size-lg);
+    left: calc(var(--max-width)/2);
+    transform: translateX(-calc(var(--max-width)/2));
     z-index: 1;
 }
 .gallery-slider-nav a{
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: #fff;
+    width: var(--font-size-xxs);
+    height: var(--font-size-xxs);
+    border-radius: calc(var(--max-width)/2);
+    background-color: var(--font-color-light);
     opacity: 0.75;
     transition: opacity ease 250ms;
 }
 .gallery-nav a:hover{
-    opacity: 100;
-    color: black;
+    opacity: var(--max-width);
+    color: var(--font-color-dark);
 }
 .home-sale{
     display: block;
     position: absolute;
-    left: 50%; 
-    top: 40%;
-    transform: translateX(-50%); 
+    left: calc(var(--max-width)*0.3); 
+    top: calc(var(--max-width)*0.3);
+    transform: translateX(-calc(var(--max-width)/2)); 
     color: var(--font-color-dark); 
     text-align: center; 
     z-index: 1; 
@@ -58,15 +58,15 @@
 
 }
 .home-sale h1 {
-    top: 20%; 
+    top: calc(var(--max-width)*0.2); 
 }
 
 .home-sale p {
-    top: 40%;
+    top: calc(var(--max-width)*0.4);
     font-size: 1.5vw; 
 }
 .services {
-    margin-top: 2rem ;
+    margin-top: calc(var(--font-size-md)*2) ;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@
 .services {
     grid-area: services;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(calc(var(--border-radius)*3), var(--grid-column)));
     text-align: center;
 }
 .featured-products {
@@ -93,13 +93,13 @@
 /* Утасны дэлгэцэнд зориулсан хэв маяг */
 @media (max-width: 768px) {
     .featured-products {
-        padding: 20px 10px;
+        padding: var(--font-size-lg) var(--border-radius);
         text-align: center;
     }
 
     .featured-products h2 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
+        font-size: calc(var(--border-radius)*3);
+        margin-bottom: var(--font-size-sm);
     }
     .services {
         scale: 0.8;
@@ -107,16 +107,16 @@
 
     .products-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        grid-template-columns: var(--grid-column) var(--grid-column);
+        gap: var(--font-size-lg);
     }
 
     .products-grid .product-item {
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        background-color: #fff;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: var(--font-size-sm);
+        border: var(--border-width) solid var(--color-neutral-grey-1);
+        border-radius: var(--border-radius);
+        background-color: var(--font-color-light);
+        box-shadow: 0 var(--spacing-xxs) var(--spacing-xs) var(--font-color-dark);
         text-align: left;
     }
 }
@@ -124,53 +124,52 @@
 
 
 .featured-products h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    margin-bottom: var(--font-size-lg);
+    font-size: var(--font-size-xl);
 }
 
 .products-grid {
     display: grid;
-    margin: 50px;
-    gap: 20px;
-    grid-template-columns: repeat(4, 1fr); 
+    margin: var(--font-size-xxl);
+    gap: var(--font-size-lg);
+    grid-template-columns: repeat(4, var(--grid-column)); 
     
 }
 
 /* Responsive design for product grid */
 @media (max-width: 1200px) {
     .products-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, var(--grid-column));
     }
 }
 
 @media (max-width: 992px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, var(--grid-column));
     }
 }
 
 @media (max-width: 768px) {
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: var(--grid-column);
     }
 }
 
 .product-image-container {
     position: relative;
-    width: 100%;
+    width: var(--max-width);
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 }
 .product-thumbnail{
-    width: 280px;
-    height: 280px;
+    width: calc(var(--mid-width)*0.7);
+    height: calc(var(--mid-width)*0.7);
 }
 .heart-button {
     position: absolute;
-    top: 10px;
+    top: var(--border-radius);
     scale: 1.3;
-    right: 60px;
+    right: var(--header-height);
     display: flex;
     background: none;
     justify-content: center;
@@ -179,7 +178,6 @@
 }
 a {
     text-decoration: none;
-    color: black;
   }
 
 .heart-button:hover {
@@ -187,15 +185,15 @@ a {
 }
 
 .product-card h3 {
-    margin-top: 10px;
+    margin-top: var(--border-radius);
     color: var(--primary-color);
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    font-size: 1.calc(var(--font-size-md)*2);
+    transition: color var(--transition-time);
 }
 
 .product-item {
-    background: #f9f9f9;
-    padding: 15px;
+    background: var(--color-neutral-grey-1);
+    padding: var(--font-size-sm);
     text-align: center;
     transition: transform 0.2s;
 }
@@ -205,27 +203,27 @@ a {
 }
 
 .product-thumbnail {
-    max-width: 100%;
+    max-width: var(--max-width);
     height: auto;
-    margin-bottom: 10px;
-    border-radius: 4px;
+    margin-bottom: var(--border-radius);
+    border-radius: var(--spacing-xs);
 }
 
 .product-item h3 {
-    margin: 10px 0;
-    font-size: 18px;
-    color: #333;
+    margin: var(--border-radius) 0;
+    font-size: var(--font-size-mid);
+    color: var(--color-neutral-grey-6);
 }
 
 .product-item button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
+    padding: var(--border-radius) var(--font-size-lg);
+    background: var(--color-blue);
+    color: var(--font-color-light);
     border: none;
-    border-radius: 5px;
+    border-radius:var(--spacing-xs);
     cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s;
+    font-size: var(--font-size-sm);
+    transition: background var(--transition-time);
 }
 
 
@@ -242,28 +240,28 @@ a {
 .brand {
     grid-area: brand;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(calc(var(--font-size-lg)*5), var(--grid-column)));
+    gap: var(--border-radius);
     justify-items: center;
 }
 
 .classics-collection {
     grid-area: classics;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: var(--grid-column) var(--grid-column);
+    gap: var(--font-size-lg);
 }
 .scroll-left, .scroll-right {
     background-color: var(--primary-color);
     color: var(--text-color-dark);
     border: none;
-    padding: 0.625rem;
+    padding: var(--border-radius);
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: var(--font-size-xl);
     position: absolute;
 }
 .about-thrift {
-    padding: 5rem 15rem;
+    padding: calc(var(--font-size-md)*5) 1calc(var(--font-size-md)*5);
     font-size: x-large;
     text-align: center;
     position: relative; 
@@ -278,39 +276,39 @@ a {
     position: absolute;/* Positioning text over the image */
     text-align: center; /* Center the text */
     z-index: 1; 
-    top: 50%; /* Position from the top of the banner */
-    left: 50%; /* Position horizontally in the center */
-    transform: translate(-50%, 0%);
-    font-size: 2.5rem;
+    top: calc(var(--max-width)/2); /* Position from the top of the banner */
+    left: calc(var(--max-width)/5); /* Position horizontally in the center */
+    transform: translate(-calc(var(--max-width)/2), 0%);
+    font-size: 3vw;
     white-space: nowrap; 
     text-wrap: wrap;
 }
 .sale ul {
-    position: absolute; /* Positioning text over the image */
-    text-align: center; /* Center the text */
-    z-index: 1; 
-    bottom: 10%; 
-    left: 50%; /* Position horizontally in the center */
-    transform: translateX(-50%);
-    white-space: nowrap; 
+    position: absolute;
     display: flex;
-    justify-content: space-evenly;
+    align-items: center; /* Текстийг төвд байрлуулна */
+    text-align: center;
+    z-index: 1;
+    bottom: calc(var(--max-width) * 0.1);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
     text-wrap: wrap;
-}
+  }
 .sale ul button {
     border: transparent;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: background var(--transition-time) ease-in-out;
     background-color: transparent;
     color: var(--color-neutral-grey-5);
     text-decoration: underline;
     
 }
 .sale ul button:hover {
-    color: white;
+    color: var(--font-color-light);
 }
 .sale img {
-    width: 100%; /* Set the width to 100% of the parent */
+    width: var(--max-width); /* Set the width to var(--max-width) of the parent */
     height: auto; /* Maintain the aspect ratio */
     
 }
@@ -321,33 +319,33 @@ a {
 }
 .shop-button {
     display: inline-block;
-    background-color: black;
-    color: white;
+    background-color: var(--font-color-dark);
+    color: var(--font-color-light);
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    padding: 10px 20px;
+    border-radius:var(--spacing-xs);
+    font-size: var(--font-size-md);
+    padding: var(--border-radius) var(--font-size-lg);
     white-space: nowrap;
 }
 .classics-collection {
     display: flex; /* Use flexbox for the section */
     flex-direction: column; /* Arrange children in a column */
     margin: 0 auto;
-    padding: 20px;
+    padding: var(--font-size-lg);
     text-align: center;
 }
 .flex-container {
     display: flex; /* Use flexbox for the first two columns */
 }
 .image-item {
-    flex: 0 0 50%;
-    width: 100%; /* Fill the width of the container */
+    flex: 0 0 calc(var(--max-width)/2);
+    width: var(--max-width); /* Fill the width of the container */
     position: relative;
-    flex-basis: 50%;
+    flex-basis: calc(var(--max-width)/2);
 }
 .image-item img {
-    width: 100%;
-    height: 100%;
+    width: var(--max-width);
+    height: var(--max-width);
 }
 .hero-section {
     flex: 2; /* Allow the hero section to take more space */
@@ -356,62 +354,62 @@ a {
     justify-content: flex-end; /* Center text vertically */
     align-items: center; /* Center children horizontally */
     text-align: center;
-    flex-basis: 50%;
+    flex-basis: calc(var(--max-width)/2);
 }
 .hero-section h1 {
-    font-size: 36px;
+    font-size: calc(var(--font-size-xs)*3);
     font-weight: bold;
     justify-content: center; 
 }
 
 .hero-section p {
-    font-size: 1rem;
-    margin: 1rem 0;
+    font-size: var(--font-size-md);
+    margin: var(--font-size-md) 0;
     justify-content: center; 
 }
 .images-container {
     display: flex; /* Use flexbox for the two images below */
     justify-content: space-between; /* Space between the two images */
-    margin-top: 30px;
+    margin-top: calc(var(--border-radius)*3);
 }
 
 .image-item1 {
     flex: 1; /* Each image takes equal space */
-    padding-top: 6rem;
+    padding-top: calc(var(--font-size-md)*6);
     position: relative;
 }
 
 .image-item p {
     padding: 0; /* Remove default padding */
     position: absolute;
-    bottom: 25px;
-    left: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    border-radius: 3px;
+    bottom: var(--font-size-xl);
+    left: var(--border-radius);
+    color: var(--font-color-light);
+    background-color: var(--font-color-dark);
+    font-size: var(--font-size-xs);
+    border-radius: var(--spacing-xxs);
 }
 .image-item1 p {
     padding: 0; /* Remove default padding */
     position: absolute;
-    bottom: 15px;
-    left: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 12px;
-    border-radius: 3px;
+    bottom: var(--font-size-sm);
+    left: var(--border-radius);
+    color: var(--font-color-light);
+    background-color: var(--font-color-dark);
+    font-size: var(--font-size-xs);
+    border-radius: var(--spacing-xxs);
 }
 .images-container img {
-    width: 100%; /* Set image to fill its container */
-    height: 100%; /* Maintain aspect ratio */
+    width: var(--max-width); /* Set image to fill its container */
+    height: var(--max-width); /* Maintain aspect ratio */
 }
 
 .scroll-left {
-    left: 0.625rem;
+    left: var(--border-radius);
 }
 
 .scroll-right {
-    right: 0.625rem;
+    right: var(--border-radius);
 }
 
 @media (max-width: 992px) {
@@ -421,7 +419,7 @@ a {
 
     .classics-collection .image-item,
     .classics-collection .hero-section {
-        flex-basis: 100%;
+        flex-basis: var(--max-width);
     }
 
     .classics-collection .images-container {
@@ -429,21 +427,21 @@ a {
     }
 
     .classics-collection .image-item1 {
-        padding-top: 2rem;
+        padding-top: calc(var(--font-size-md)*2);
     }
 }
 
 @media (max-width: 768px) {
     .classics-collection .hero-section h1 {
-        font-size: 24px;
+        font-size: var(--font-size-xl);
     }
 
     .classics-collection .hero-section p {
-        font-size: 0.875rem;
+        font-size: var(--font-size-sm);
     }
 
     .classics-collection .shop-button {
-        font-size: 14px;
-        padding: 8px 16px;
+        font-size: var(--font-size-sm);
+        padding: var(--font-size-xs) var(--font-size-md);
     }
 }

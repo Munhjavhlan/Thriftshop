@@ -3,70 +3,70 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: var(--max-width);
     margin: 0;
 }
 .login-container {
-    padding: 2rem;
+    padding: calc(var(--font-size-md)*2);
     text-align: center;
-    width: 400px;
+    width: var(--mid-width);
     position: relative;
 
 }
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--font-size-md);
 }
 
 p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-md);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-md);
 }
 
 form .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: var(--font-size-md);
     text-align: left;
 }
 
 form .form-group label {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 0.5rem;
+    font-size: var(--font-size-md);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-xxs);
     display: block;
 }
 
 form .form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    width: var(--max-width);
+    padding: var(--font-size-xs);
+    font-size: var(--font-size-md);
+    border: var(--border-width) solid var(--color-neutral-grey-2);
+    border-radius: var(--spacing-xs);
     box-sizing: border-box;
 }
 
 form .form-group input:focus {
     outline: none;
-    border-color: #555;
+    border-color: var(--color-neutral-grey-4);
 }
 
 .btn {
-    background-color: #353943;
-    color: #fff;
-    padding: 0.8rem;
+    background-color: var(--color-neutral-grey-6);
+    color: var(--secondary-color);
+    padding: var(--font-size-xs);
     border: none;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 1rem;
+    border-radius: var(--spacing-xs);
+    width: var(--max-width);
+    font-size: var(--font-size-md);
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #555a66;
+    background-color: var(--color-neutral-grey-5);
 }
 
 .small-text {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
+    margin-top: var(--font-size-md);
 }

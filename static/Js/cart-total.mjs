@@ -3,7 +3,10 @@ class CartTotal extends HTMLElement {
         super();
         this.totalPrice = '0.00';
         this.uichilgeeniiFee = 1000;
-        this.attachShadow({ mode: 'open' });
+    }
+
+    static get observedAttributes() {
+        return ['total-price'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -20,11 +23,11 @@ class CartTotal extends HTMLElement {
 
     loadCartData() {
         const cart = this.getCartItems();
-        const totalPrice = this.totalPrice;
+        const totalPrice = parseFloat(this.totalPrice);
         const hymdral = this.calculateDiscount(cart);
         const finalPrice = totalPrice - hymdral + this.uichilgeeniiFee;
 
-        this.render(totalPrice, hymdral, this.uichilgeeniiFee, finalPrice);
+        this.render(totalPrice.toFixed(2), hymdral.toFixed(2), this.uichilgeeniiFee.toFixed(2), finalPrice.toFixed(2));
     }
 
     getCartItems() {
@@ -35,19 +38,19 @@ class CartTotal extends HTMLElement {
         return parseFloat(cart.reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0)).toFixed(2);
     }
 
-    calculateDiscount() {
-        return 100;
+    calculateDiscount(cart) {
+        return cart.reduce((discount, item) => discount + (item.price * (item.discount || 0) / 100) * (item.quantity || 1), 0);
     }
 
     updateTotalPrice(totalPrice) {
+        const parsedTotalPrice = parseFloat(totalPrice);
         const hymdral = this.calculateDiscount();
-        const finalPrice = totalPrice - hymdral + this.uichilgeeniiFee;
-        this.render(totalPrice, hymdral, this.uichilgeeniiFee, finalPrice);
+        const finalPrice = parsedTotalPrice - hymdral + this.uichilgeeniiFee;
+        this.render(parsedTotalPrice.toFixed(2), hymdral, this.uichilgeeniiFee, finalPrice.toFixed(2));
     }
 
     render(totalPrice, hymdral, uichilgeeniiFee, finalPrice) {
-        const template = document.createElement('template');
-        template.innerHTML = `
+        this.innerHTML = `
             <style>
       main {
         display: grid;
@@ -60,75 +63,6 @@ class CartTotal extends HTMLElement {
         justify-items: center;
         
       }
-      .sags{
-        grid-area: baraa;
-      }
-      cart-total{
-        grid-area: sambar;
-      }
-
-      .order-summary {
-        width: 350px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .item {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0;
-      }
-
-      .hymdral {
-        color: red;
-      }
-
-      .service-fee {
-        color: var(--color-neutral-grey-6);
-      }
-
-      .total {
-        font-weight: bold;
-        font-size: 18px;
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid #eee;
-        margin: 10px 0;
-      }
-
-      .continue-btn {
-        width: 100%;
-        padding: 10px 0;
-        background-color: var(--primary-color);
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        margin-top: 10px;
-      }
-
-      .continue-btn:hover {
-        background-color: #555;
-      }
-
-      .note {
-        margin-top: 20px;
-        font-size: 12px;
-        color: #666;
-        text-align: center;
-
-      }
-        .sda{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-left: 15px
-        }
 
       :host(:state(empty)) .order-summary {
           background-color: var(--light-bg);
@@ -165,8 +99,6 @@ class CartTotal extends HTMLElement {
                 <img class="sda" src="./../../images/Frame 768.png" alt="zurag">
             </article>
         `;
-        this.shadowRoot.innerHTML = '';
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
         if (this.getCartItems().length === 0) {
             this.setAttribute('empty', '');
         } else {

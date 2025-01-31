@@ -1,19 +1,19 @@
 .filter-panel {
-    transition: left 0.3s ease;
+    transition: left var(--transition-time) ease;
 }
 
 #overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
+    width: var(--max-width);
+    height: var(--max-width);
+    background: var(--font-color-dark);
     z-index: 900;
     /* Sidebar-аас доош байрлалтай */
     display: none;
     /* Эхэндээ нуух */
-    transition: opacity 0.3s ease;
+    transition: opacity var(--transition-time) ease;
 }
 
 #overlay.active {
@@ -31,24 +31,24 @@
     display: none;
     z-index: 1100;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--font-color-light);
     border: none;
-    padding: 10px 15px;
+    padding: var(--border-radius) var(--font-size-sm);
     cursor: pointer;
-    border-radius: 5px;
+    border-radius:var(--spacing-xs);
 }
 
 /* Media Query: Дэлгэцийн хэмжээ бага үед */
 @media (max-width: 768px) {
     #product-grid {
         margin: 0%;
-        margin-left: 15px;
-        margin-top: 50px;
+        margin-left: var(--font-size-sm);
+        margin-top: var(--font-size-xxl);
         display: grid;
         grid-area: content;
         align-items: start;
-        grid-template-columns: repeat(3, 1fr); /* 4 багана */
-        gap: 20px;
+        grid-template-columns: repeat(3, var(--grid-column)); /* 4 багана */
+        gap: var(--font-size-lg);
     
     }
     .logo {
@@ -57,7 +57,7 @@
     }
 
     .filter-bar {
-        width: 100%;
+        width: var(--max-width);
     }
 
     #erembleh {
@@ -70,7 +70,7 @@
     }
 
     .search-container input[type="text"] {
-        width: 100%;
+        width: var(--max-width);
     }
 
     .filter-panel.active {
@@ -80,13 +80,13 @@
         margin: 0;
         left: 0;
         top: 0;
-        height: 100%;
+        height: var(--max-width);
         overflow-y: auto;
     }
 
     product-grid {
         justify-content: center;
-        width: 100%;
+        width: var(--max-width);
 
     }
 
@@ -101,7 +101,7 @@
     }
 
     #product-grid {
-        margin-top: 50px;
+        margin-top: var(--font-size-xxl);
     }
 
     .sort-buttons span {
@@ -109,11 +109,11 @@
     }
 
     #product-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, var(--grid-column));
     }
 
     #product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 багана */
+        grid-template-columns: repeat(2, var(--grid-column)); /* 2 багана */
         justify-content: center;
     }
 
@@ -122,10 +122,10 @@
 /*phone*/
 @media(max-width: 480px) {
     #product-grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, var(--grid-column));
         margin: 0%;
-        margin-left: 50px;
-        margin-top: 50px;
+        margin-left: var(--font-size-xxl);
+        margin-top: var(--font-size-xxl);
     }
         
 
@@ -138,26 +138,26 @@
         /* Navigation менюг default байдлаар далдлах */
         #navMenu {
             display: flex;
-            width: 1px;
+            width: var(--border-width);
         }
     
         /* Navigation доторх холбоосууд */
         #navMenu li {
             text-align: center;
-            margin: 10px 0;
+            margin: var(--border-radius) 0;
         }
     
         #navMenu li a {
-            font-size: 1rem;
+            font-size: var(--font-size-md);
             color: var(--primary-color);
         }
     
         .sticky-links ul li a {
-            font-size: 0.875rem; /* Холбоосын үсгийн хэмжээг багасгах */
+            font-size: var(--font-size-sm); /* Холбоосын үсгийн хэмжээг багасгах */
         }
     
     #product-grid {
-        grid-template-columns: 1fr; /* 1 багана */
+        grid-template-columns: var(--grid-column); /* 1 багана */
         justify-content: center;
     }
 
@@ -179,38 +179,38 @@
         /* Navigation менюг default байдлаар далдлах */
         #navMenu {
             display: flex;
-            width: 1px;
+            width: var(--border-width);
         }
     
         /* Navigation доторх холбоосууд */
         #navMenu li {
             text-align: center;
-            margin: 10px 0;
+            margin: var(--border-radius) 0;
         }
     
         #navMenu li a {
-            font-size: 1rem;
+            font-size: var(--font-size-md);
             color: var(--primary-color);
         }
 
     
         .sticky-links ul li a {
-            font-size: 0.875rem; 
+            font-size: var(--font-size-sm); 
         }
     
 }
 @media screen and (max-width: 768px) {
-   .product-card { width: 100%; height: auto; margin-bottom: 20px; }
+   .product-card { width: var(--max-width); height: auto; margin-bottom: var(--font-size-lg); }
 }
 
 @media(min-width: 1024px) {
     #product-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, var(--grid-column));
     }
 }
 
 @media(min-width: 1280px) {
     #product-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, var(--grid-column));
     }
 }

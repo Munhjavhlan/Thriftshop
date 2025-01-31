@@ -3,77 +3,77 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: var(--max-width);
     margin: 0;
 }
 .login-container {
-    padding: 2rem;
+    padding: calc(var(--font-size-md)*2);
     text-align: center;
-    width: 400px;
+    width: var(--mid-width);
     position: relative;
 
 }
 
 h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--font-size-md);
 }
 
 p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
+    margin-bottom: var(--font-size-md);
 }
 
 .input-group {
     position: relative;
-    margin-bottom: 1rem;
+    margin-bottom: var(--font-size-md);
 }
 
 .input-group input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+    width: var(--max-width);
+    padding: var(--font-size-xs);
+    border: var(--border-width) solid var(--color-neutral-grey-2);
+    border-radius: var(--spacing-xs);
+    font-size: var(--font-size-md);
 }
 
 .input-group button {
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
+    height: var(--max-width);
     border: none;
     background: none;
     cursor: pointer;
-    padding: 0 1rem;
-    font-size: 0.9rem;
-    color: #666;
+    padding: 0 var(--font-size-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
 }
 
 .btn {
     display: inline-block;
-    width: 100%;
-    padding: 0.8rem;
+    width: var(--max-width);
+    padding: var(--font-size-xs);
     border: none;
-    border-radius: 5px;
-    background-color: #353943;
-    color: #fff;
-    font-size: 1rem;
+    border-radius: var(--spacing-xs);
+    background-color: var(--color-neutral-grey-6);
+    color: var(--font-color-light);
+    font-size: var(--font-size-md);
     cursor: pointer;
-    margin-bottom: 1rem;
+    margin-bottom: var(--font-size-md);
 }
 
 .btn:hover {
-    background-color: #555a66;
+    background-color: var(--color-neutral-grey-5);
 }
 
 .forgot-password {
     display: inline-block;
-    font-size: 0.9rem;
-    color: #8c8e91;
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
     text-decoration: none;
-    margin-bottom: 1rem;
+    margin-bottom: var(--font-size-md);
 }
 
 .forgot-password:hover {
@@ -82,19 +82,19 @@ p {
 
 .divider {
     position: relative;
-    margin: 1.4rem 0;
-    font-size: 0.9rem;
-    color: #666;
+    margin: var(--font-size-xl) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
 }
 
 .divider::before,
 .divider::after {
     content: "";
     position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background: #bfbfbf;
+    top: calc(var(--max-width)*0.5);
+    width: calc(var(--max-width)*0.4);
+    height: var(--border-width);
+    background: var(--color-neutral-grey-2);
 }
 
 .divider::before {
@@ -108,8 +108,8 @@ p {
 .social-login {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    color: #000;
+    margin-bottom: var(--font-size-md);
+    color: var(--font-color-dark);
 }
 
 
@@ -117,24 +117,24 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
-    padding: 0.6rem;
-    width: 48%;
-    color: #000;
-    border-radius: 30px;
+    font-size: var(--font-size-sm);
+    padding: var(--font-size-xxs);
+    width: calc(var(--max-width)*0.48);
+    color: var(--font-color-dark);
+    border-radius: var(--font-size-xl);
     border: solid;
-    border-color: #000;
-    border-width: 0.1rem;
+    border-color: var(--font-color-dark);
+    border-width: 0.var(--font-size-md);
 }
 
 
 .register-link {
-    font-size: 0.9rem;
-    color: #666;
+    font-size: var(--font-size-sm);
+    color: var(--color-neutral-grey-4);
 }
 
 .register-link a {
-    color: #8c8e91;
+    color: var(--color-neutral-grey-4);
     text-decoration: none;
 }
 

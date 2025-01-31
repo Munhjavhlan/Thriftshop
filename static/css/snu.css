@@ -1,22 +1,22 @@
 #cart-notification {
     display: none; /* Эхэндээ харуулахгүй */
     position: absolute;
-    top: 40px; /* Сагсны доорх зайг тохируулна */
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-size: 14px;
+    top: var(--font-size-xxl); /* Сагсны доорх зайг тохируулна */
+    background: var(--color-neutral-grey-1);
+    border: var(--border-width) solid var(--color-neutral-grey-2);
+    border-radius: var(--spacing-xs);
+    padding: var(--border-radius);
+    box-shadow: 0 var(--spacing-xs) var(--font-size-xxs) var(--font-color-dark);
+    font-size: var(--font-size-sm);
     z-index: 1000;
-    width: 200px;
+    width: calc(var(mid-width)/2);
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-var(--border-radius));
+    transition: opacity var(--transition-time) ease, transform var(--transition-time) ease;
 }
 
 #cart-notification.show {
     display: flex;
     opacity: 1;
-    transform: translateY(50px);
+    transform: translateY(var(--font-size-xxl));
 }
