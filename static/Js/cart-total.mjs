@@ -38,8 +38,8 @@ class CartTotal extends HTMLElement {
         return parseFloat(cart.reduce((sum, item) => sum + parseFloat(item.price) * (item.quantity || 1), 0)).toFixed(2);
     }
 
-    calculateDiscount(cart) {
-        return cart.reduce((discount, item) => discount + (item.price * (item.discount || 0) / 100) * (item.quantity || 1), 0);
+    calculateDiscount() {
+        return 100;
     }
 
     updateTotalPrice(totalPrice) {
@@ -51,31 +51,7 @@ class CartTotal extends HTMLElement {
 
     render(totalPrice, hymdral, uichilgeeniiFee, finalPrice) {
         this.innerHTML = `
-            <style>
-      main {
-        display: grid;
-        grid-template-areas:
-        "topbar topbar topbar"
-        "baraa content sambar"
-        "footer footer footer";
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 50px auto 70px; 
-        justify-items: center;
-        
-      }
-
-      :host(:state(empty)) .order-summary {
-          background-color: var(--light-bg);
-          color: var(--color-gray);
-      }
-
-      :host(:state(non-empty)) .order-summary {
-          background-color: var(--secondary-color);
-          color: var(--font-color-light);
-      }
-          
-            </style>
-     <article class="order-summary">
+            <article class="order-summary">
                 <article class="item">
                     <span>Захиалгын дүн</span>
                     <span>${totalPrice}₮</span>
@@ -98,6 +74,41 @@ class CartTotal extends HTMLElement {
                 </p>
                 <img class="sda" src="./../../images/Frame 768.png" alt="zurag">
             </article>
+            <style>
+                @media (max-width: 600px) {
+                    .order-summary {
+                        width: 100%;
+                        padding: 10px;
+                    }
+
+                    .item {
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+
+                    .item span {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                }
+
+                @media (min-width: 601px) and (max-width: 1024px) {
+                    .order-summary {
+                        width: 100%;
+                        padding: 15px;
+                    }
+
+                    .item {
+                        flex-direction: row;
+                        align-items: center;
+                    }
+
+                    .item span {
+                        display: inline-block;
+                        margin-right: 10px;
+                    }
+                }
+            </style>
         `;
         if (this.getCartItems().length === 0) {
             this.setAttribute('empty', '');

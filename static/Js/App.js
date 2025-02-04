@@ -1,17 +1,19 @@
-import './cart-list.mjs';
+import "./cart-list.mjs";
 class App extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        this.render();
-    }
-    render() {
-        this.innerHTML = `
-            <cart-list></cart-list>
-        `;
-    }
+  connectedCallback() {
+    this.render();
+  }
+
+  render() {
+    this.innerHTML = `
+        <cart-list></cart-list>
+
+    `;
+  }
 }
 
-customElements.define('app-root', App);
+customElements.define("app-root", App);

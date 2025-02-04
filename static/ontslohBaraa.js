@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    fetch('./../static/products.json')
+    fetch('http://localhost:3000/products')
         .then(response => response.json())
         .then(data => {
             const products = data.products.slice(0, 4);

@@ -282,20 +282,21 @@ footer {
 .footer-container {
     display: flex;
     background-color: var(--primary-color);
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     flex-wrap: wrap;
     gap: var(--font-size-lg);
     color: var(--font-color-light);
 }
 
 
-.footer-section {
-    flex: 1;
+.footer-section {   
     padding: 0 calc((--font-size-lg) * 5);
 }
 
 .footer-section h2, h3 {
     font-size: var(--font-size-lg);
+    color: var(--font-color-light);
     margin-bottom: var(--border-radius);
 }
 
@@ -303,6 +304,19 @@ footer {
     font-size: var(--font-size-sm);
     margin-bottom: var(--border-radius);
     color: var(--color-neutral-grey-2) ;
+}
+.subscribe ul{
+    list-style: none;
+    display: grid;
+}
+.subscribe ul li{
+    margin-bottom: var(--font-size-xxs);
+    margin-left:0;
+}
+.subscribe ul li a {
+    text-decoration: none;
+    color: var(--font-color-light);
+    font-size: var(--font-size-sm);
 }
 .subscribe-form {
     display: flex;
@@ -340,11 +354,12 @@ footer {
 
 .quick-links ul li {
     margin-bottom: var(--font-size-xxs);
+    margin-left: 0;
 }
 
 .quick-links ul li a {
     text-decoration: none;
-    color: var(--color-neutral-grey-3);
+    color: var(--font-color-light);
     font-size: var(--font-size-sm);
 }
 
@@ -388,7 +403,7 @@ social-icons a:hover {
 .footer-bottom {
     text-align: center;
     justify-content: center;
-    margin-top: calc(var(--font-size-lg)*4);
+    margin-top: calc(var(--font-size-lg)*3);
     font-size: var(--font-size-xs);
     color: var(--color-neutral-grey-3);
     opacity: 0.3;

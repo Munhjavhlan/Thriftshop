@@ -11,64 +11,43 @@
     <link rel="stylesheet" href="./static/css/cart.css">
     <script type="module" src="./static/Js/App.js"></script>
     <script type="module" src="./static/Js/cart-total.js"></script>
+    <script src="./static/ontslohBaraa.js"></script>
     <title>Thrift Shop</title>
-       <style>
-    @media (max-width: 600px) {
-        main {
-            grid-template-areas:
-            "topbar"
-            "content"
-            "baraa"
-            "sambar"
-            "footer";
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-           
-        }
+    <style>
+        @media (max-width: 600px) {
+            cart-list {
+                grid-template-areas:
+                "topbar"
+                "baraa"
+                "sambar"
+                "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
 
-        cart-list, cart-total {
-            grid-area: auto;
-        }
+            .sags{
+                grid-area: baraa;
+            }
+            .order-summary {
+                width: 100%;
+                padding: 10px;
+            }
 
-        .order-summary {
-            width: 100%;
-            padding: 10px;
-        }
+            .baraa {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 30px;
+            }
 
-        .baraa {
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
+            .baraa img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
 
-        .baraa img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .details {
-            width: 100%;
-        }
-    }
-    cart-total {
-            margin-top: 30px;
-            grid-area: sambar;
-        }
-    
-    @media (min-width: 601px) and (max-width: 1024px) {
-        main {
-            grid-template-areas:
-            "topbar topbar"
-            "content content"
-            "baraa sambar"
-            "footer footer";
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto;
-        }
-
-        .sags {
-            grid-area: baraa;
+            .details {
+                width: 100%;
+            }
         }
 
         cart-total {
@@ -76,27 +55,47 @@
             grid-area: sambar;
         }
 
-        .order-summary {
-            width: 100%;
-            padding: 15px;
-        }
+        @media (min-width: 601px) and (max-width: 1024px) {
+            main {
+                grid-template-areas:
+                "topbar topbar"
+                "content content"
+                "baraa sambar"
+                "footer footer";
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
 
-        .baraa {
-            flex-direction: row;
-            align-items: center;
-        }
+            .sags {
+                grid-area: baraa;
+            }
 
-        .baraa img {
-            width: 150px;
-            height: 150px;
-            margin-right: 10px;
-        }
+            cart-total {
+                margin-top: 30px;
+                grid-area: sambar;
+            }
 
-        .details {
-            width: auto;
+            .order-summary {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .baraa {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .baraa img {
+                width: 150px;
+                height: 150px;
+                margin-right: 10px;
+            }
+
+            .details {
+                width: auto;
+            }
         }
-    }
-        </style>
+    </style>
 </head>
 
 <body class="light-mode"> <!-- Энэ defualt -аар lightmode -той байгаа шүү -->
@@ -171,6 +170,7 @@
 
     <main>
         <app-root></app-root>
+        <div id="products-grid"></div>
     </main>
 
     <footer>
