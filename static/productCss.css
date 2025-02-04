@@ -5,7 +5,6 @@ main {
     "topbar topbar topbar"
     "sidebar content ads"
     "footer footer footer";
-
     justify-items: center;
     
 }
@@ -22,7 +21,7 @@ main {
     margin: calc(var(--max-width)*0.1);
     height: fit-content;
     border-radius: var(--font-size-xs);
-    box-shadow: 0 var(--border-radius) var(--font-size-xl) var(--color-neutral-grey-3);
+    box-shadow: 0 var(--border-radius) var(--font-size-xl) var(--color-neutral-grey-2);
     padding: var(--font-size-lg);
     margin-left: calc(var(--font-size-lg)*2);
     color: var(--text-color);
@@ -121,6 +120,7 @@ main {
     appearance: none;
     width: var(--font-size-lg);
     height: var(--font-size-lg);
+    background-color: var(--primary-color);
     border: var(--spacing-xxs) solid var(--border-color);
     border-radius: var(--spacing-xs);
     outline: none;
@@ -137,7 +137,7 @@ main {
     content: '✓';
     color: var(--font-color-light);
     position: absolute;
-    top: calc(var(--max-width)*0.3);
+    top: calc(var(--max-width)*0.1);
     left: calc(var(--max-width)*0.3);
     transform: translate(-calc(var(--max-width)*0.5), -calc(var(--max-width)*0.5));
     font-size: var(--font-size-xs);
@@ -163,26 +163,26 @@ main {
 .slider-container {
     position: relative;
     height: calc(var(--spacing-xxs)*3);
-    background-color: var(----color-neutral-grey-1);
+    background-color: var(--color-neutral-grey-1);
     margin: var(--font-size-xl) 0;
 }
 
 .slider-track {
     position: absolute;
     height: var(--max-width);
-    background-color: var(----color-neutral-grey-3);
-    z-index: 1;
+    background-color: var(--color-neutral-grey-3);
+    z-index: 0;
 }
 
 input[type="range"] {
     position: absolute;
     width: var(--max-width);
     -webkit-appearance: none;
-    background: transparent;
     outline: none;
     margin: 0;
-    z-index: 2;
+    z-index: 1;
     top: -var(--font-size-xxs);
+    background-color: var(--primary-color);
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -193,6 +193,7 @@ input[type="range"]::-webkit-slider-thumb {
     cursor: pointer;
     border-radius: calc(var(--max-width)*0.5);
     box-shadow: 0 0 var(--spacing-xs) var(--color-neutral-grey-6);
+    z-index: 1;
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -211,6 +212,8 @@ input[type="range"]::-webkit-slider-runnable-track {
     height: calc(var(--spacing-xxs)*3);
     background: transparent;
     border: none;
+    position: relative;
+    top: -50%;
 }
 
 input[type="range"]::-moz-range-track {
