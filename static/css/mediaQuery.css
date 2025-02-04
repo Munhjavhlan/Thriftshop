@@ -82,6 +82,7 @@
         top: 0;
         height: var(--max-width);
         overflow-y: auto;
+        background-color: var(--background-color);
     }
 
     product-grid {
@@ -176,11 +177,6 @@
           display: none;
         }
     
-        /* Navigation менюг default байдлаар далдлах */
-        #navMenu {
-            display: flex;
-            width: var(--border-width);
-        }
     
         /* Navigation доторх холбоосууд */
         #navMenu li {
