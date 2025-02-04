@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/logo.png">
     <meta name="description"
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/style.css" />
-    <link rel="stylesheet" href="static/login.css">
+    <link rel="stylesheet" href="static/register.css">
     <title>Thrift Shop</title>
 </head>
 
@@ -33,7 +33,7 @@
                             class="bi bi-list-ul" viewBox="0 -6 23 16">
                             <path fill-rule="evenodd"
                                 d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                        </svg><span>Барааны мэдээлэл</span></a></li>
+                        </svg>Барааны мэдээлэл</a></li>
 
                 <li>
                     <form class="search-form">
@@ -72,88 +72,43 @@
             </ul>
         </nav>
     </header>
-    <main> 
+    <main>
         <div class="login-container">
-            <h1>Нэвтрэх</h1>
-            <p>Доор дэлгэрэнгүй мэдээллээ оруулна уу</p>
-            <form id="loginForm">
-                <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="Мэйл хаяг эсвэл утасны дугаар" required>
+            <h1>Бүртгүүлэх</h1>
+            <p>Доорх мэдээллийг бөглөнө үү</p>
+            <form action="/auth/register" method="POST">
+                <div class="form-group">
+                    <label for="lastname">Овог</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="Овгоо оруулна уу" required>
                 </div>
-                <div class="input-group">
-                    <input type="password" id="password" name="password" placeholder="Нууц үг" required>
-                    <button type="button" id="togglePassword" aria-label="Show or hide password">
-                        <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#bababa">
-                            <path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="#bababa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="#bababa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </button>
+                <div class="form-group">
+                    <label for="firstname">Нэр</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="Нэрээ оруулна уу" required>
                 </div>
-                <button type="submit" class="btn">Нэвтрэх</button>
-                <a href="#" class="forgot-password">Нууц үгээ мартсан?</a>
+                <div class="form-group">
+                    <label for="username">Хэрэглэгчийн нэр</label>
+                    <input type="text" id="username" name="username" placeholder="Хэрэглэгчийн нэрээ оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">И-мэйл</label>
+                    <input type="email" id="email" name="email" placeholder="И-мэйл хаягаа оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Утас</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Утасны дугаараа оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Нууц үг</label>
+                    <input type="password" id="password" name="password" placeholder="Нууц үгээ оруулна уу" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Нууц үг давтах</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Нууц үгээ дахин оруулна уу" required>
+                </div>
+                <button type="submit" class="btn">Бүртгүүлэх</button>
             </form>
-            <p class="divider">Эсвэл</p>
-            <div class="social-login">
-                <button class="socialBtn google-login"> 
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg> - ээр нэвтрэх
-                </button>
-                <button class="socialBtn facebook-login">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="24px" height="24px">    <path d="M32,11h5c0.552,0,1-0.448,1-1V3.263c0-0.524-0.403-0.96-0.925-0.997C35.484,2.153,32.376,2,30.141,2C24,2,20,5.68,20,12.368 V19h-7c-0.552,0-1,0.448-1,1v7c0,0.552,0.448,1,1,1h7v19c0,0.552,0.448,1,1,1h7c0.552,0,1-0.448,1-1V28h7.222 c0.51,0,0.938-0.383,0.994-0.89l0.778-7C38.06,19.518,37.596,19,37,19h-8v-5C29,12.343,30.343,11,32,11z"/></svg> - ээр нэвтрэх
-                </button>
-            </div>
-            <p class="register-link">Бүртгэл байхгүй юу? <a href="/register.html">Бүртгүүлэх</a></p>
+            <p class="small-text">Өмнө нь бүртгүүлсэн үү? <a href="login.html">Нэвтрэх</a></p>
         </div>
-    
-        <script>
-    const loginForm = document.getElementById('loginForm');
-    const togglePassword = document.getElementById('togglePassword');
-    const password = document.getElementById('password');
-    const eyeIcon = document.getElementById('eyeIcon');
-
-    togglePassword.addEventListener('click', () => {
-        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-        password.setAttribute('type', type);
-        eyeIcon.innerHTML = type === 'password' 
-            ? '<path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="#bababa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="#bababa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>' 
-            : '<path d="M2.99902 3L20.999 21M9.8433 9.91364C9.32066 10.4536 8.99902 11.1892 8.99902 12C8.99902 13.6569 10.3422 15 11.999 15C12.8215 15 13.5667 14.669 14.1086 14.133M6.49902 6.64715C4.59972 7.90034 3.15305 9.78394 2.45703 12C3.73128 16.0571 7.52159 19 11.9992 19C13.9881 19 15.8414 18.4194 17.3988 17.4184M10.999 5.04939C11.328 5.01673 11.6617 5 11.9992 5C16.4769 5 20.2672 7.94291 21.5414 12C21.2607 12.894 20.8577 13.7338 20.3522 14.5" stroke="#bababa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>';
-    });
-
-    loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();  // Формын дэлгэцийг шинэчлэхгүйгээр мэдэгдэл илгээж байна
-
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        try {
-            const response = await fetch('http://localhost:3000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const result = await response.json();
-            
-            if (response.ok) {
-                alert(result.message);
-                localStorage.setItem('token', result.token);
-
-                // Хэрэглэгчийн role шалгах
-                if (result.user.role === 'admin') {
-                    window.location.href = '/admin.html';  // admin хуудас руу шилжих
-                } else {
-                    window.location.href = '/profile.html';  // Эсвэл profile хуудас руу шилжих
-                }
-            } else {
-                alert(result.message || 'Нэвтрэхэд алдаа гарлаа');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Сервертэй холбогдоход алдаа гарлаа.');
-        }
-    });
-</script>
 
     </main> 
 

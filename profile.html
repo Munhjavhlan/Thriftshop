@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/logo.png">
     <meta name="description"
         content="Thrift Shop offers up to 50% discount on members' clothing. Shop for men, women, and kids. Enjoy free shipping and special New Year's offers!" />
     <link rel="stylesheet" href="static/profile.css" />
@@ -11,12 +12,13 @@
     <title>Thrift Shop</title>
 </head>
 
-<body>
+<body class="light-mode"> <!-- Энэ defualt -аар lightmode -той байгаа шүү -->
     <header>
         <h3 class="back">Гишүүд 50% хүртэл хямдралтай</h3>
         <nav>
+            <a href="index.html" aria-label="Go to home page">
             <img class="logo" src="images/logo.png" alt="Thrift shop logo" />
-
+        </a>
             <ul id="navMenu">
 
                 <li class="top-links"><a href="index.html" aria-label="Go to home page"><svg
@@ -24,54 +26,47 @@
                             class="bi bi-command" viewBox="0 -6 25 16">
                             <path
                                 d="M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3M6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5zm4 1v4H6V6zm1-1V3.5A1.5 1.5 0 1 1 12.5 5zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11z" />
-                        </svg>Нүүр хуудас</a></li>
+                        </svg><span>Нүүр хуудас</span></a></li>
                 <li class="top-links"><a href="products.html" aria-label="View products"><svg
                             xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943"
                             class="bi bi-list-ul" viewBox="0 -6 23 16">
                             <path fill-rule="evenodd"
                                 d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-                        </svg>Барааны мэдээлэл</a></li>
+                        </svg><span>Барааны мэдээлэл</span></a></li>
 
                 <li>
                     <form class="search-form">
-                        <input type="text" placeholder="бүтээгдэхүүн хайх.." aria-label="Search products" />
-                        <button type="submit" aria-label="Submit search">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-search" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        <label for="search-input-1" class="sr-only"></label>
+                        <input id="search-input-1" class="search-input" type="text" placeholder="бүтээгдэхүүн хайх.." aria-label="Search products" />
+                        <button type="submit" class="search-button" aria-label="Submit search" style="scale: 0.7;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                             </svg>
                         </button>
                     </form>
+                    
 
                 </li>
             </ul>
             <ul id="iconMenu">
-                <li class="top-links"><a href="products.html"><svg xmlns="http://www.w3.org/2000/svg" width="20px"
-                            height="20px" viewBox="0 0 24 24" fill="353943">
+                <li class="top-links"><a href="" aria-label="Read more"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
+                            viewBox="0 0 24 24" fill="353943">
                             <path
                                 d="M8.96173 18.9109L9.42605 18.3219L8.96173 18.9109ZM12 5.50063L11.4596 6.02073C11.601 6.16763 11.7961 6.25063 12 6.25063C12.2039 6.25063 12.399 6.16763 12.5404 6.02073L12 5.50063ZM15.0383 18.9109L15.5026 19.4999L15.0383 18.9109ZM7.00061 16.4209C6.68078 16.1577 6.20813 16.2036 5.94491 16.5234C5.68169 16.8432 5.72758 17.3159 6.04741 17.5791L7.00061 16.4209ZM2.34199 13.4115C2.54074 13.7749 2.99647 13.9084 3.35988 13.7096C3.7233 13.5108 3.85677 13.0551 3.65801 12.6917L2.34199 13.4115ZM2.75 9.1371C2.75 6.98623 3.96537 5.18252 5.62436 4.42419C7.23607 3.68748 9.40166 3.88258 11.4596 6.02073L12.5404 4.98053C10.0985 2.44352 7.26409 2.02539 5.00076 3.05996C2.78471 4.07292 1.25 6.42503 1.25 9.1371H2.75ZM8.49742 19.4999C9.00965 19.9037 9.55954 20.3343 10.1168 20.6599C10.6739 20.9854 11.3096 21.25 12 21.25V19.75C11.6904 19.75 11.3261 19.6293 10.8736 19.3648C10.4213 19.1005 9.95208 18.7366 9.42605 18.3219L8.49742 19.4999ZM15.5026 19.4999C16.9292 18.3752 18.7528 17.0866 20.1833 15.4758C21.6395 13.8361 22.75 11.8026 22.75 9.1371H21.25C21.25 11.3345 20.3508 13.0282 19.0617 14.4798C17.7469 15.9603 16.0896 17.1271 14.574 18.3219L15.5026 19.4999ZM22.75 9.1371C22.75 6.42503 21.2153 4.07292 18.9992 3.05996C16.7359 2.02539 13.9015 2.44352 11.4596 4.98053L12.5404 6.02073C14.5983 3.88258 16.7639 3.68748 18.3756 4.42419C20.0346 5.18252 21.25 6.98623 21.25 9.1371H22.75ZM14.574 18.3219C14.0479 18.7366 13.5787 19.1005 13.1264 19.3648C12.6739 19.6293 12.3096 19.75 12 19.75V21.25C12.6904 21.25 13.3261 20.9854 13.8832 20.6599C14.4405 20.3343 14.9903 19.9037 15.5026 19.4999L14.574 18.3219ZM9.42605 18.3219C8.63014 17.6945 7.82129 17.0963 7.00061 16.4209L6.04741 17.5791C6.87768 18.2624 7.75472 18.9144 8.49742 19.4999L9.42605 18.3219ZM3.65801 12.6917C3.0968 11.6656 2.75 10.5033 2.75 9.1371H1.25C1.25 10.7746 1.66995 12.1827 2.34199 13.4115L3.65801 12.6917Z"
                                 fill="#1C274C" />
                         </svg></a></li>
-                <li class="top-links"><a href="cart.html"><svg xmlns="http://www.w3.org/2000/svg" width="20px"
+                <li class="top-links"><a href="cart.html" aria-label="Read more"><svg xmlns="http://www.w3.org/2000/svg" width="20px"
                             height="20px" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
                             <path
                                 d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-                        </svg></a></li>
-                <li><a href="profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
-                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        </svg></a>
+                    
+                </li>
+                <li><a href="http://localhost:3000/login" aria-label="Profile"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
+                            class="bi bi-person" viewBox="0 0 16 16">
                             <path
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                         </svg></a></li>
-                <li>
-                    <button id="toggleButton">
-                        <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor"
-                            class="bi bi-moon" viewBox="0 0 16 16">
-                            <path
-                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
-                        </svg>
-                    </button>
-                </li>
 
             </ul>
         </nav>
@@ -79,13 +74,14 @@
 
     <main>
         <section>
+            <h4>Нүүр хуудас &nbsp; • &nbsp; <span style="color: lightgray;">Хувийн мэдээлэл</span></h4>
             <h1>Хувийн мэдээлэл</h1>
             <form>
                 <div class="form-header">
                     <h3>Бүртгэл</h3>
                     <button class="search-button" type="submit">Хадгалах</button>
                 </div>
-                <div class="form-header">
+                <div class="form-grid">
                     <div>
                         <label for="lastname">Овог:</label>
                         <input type="text" placeholder="Овог" id="lastname" name="lastname" required>
@@ -113,21 +109,15 @@
                 </label>
                 <hr>
                 <h2>Сошиал хаягаа холбох</h2>
-                <a href="#"><i class="google-login"></i>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="20" height="20" viewBox="0 0 48 48">
-                        <path
-                            d="M23.49 12.3c0-.72-.07-1.4-.2-2.05H12v3.8h6.15c-0.26 1.43-1.03 2.64-2.15 3.28v2.73h3.45c2.02-1.86 3.15-4.64 3.15-8.26z">
-                        </path>
-                    </svg>
-                    <span>-р нэвтрэх</span>
-                </a>
-
-
-                <a href="#"><i class="fab fa-facebook"></i><svg xmlns="http://www.w3.org/2000/svg" fill="#000000"
-                        width="20" height="20" viewBox="0 0 25 25">
-                        <path
-                            d="M21.95 5.005l-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z" />
-                    </svg> -р нэвтрэх</a>
+                <div class="social-login">
+                    <button class="socialBtn google-login"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg> - ээр нэвтрэх
+                    </button>
+                    <button class="socialBtn facebook-login">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="24px" height="24px">    <path d="M32,11h5c0.552,0,1-0.448,1-1V3.263c0-0.524-0.403-0.96-0.925-0.997C35.484,2.153,32.376,2,30.141,2C24,2,20,5.68,20,12.368 V19h-7c-0.552,0-1,0.448-1,1v7c0,0.552,0.448,1,1,1h7v19c0,0.552,0.448,1,1,1h7c0.552,0,1-0.448,1-1V28h7.222 c0.51,0,0.938-0.383,0.994-0.89l0.778-7C38.06,19.518,37.596,19,37,19h-8v-5C29,12.343,30.343,11,32,11z"/></svg> - ээр нэвтрэх
+                    </button>
+                </div>
+                
 
             </form>
         </section>
@@ -135,24 +125,37 @@
         <section>
             <h2>Захиалгууд:</h2>
             <div class="nav-section">
-                <p>Баталгаажсан:</p>
-                <p>Хүлээгдэж буй:</p>
+                <button><b>Баталгаажсан:</b></button>
+                <button><b>Хүлээгдэж буй:</b></button>
             </div>
             <p>Та захиалга хийгээгүй байна.</p>
+            <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#dedede" version="1.1" id="Capa_1" width="159px" height="159px" viewBox="0 0 440.00 440.00" xml:space="preserve" stroke="#dedede" stroke-width="0.0044">
+
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                
+                <g id="SVGRepo_iconCarrier"> <g> <path d="M439.9,111.711c-0.374-2.142-1.786-3.958-3.77-4.85L274.576,34.147c-2.352-1.06-5.109-0.642-7.04,1.07L220,77.293 l-47.536-42.076c-1.93-1.711-4.688-2.13-7.039-1.07L3.869,106.861c-1.982,0.892-3.395,2.708-3.77,4.85 c-0.375,2.14,0.334,4.328,1.894,5.842l51.033,49.502l-28.774,50.806c-1.781,3.146-0.683,7.14,2.457,8.931l27.964,15.96v65.271 c0,2.342,1.248,4.507,3.274,5.678l158.768,91.85c1.017,0.587,2.15,0.882,3.286,0.882c1.083,0,2.165-0.275,3.146-0.812 c-0.002,0.004-0.008,0.01-0.009,0.014l158.915-91.933c2.026-1.171,3.274-3.336,3.274-5.678v-65.271l27.966-15.96 c3.14-1.791,4.237-5.785,2.455-8.931l-28.772-50.806l51.031-49.502C439.567,116.039,440.277,113.851,439.9,111.711z M278.612,213.567l-52.052-30.151V96.697l138.129,69.444L278.612,213.567z M75.311,166.142l138.131-69.445v86.719l-52.054,30.151 L75.311,166.142z M18.063,114.861l148.879-67.008l41.454,36.691L62.453,157.918L18.063,114.861z M38.892,218.639l24.854-43.887 l146.41,80.665l-32.483,42.427L38.892,218.639z M213.44,388.497L67.793,304.239v-53.998l108.353,61.839 c1.021,0.583,2.139,0.863,3.248,0.863c1.983,0,3.932-0.9,5.214-2.573l28.833-37.659L213.44,388.497L213.44,388.497z M220,245.861 l-45.196-24.901L220,194.78l45.196,26.18L220,245.861z M372.206,304.239l-145.646,84.258V272.71l28.833,37.659 c1.28,1.673,3.229,2.573,5.214,2.573c1.106,0,2.227-0.28,3.248-0.863l108.351-61.839V304.239z M401.109,218.639l-138.781,79.204 l-32.484-42.427l146.411-80.665L401.109,218.639z M377.548,157.918L231.604,84.544l41.452-36.691l148.881,67.008L377.548,157.918z"/> </g> </g>
+                
+                </svg>
+                </div>  
+
         </section>
 
     </main>
-
     <footer>
         <div class="footer-container">
             <div class="footer-section subscribe">
-                <h3>Exclusive</h3>
-                <p>Subscribe</p>
-                <p>Get 10% off your first order</p>
+                <h3>Онцгой</h3>
+                <ul>
+                    <li><a href="#">Бүртгүүлэх</a></li>
+                    <li><a href="#">Эхний захиалгаа 10% хямдруулаарай</a></li>
+                </ul>
                 <form class="subscribe-form">
                     <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none">
+                    <button type="submit" aria-label="Read more"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none">
                             <path stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m6 12-3 9 18-9L3 3l3 9zm0 0h6" />
                         </svg></button>
@@ -174,24 +177,25 @@
                 <h3>Download App</h3>
                 <div class="icons">
                     <div class="qr-codes">
-                        <img src="images/qr.png" alt="QR Code">
+                        <img src="images/qr.png" alt="QR Code" loading="lazy">
                     </div>
                     <div class="app-icons">
-                        <img src="images/googleplay.png" alt="Google Play Store">
+                        <img src="images/googleplay.png" alt="Download on Google Play Store">
                         <img src="images/appstore.png" alt="App Store">
                     </div>
                 </div>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i><svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
-                            width="40" height="40" viewBox="0 0 32 32">
+                    <a href="#" aria-label="Visit our Facebook page"><i class="fab fa-facebook"></i><svg
+                            xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="40" height="40"
+                            viewBox="0 0 32 32">
                             <path
                                 d="M21.95 5.005l-3.306-.004c-3.206 0-5.277 2.124-5.277 5.415v2.495H10.05v4.515h3.317l-.004 9.575h4.641l.004-9.575h3.806l-.003-4.514h-3.803v-2.117c0-1.018.241-1.533 1.566-1.533l2.366-.001.01-4.256z" />
                         </svg></a>
-                    <a href="#"><i class="fab fa-instagram"></i><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                            width="40" height="40" viewBox="0,0,256,256">
+                    <a href="#" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i><svg
+                            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40"
+                            viewBox="0,0,256,256">
                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                                 stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                font-family="none" font-weight="none" font-size="none" text-anchor="none"
                                 style="mix-blend-mode: normal">
                                 <g transform="scale(5.33333,5.33333)">
                                     <path
@@ -211,6 +215,54 @@
             <p>© Үйлчилгээний журам болон нөхцөл | Нууцлалын бодлого</p>
         </div>
     </footer>
-</body>
-
+    
+    
+<div class="sticky-links">
+    <ul>
+        <li><a href="index.html" aria-label="Go to home page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943" class="bi bi-command"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3M6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5zm4 1v4H6V6zm1-1V3.5A1.5 1.5 0 1 1 12.5 5zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11z" />
+                </svg>
+            </a></li>
+        <li><a href="products.html" aria-label="View products">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943" class="bi bi-list-ul"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                </svg>
+            </a></li>
+        <li><a href="" aria-label="wishlist"><svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24"
+                    fill="353943">
+                    <path
+                        d="M8.96173 18.9109L9.42605 18.3219L8.96173 18.9109ZM12 5.50063L11.4596 6.02073C11.601 6.16763 11.7961 6.25063 12 6.25063C12.2039 6.25063 12.399 6.16763 12.5404 6.02073L12 5.50063ZM15.0383 18.9109L15.5026 19.4999L15.0383 18.9109ZM7.00061 16.4209C6.68078 16.1577 6.20813 16.2036 5.94491 16.5234C5.68169 16.8432 5.72758 17.3159 6.04741 17.5791L7.00061 16.4209ZM2.34199 13.4115C2.54074 13.7749 2.99647 13.9084 3.35988 13.7096C3.7233 13.5108 3.85677 13.0551 3.65801 12.6917L2.34199 13.4115ZM2.75 9.1371C2.75 6.98623 3.96537 5.18252 5.62436 4.42419C7.23607 3.68748 9.40166 3.88258 11.4596 6.02073L12.5404 4.98053C10.0985 2.44352 7.26409 2.02539 5.00076 3.05996C2.78471 4.07292 1.25 6.42503 1.25 9.1371H2.75ZM8.49742 19.4999C9.00965 19.9037 9.55954 20.3343 10.1168 20.6599C10.6739 20.9854 11.3096 21.25 12 21.25V19.75C11.6904 19.75 11.3261 19.6293 10.8736 19.3648C10.4213 19.1005 9.95208 18.7366 9.42605 18.3219L8.49742 19.4999ZM15.5026 19.4999C16.9292 18.3752 18.7528 17.0866 20.1833 15.4758C21.6395 13.8361 22.75 11.8026 22.75 9.1371H21.25C21.25 11.3345 20.3508 13.0282 19.0617 14.4798C17.7469 15.9603 16.0896 17.1271 14.574 18.3219L15.5026 19.4999ZM22.75 9.1371C22.75 6.42503 21.2153 4.07292 18.9992 3.05996C16.7359 2.02539 13.9015 2.44352 11.4596 4.98053L12.5404 6.02073C14.5983 3.88258 16.7639 3.68748 18.3756 4.42419C20.0346 5.18252 21.25 6.98623 21.25 9.1371H22.75ZM14.574 18.3219C14.0479 18.7366 13.5787 19.1005 13.1264 19.3648C12.6739 19.6293 12.3096 19.75 12 19.75V21.25C12.6904 21.25 13.3261 20.9854 13.8832 20.6599C14.4405 20.3343 14.9903 19.9037 15.5026 19.4999L14.574 18.3219ZM9.42605 18.3219C8.63014 17.6945 7.82129 17.0963 7.00061 16.4209L6.04741 17.5791C6.87768 18.2624 7.75472 18.9144 8.49742 19.4999L9.42605 18.3219ZM3.65801 12.6917C3.0968 11.6656 2.75 10.5033 2.75 9.1371H1.25C1.25 10.7746 1.66995 12.1827 2.34199 13.4115L3.65801 12.6917Z"
+                        fill="#1C274C" />
+                </svg>
+            </a></li>
+        <li><a href="http://localhost:3000/cart" aria-label="Cart"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#353943" class="bi bi-cart3"
+                    viewBox="0 0 17 17">
+                    <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                </svg></a></li>
+    </ul>
+</div>
+    <script src="static/script.js"></script>
+    <script src="static/Js/profile.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = 1; // Replace with actual user ID
+        try {
+            const response = await fetch(`/api/users/${userId}`);
+            const userData = await response.json();
+            console.log(userData.lastname);
+            document.getElementById("lastname").placeholder = userData.lastname || 'Овог';
+            document.getElementById("firstname").placeholder = userData.firstname || 'Нэр';
+            document.getElementById("email").placeholder = userData.email || 'И-Мэйл';
+            document.getElementById("phone").placeholder = userData.phone || 'Утас';
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    });
+</script>
 </html>
