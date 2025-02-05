@@ -191,7 +191,6 @@ header {
     height: var(--font-size-xl);
     border-radius: 50%;
     scale: 0.7;
-    animation: bounce 1.5s ease-in-out;
   }
 
 /* Navigation Links */
