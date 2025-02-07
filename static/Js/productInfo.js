@@ -88,7 +88,7 @@
             });
         }
 
-        // Related products
+        // Хамааралтай бараа
         const relatedProductsContainer = document.getElementById('related-products');
         if (relatedProductsContainer) {
             products
@@ -101,7 +101,7 @@
                         <img src="${relatedProduct.thumbnail}" alt="${relatedProduct.name}">
                         <p>${relatedProduct.name}</p>
                         <p>₮${relatedProduct.price}</p>
-                        <button onclick="location.href='productInfo.html?id=${relatedProduct.id}'">View</button>
+                        <button onclick="location.href='productInfo.html?id=${relatedProduct.id}'">Харах</button>
                     `;
                     relatedProductsContainer.appendChild(relatedCard);
                 });

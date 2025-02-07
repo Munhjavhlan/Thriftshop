@@ -525,4 +525,12 @@ social-icons a:hover {
         grid-template-columns: repeat(2, var(--grid-column)); /* 2 багана */
         justify-content: center;
     }
+    footer{
+        display: none;
+    }
+    .sticky-ul{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+    }
 }
