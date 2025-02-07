@@ -303,7 +303,6 @@ a {
     transition: background var(--transition-time) ease-in-out;
     background-color: transparent;
     color: var(--color-neutral-grey-5);
-    text-decoration: underline;
     
 }
 .sale ul button:hover {

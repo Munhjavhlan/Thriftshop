@@ -169,9 +169,10 @@ main {
 
 .slider-track {
     position: absolute;
-    height: var(--max-width);
-    background-color: var(----color-neutral-grey-3);
+    height: 80%;
+    background-color: var(--color-neutral-grey-3);
     z-index: 1;
+    top: 5px;
 }
 
 input[type="range"] {
