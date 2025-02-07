@@ -60,7 +60,6 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color var(--transition-time), color var(--transition-time);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 @media (prefers-color-scheme: dark) {
 
@@ -79,8 +78,7 @@ a {
 /* Typography */
 h1, h2, h4, p {
     line-height: 1.5;
-    letter-spacing: var(--border-width);
-    color: var(--color-neutral-grey-3); 
+    letter-spacing: var(--border-width); 
 }
 
 /* Gradient title */
@@ -410,7 +408,15 @@ social-icons a:hover {
 .sticky-links {
     display: none;
 }
+.light-mode {
+    --background-color: var(--light-bg);
+    --text-color: var(--font-color-dark);
+}
 
+.dark-mode {
+    --background-color: var(--dark-bg);
+    --text-color: var(--font-color-light);
+}
 
 @media (max-width: 480px) and (max-width: 768px) and (max-width: 1024px){
 
@@ -452,9 +458,6 @@ social-icons a:hover {
         align-items: center;
     }
 
-    .top-links svg, .top-links a {
-        display: none;
-    }
         #toggleButton {
             display: none;
 
@@ -485,17 +488,16 @@ social-icons a:hover {
         margin: var(--border-radius) 0;
     }
 
-    #navMenu li a {
-        font-size: var(--font-size-md);
-        color: var(--primary-color);
+   .top-links a svg {
+        width: 24px;
+        height: 24px;
     }
-
-    .sticky-links {
-        display: flex; 
+    
+    .top-links a span {
+        display: none; 
     }
-
-    .sticky-links ul li a {
-        font-size: var(--font-size-sm); 
+    footer {
+        display: none; 
     }
 
 }
@@ -517,6 +519,9 @@ social-icons a:hover {
     #product-grid {
         grid-template-columns: var(--grid-column); /* 1 багана */
         justify-content: center;
+    }
+    .top-links svg, .top-links a {
+        display: none;
     }
 }
 
