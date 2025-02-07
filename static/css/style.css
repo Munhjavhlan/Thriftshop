@@ -533,4 +533,7 @@ social-icons a:hover {
         justify-content: space-around;
         width: 100%;
     }
+    cart-list {
+        gap: 15px;
+}
 }

@@ -83,6 +83,7 @@
         top: 0;
         height: var(--max-width);
         overflow-y: auto;
+        background-color: var(--background-color);
     }
 
     product-grid {
@@ -129,8 +130,6 @@
         margin-top: var(--font-size-xxl);
     }
         
-
-    
         /* Navigation menu товч гарч ирэх */
         #toggleButton {
           display: none;

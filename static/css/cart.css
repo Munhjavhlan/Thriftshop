@@ -18,7 +18,6 @@ cart-list {
 /* Сагсны контейнер */
 .sags {
   display: grid;
-  background-color: var(--secondary-color);
   grid-area: baraa;
   padding: 20px;
   border-radius: var(--border-radius);
@@ -130,6 +129,7 @@ cart-total {
 
 .order-summary {
   background-color: var(--secondary-color);
+  color: var(--font-color-dark);
   padding: 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
