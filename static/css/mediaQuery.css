@@ -176,12 +176,6 @@
           display: none;
         }
     
-        /* Navigation менюг default байдлаар далдлах */
-        #navMenu {
-            display: flex;
-            width: var(--border-width);
-        }
-    
         /* Navigation доторх холбоосууд */
         #navMenu li {
             text-align: center;
