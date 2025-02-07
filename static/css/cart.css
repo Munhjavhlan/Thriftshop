@@ -1,5 +1,5 @@
 app-root {
-  max-width: 12px;
+  max-width: var(--font-size-xs);
   margin: 0 auto;
 
 }
@@ -19,32 +19,32 @@ cart-list {
 .sags {
   display: grid;
   grid-area: baraa;
-  padding: 20px;
+  padding: var(--font-size-lg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  margin-bottom: 20px;
+  margin-bottom: var(--font-size-lg);
 }
 
 .sags h2 {
   font-size: 1.8em;
-  margin-bottom: 15px;
+  margin-bottom: var(--font-size-sm);
 }
 
 /* Сагсны доторх агуулга */
 .cart-content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: var(--font-size-sm);
+  margin-bottom: var(--font-size-lg);
 }
 
 /* Барааны карточ */
 .baraa {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--color-neutral-grey-2);
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+  border-bottom: var(--border-width) solid var(--color-neutral-grey-2);
+  padding-bottom: var(--font-size-sm);
+  margin-bottom: var(--font-size-sm);
 }
 
 .baraa:last-child {
@@ -53,11 +53,11 @@ cart-list {
 
 /* Барааны зураг */
 .baraa img {
-  width: 200px;
+  width: calc(var(--mid-width)/2);
   height: auto;
   object-fit: cover;
   border-radius: var(--border-radius);
-  margin-right: 20px;
+  margin-right: var(--font-size-lg);
 }
 
 /* Барааны дэлгэрэнгүй хэсэг */
@@ -67,26 +67,26 @@ cart-list {
 
 .details h4 {
   font-size: 1.4em;
-  margin-bottom: 10px;
+  margin-bottom: var(--border-radius);
 }
 
 .details .price {
-  font-size: 1em;
-  margin-bottom: 10px;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--border-radius);
 }
 
 /* Тоо оруулах хэсэг */
 .quantity {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: var(--border-radius);
 }
 
 .quantity input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  font-size: 1em;
-  margin-right: 10px;
+  width: calc(var(--font-size-lg)*3);
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-md);
+  margin-right: var(--border-radius);
 }
 
 /* Хасах товч */
@@ -94,14 +94,14 @@ cart-list {
   background-color: var(--color-red);
   color: var(--font-color-light);
   border: none;
-  padding: 8px 12px;
+  padding: var(--font-size-xxs) var(--font-size-xs);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color var(--transition-time);
 }
 
 .remove-button:hover {
-  background-color: #e60000;
+  background-color: var(--color-red);
 }
 
 /* Сагсыг хоослох товч */
@@ -109,7 +109,7 @@ cart-list {
   background-color: var(--primary-color);
   color: var(--font-color-light);
   border: none;
-  padding: 10px 20px;
+  padding: var(--border-radius) var(--font-size-lg);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color var(--transition-time);
@@ -123,14 +123,14 @@ cart-list {
 cart-total {
   display: grid;
   grid-area: sambar;
-  margin-bottom: 40px;
+  margin-bottom: calc(var(--font-size-lg)*2);
   height: fit-content;
 }
 
 .order-summary {
   background-color: var(--secondary-color);
   color: var(--font-color-dark);
-  padding: 20px;
+  padding: var(--font-size-lg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
@@ -139,8 +139,8 @@ cart-total {
 .order-summary .item {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--color-neutral-grey-2);
+  padding: var(--border-radius) 0;
+  border-bottom: var(--border-width) solid var(--color-neutral-grey-2);
 }
 
 .order-summary .item:last-child {
@@ -156,7 +156,7 @@ cart-total {
 /* Үргэлжлүүлэх товч */
 .order-summary a {
   display: block;
-  margin: 20px 0;
+  margin: var(--font-size-lg) 0;
   text-align: center;
 }
 
@@ -164,10 +164,10 @@ cart-total {
   background-color: var(--primary-color);
   color: var(--font-color-light);
   border: none;
-  padding: 12px 25px;
+  padding: var(--font-size-xs) var(--font-size-xl);
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 1em;
+  font-size: var(--font-size-md);
   transition: background-color var(--transition-time);
 }
 
@@ -179,14 +179,14 @@ cart-total {
 .note {
   font-size: 0.8em;
   color: var(--color-neutral-grey-4);
-  margin-top: 15px;
+  margin-top: var(--font-size-sm);
 }
 
 /* Захиалгын тойм дахь зураг */
 .order-summary img.sda {
-  max-width: 100%;
+  max-width: var(--max-width);
   height: auto;
-  margin-top: 15px;
+  margin-top: var(--font-size-sm);
   justify-content: center;
   align-items: center;
 }
@@ -197,8 +197,8 @@ cart-total {
 
 @media (max-width: 600px) {
   .order-summary {
-    width: 100%;
-    padding: 10px;
+    width: var(--max-width);
+    padding: var(--border-radius);
   }
   cart-list{
     flex-direction: column;
@@ -213,26 +213,26 @@ cart-total {
   }
 
   .baraa img {
-    width: 100%;
+    width: var(--max-width);
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: var(--border-radius);
   }
   .sags{
-    width: 100%;
+    width: var(--max-width);
   }
   .cart-content{
     margin-bottom: 0;
   }
 
   .details {
-    width: 100%;
+    width: var(--max-width);
   }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
   .order-summary {
-    width: 100%;
-    padding: 15px;
+    width: var(--max-width);
+    padding: var(--font-size-sm);
   }
 
   .baraa {
@@ -241,9 +241,9 @@ cart-total {
   }
 
   .baraa img {
-    width: 150px;
-    height: 150px;
-    margin-right: 10px;
+    width: calc(var(--mid-width)/2.6);
+    height: calc(var(--mid-width)/2.6);
+    margin-right: var(--border-radius);
   }
 
   .details {
