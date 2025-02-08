@@ -250,7 +250,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById("search-button").addEventListener("click", async (event) => {
-        event.preventDefault();
         const searchTerm = document.getElementById("search-input-2").value.trim();
         const query = searchTerm ? `name=${searchTerm}` : "";
         const filteredProducts = await fetchData(query);
@@ -259,7 +258,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("search-input-2").addEventListener("keypress", async (event) => {
         if (event.key === "Enter") {
-            event.preventDefault();
             const searchTerm = document.getElementById("search-input-2").value.trim();
             const query = searchTerm ? `http://localhost:3000/products/api?name=${searchTerm}` : "";
             const filteredProducts = await fetchData(query);
